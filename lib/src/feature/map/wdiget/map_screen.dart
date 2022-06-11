@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MapPage extends StatelessWidget {
+class MapScreen extends StatelessWidget {
+  const MapScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => Scaffold(
           body: Center(

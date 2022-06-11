@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'src/feature/home/widget/home_page.dart';
-import 'src/feature/product/widget/product_page.dart';
-import 'src/feature/map/wdiget/map_page.dart';
-import 'src/feature/contacts/widget/contact_page.dart';
-import 'src/feature/settings/widget/settings_page.dart';
+import 'src/feature/home/widget/home_screen.dart';
+import 'src/feature/product/widget/product_screen.dart';
+import 'src/feature/map/wdiget/map_screen.dart';
+import 'src/feature/contacts/widget/contact_screen.dart';
+import 'src/feature/settings/widget/settings_screen.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -15,19 +15,19 @@ class ParkApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreen();
+  State<MainScreen> createState() => _MainScreen();
 }
 
-class _HomeScreen extends State<HomeScreen> {
+class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -37,11 +37,11 @@ class _HomeScreen extends State<HomeScreen> {
   }
 
   final screens = [
-    HomePage(),
-    ProductPage(),
-    MapPage(),
-    ContactPage(),
-    SettingsPage(),
+    const HomeScreen(),
+    const ProductScreen(),
+    const MapScreen(),
+    const ContactScreen(),
+    const SettingsScreen(),
   ];
 
   @override
