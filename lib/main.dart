@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'page/home_page.dart';
-import 'page/product_page.dart';
-import 'page/map_page.dart';
-import 'page/contact_page.dart';
-import 'page/settings_page.dart';
+import 'src/feature/home/widget/home_page.dart';
+import 'src/feature/product/widget/product_page.dart';
+import 'src/feature/map/wdiget/map_page.dart';
+import 'src/feature/contacts/widget/contact_page.dart';
+import 'src/feature/settings/widget/settings_page.dart';
 
 void main() {
   runApp(const ParkApp());
