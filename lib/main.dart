@@ -38,7 +38,7 @@ class _MainScreen extends State<MainScreen> {
 
   final screens = [
     const HomeScreen(),
-    const ProductScreen(),
+    ProductScreen(),
     const MapScreen(),
     const ContactScreen(),
     const SettingsScreen(),
@@ -53,27 +53,27 @@ class _MainScreen extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',
-            backgroundColor: Color.fromARGB(80, 100, 235, 59),
+            backgroundColor: Color.fromARGB(80, 64, 65, 64),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
             label: '',
-            backgroundColor: Color.fromARGB(80, 255, 235, 59),
+            backgroundColor: Color.fromARGB(80, 161, 161, 160),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map_rounded),
             label: '',
-            backgroundColor: Colors.green,
+            backgroundColor: Color.fromARGB(255, 174, 175, 174),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.mail),
             label: '',
-            backgroundColor: Colors.blue,
+            backgroundColor: Color.fromARGB(255, 174, 179, 184),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: '',
-            backgroundColor: Colors.grey,
+            backgroundColor: Color.fromARGB(255, 209, 184, 184),
           ),
         ],
         currentIndex: _selectedIndex,
