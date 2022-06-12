@@ -5,6 +5,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: null,
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(

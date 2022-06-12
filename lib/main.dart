@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
@@ -14,8 +15,9 @@ class ParkApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MainScreen(),
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: const MainScreen(),
     );
   }
 }
@@ -53,12 +55,12 @@ class _MainScreen extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',
-            backgroundColor: Color.fromARGB(80, 64, 65, 64),
+            backgroundColor: Color.fromARGB(255, 95, 95, 95),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
             label: '',
-            backgroundColor: Color.fromARGB(80, 161, 161, 160),
+            backgroundColor: Color.fromARGB(255, 138, 138, 137),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map_rounded),
@@ -73,11 +75,11 @@ class _MainScreen extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: '',
-            backgroundColor: Color.fromARGB(255, 209, 184, 184),
+            backgroundColor: Color.fromARGB(255, 199, 196, 196),
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
         onTap: _onItemTapped,
       ),
     );
