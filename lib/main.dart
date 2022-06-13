@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
@@ -42,7 +41,7 @@ class _MainScreen extends State<MainScreen> {
     const HomeScreen(),
     ProductScreen(),
     const MapScreen(),
-    const ContactScreen(),
+    ContactScreen(),
     const SettingsScreen(),
   ];
 
