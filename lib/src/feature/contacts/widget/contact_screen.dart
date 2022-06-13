@@ -75,10 +75,16 @@ class ContactScreen extends StatelessWidget {
                   Container(
                     alignment: Alignment.topLeft,
                     margin: const EdgeInsets.fromLTRB(45, 5, 0, 10),
-                    child: Text(
-                      'Lagoa das, 9675-045.',
-                      style: TextStyle(fontSize: 20),
-                      textAlign: TextAlign.start,
+                    child: Link(
+                      uri: Uri.parse('https://flutter.'),
+                      builder: (context, followLink) => GestureDetector(
+                        onTap: followLink,
+                        child: Text(
+                          'Lagoa das, 9675-045.',
+                          style: TextStyle(fontSize: 20),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
                     ),
                   ),
                 ],
