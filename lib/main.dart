@@ -42,7 +42,7 @@ class _MainScreen extends State<MainScreen> {
     ProductScreen(),
     const MapScreen(),
     ContactScreen(),
-    const SettingsScreen(),
+    SettingsScreen(),
   ];
 
   @override

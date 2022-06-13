@@ -1,21 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
   ContactScreen({Key? key}) : super(key: key);
-  //final Uri _urlAdress = Uri.parse('https://g.page/parquegrena?share');
-  //final Uri _urlFacebook = Uri.parse('https://www.facebook.com/parquegrena/');
-  //final Uri _urlInstagram = Uri.parse('https://www.instagram.com/parquegrena/');
-  //final Uri _urlWebSite = Uri.parse('http://feliz-terra.com/');
-  final Uri _url = Uri.parse('http://feliz-terra.com/');
+  final String _urlAdress = 'https://g.page/parquegrena?share';
+  final Uri _urlFacebook = Uri.parse('https://www.facebook.com/parquegrena/');
+  final Uri _urlInstagram = Uri.parse('https://www.instagram.com/parquegrena/');
+  final Uri _urlWebSite = Uri.parse('http://feliz-terra.com/');
 
-  void _launchUrl() async {
-    if (!await launchUrl(_url)) throw 'Could not launch $_url';
-  }
-
-  Widget RowBulder(icon, String text) {
+  Widget RowBuilder(IconData icon, String text, String urlLink) {
     return Container(
       height: 50,
       margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
@@ -30,13 +28,16 @@ class ContactScreen extends StatelessWidget {
             child: Icon(icon),
           ),
           Container(
-            child: InkWell(
-              child: Text(
-                text,
+            child: Link(
+              uri: Uri.parse('$urlLink'),
+              builder: (context, followLink) => GestureDetector(
+                onTap: followLink,
+                child: Text(
+                  text,
+                ),
               ),
-              onTap: _launchUrl,
             ),
-          )
+          ),
         ],
       ),
     );
@@ -74,26 +75,26 @@ class ContactScreen extends StatelessWidget {
                   Container(
                     alignment: Alignment.topLeft,
                     margin: const EdgeInsets.fromLTRB(45, 5, 0, 10),
-                    child: InkWell(
-                      child: Text(
-                        'Lagoa das, 9675-045.',
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.start,
-                      ),
-                      onTap: _launchUrl,
+                    child: Text(
+                      'Lagoa das, 9675-045.',
+                      style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.start,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              child: RowBulder(Icons.web, 'Site link here'),
+              child: RowBuilder(Icons.facebook, 'WebSite link here',
+                  'http://feliz-terra.com/'),
             ),
             Container(
-              child: RowBulder(Icons.facebook, 'Facebook link here'),
+              child: RowBuilder(Icons.facebook, 'Facebook link here',
+                  'http://feliz-terra.com/'),
             ),
             Container(
-              child: RowBulder(Icons.image, 'Instagram link here'),
+              child: RowBuilder(Icons.image, 'Instagram link here',
+                  'https://www.instagram.com/parquegrena/'),
             ),
           ],
         ),
