@@ -29,7 +29,7 @@ class ProductScreen extends StatelessWidget {
                     const Spacer(),
                     LargeText(
                       size: 25,
-                      text: 'Price: ' + productPrice + '€',
+                      text: '${'Price: ' + productPrice}€',
                     ),
                   ],
                 ),

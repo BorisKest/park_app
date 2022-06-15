@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:park_app/src/common/widget/utils.dart';
 
 class ContactScreen extends StatelessWidget {
