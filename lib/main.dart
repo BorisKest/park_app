@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'src/feature/home/widget/home_page.dart';
-import 'src/feature/product/widget/product_page.dart';
-import 'src/feature/map/wdiget/map_page.dart';
-import 'src/feature/contacts/widget/contact_page.dart';
-import 'src/feature/settings/widget/settings_page.dart';
+import 'src/feature/home/widget/home_screen.dart';
+import 'src/feature/product/widget/product_screen.dart';
+import 'src/feature/map/wdiget/map_screen.dart';
+import 'src/feature/contacts/widget/contact_screen.dart';
+import 'src/feature/settings/widget/settings_screen.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -14,20 +14,21 @@ class ParkApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: const MainScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreen();
+  State<MainScreen> createState() => _MainScreen();
 }
 
-class _HomeScreen extends State<HomeScreen> {
+class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -37,11 +38,11 @@ class _HomeScreen extends State<HomeScreen> {
   }
 
   final screens = [
-    HomePage(),
-    ProductPage(),
-    MapPage(),
-    ContactPage(),
-    SettingsPage(),
+    HomeScreen(),
+    ProductScreen(),
+    const MapScreen(),
+    ContactScreen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -53,31 +54,31 @@ class _HomeScreen extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',
-            backgroundColor: Color.fromARGB(80, 100, 235, 59),
+            backgroundColor: Color.fromARGB(255, 95, 95, 95),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
             label: '',
-            backgroundColor: Color.fromARGB(80, 255, 235, 59),
+            backgroundColor: Color.fromARGB(255, 138, 138, 137),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map_rounded),
             label: '',
-            backgroundColor: Colors.green,
+            backgroundColor: Color.fromARGB(255, 174, 175, 174),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.mail),
             label: '',
-            backgroundColor: Colors.blue,
+            backgroundColor: Color.fromARGB(255, 174, 179, 184),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: '',
-            backgroundColor: Colors.grey,
+            backgroundColor: Color.fromARGB(255, 199, 196, 196),
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
         onTap: _onItemTapped,
       ),
     );
