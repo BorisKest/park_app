@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/l10n/l10n.dart';
+import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
 import 'src/feature/contacts/widget/contact_screen.dart';
 import 'src/feature/settings/widget/settings_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -15,6 +20,17 @@ class ParkApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''), // English, no country code
+        Locale('es', ''), // Spanish, no country code
+        Locale('ru', ''),
+      ],
       theme: ThemeData.dark(),
       home: const MainScreen(),
     );
@@ -50,7 +66,7 @@ class _MainScreen extends State<MainScreen> {
     return Scaffold(
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',

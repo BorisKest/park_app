@@ -1,0 +1,10 @@
+{
+    "aboutPark": "About park",
+    "language": "English",
+    "leng": "Language1",
+    "@language":{
+        "description": "The current Language"
+    },
+    "descriptionText": "One of the highest waterfalls on the island.One of the oldest parks on the island.  Grena is home to many animals, including the morcego, the only endemic mammal of the Azores. Several trails, ranging from 500m up to 5,4km.One of the largest Eucalyptus on the island."
+    
+}
