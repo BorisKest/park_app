@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/scroll_view.dart';
 import 'package:park_app/src/common/widget/row_history.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -89,18 +93,55 @@ class HomeScreen extends StatelessWidget {
                               color: Colors.black)
                         ]),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 300,
                   ),
                   Container(
-                    decoration: BoxDecoration(color: Colors.blueGrey),
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                     child: Column(
                       children: [
+                        Container(
+                          width: max(300, 500),
+                          margin: const EdgeInsets.fromLTRB(10, 20, 20, 5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 54, 75, 102),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10,
+                              top: 5,
+                              bottom: 5,
+                            ),
+                            child: LargeBoldText(text: 'About park'),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(10, 5, 20, 20),
+                          child: Text(
+                              AppLocalizations.of(context)!.descriptionText),
+                        ),
                         //History section
                         Container(
-                          margin: EdgeInsets.only(top: 20, bottom: 10),
-                          child: LargeBoldText(text: 'Park History'),
+                          width: max(300, 500),
+                          margin: const EdgeInsets.fromLTRB(10, 20, 20, 5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 54, 75, 102),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10,
+                              top: 5,
+                              bottom: 5,
+                            ),
+                            child: LargeBoldText(text: 'Park History'),
+                          ),
                         ),
+
                         RowHistoryWidget(
                           dateText: '1832 – 1882',
                           image: imageList[5],
