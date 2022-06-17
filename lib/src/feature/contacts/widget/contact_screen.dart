@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
@@ -34,7 +35,7 @@ class ContactScreen extends StatelessWidget {
                         child: const Icon(Icons.maps_home_work),
                       ),
                       LargeBoldText(
-                        text: 'Adres',
+                        text: AppLocalizations.of(context)!.adres,
                       ),
                     ],
                   ),
@@ -56,17 +57,17 @@ class ContactScreen extends StatelessWidget {
             ),
             RowBuilder(
               icon: Icons.image,
-              text: 'Instagram link here',
+              text: 'Instagram',
               urlLink: _urlInstagram,
             ),
             RowBuilder(
               icon: Icons.facebook,
-              text: 'Faceboock link here',
+              text: 'Faceboock',
               urlLink: _urlFacebook,
             ),
             RowBuilder(
               icon: Icons.web,
-              text: 'Website link here',
+              text: AppLocalizations.of(context)!.website,
               urlLink: _urlWebSite,
             ),
           ],

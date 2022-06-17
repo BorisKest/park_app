@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductScreen({Key? key}) : super(key: key);
 
-  Widget productWidgenBuilder(productName, productPrice, image12, productInfo) {
+  Widget productWidgenBuilder(String productName, String productPrice,
+      Image image12, String productInfo) {
     productName;
     productPrice;
     productInfo;
@@ -29,7 +31,7 @@ class ProductScreen extends StatelessWidget {
                     const Spacer(),
                     LargeText(
                       size: 25,
-                      text: '${'Price: ' + productPrice}€',
+                      text: '${'Price: $productPrice'}€',
                     ),
                   ],
                 ),
@@ -42,7 +44,7 @@ class ProductScreen extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 child: Text(
                   productInfo,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ],
@@ -64,27 +66,27 @@ class ProductScreen extends StatelessWidget {
               SizedBox(
                 height: 320.00,
                 child: productWidgenBuilder(
-                  "Canoe",
+                  AppLocalizations.of(context)!.canoe,
                   "10",
                   prductImage1,
-                  "You can go on a fantastic adventure on Lake Furnas in one of our canoes...",
+                  AppLocalizations.of(context)!.canoeDescription,
                 ),
               ),
               SizedBox(
                   height: 320.00,
                   child: productWidgenBuilder(
-                    "Pedal Boat",
+                    AppLocalizations.of(context)!.pedalBoat,
                     "20",
                     prductImage2,
-                    "On our pedal boat you can enjoy a relaxing ride with friends...",
+                    AppLocalizations.of(context)!.pedalBoatDescription,
                   )),
               SizedBox(
                 height: 420.00,
                 child: productWidgenBuilder(
-                  "Bike",
+                  AppLocalizations.of(context)!.bike,
                   "30",
                   prductImage3,
-                  "E-bikes allow you to ride around the lake in just one hour, without losing any of your energy and allowing you to continue your tour of the azores!",
+                  AppLocalizations.of(context)!.bikeDescription,
                 ),
               ),
             ],

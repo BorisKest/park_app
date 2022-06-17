@@ -1,17 +1,14 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/common/widget/scroll_view.dart';
 import 'package:park_app/src/common/widget/row_history.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  int index = 0;
+  final int index = 0;
 
   final List<String> imageList = [
     "assets/images/imageHistory1.jpg",
@@ -116,7 +113,8 @@ class HomeScreen extends StatelessWidget {
                               top: 5,
                               bottom: 5,
                             ),
-                            child: LargeBoldText(text: 'About park'),
+                            child: LargeBoldText(
+                                text: AppLocalizations.of(context)!.aboutPark),
                           ),
                         ),
                         Container(
@@ -138,46 +136,42 @@ class HomeScreen extends StatelessWidget {
                               top: 5,
                               bottom: 5,
                             ),
-                            child: LargeBoldText(text: 'Park History'),
+                            child: LargeBoldText(
+                                text:
+                                    AppLocalizations.of(context)!.parkHistory),
                           ),
                         ),
 
                         RowHistoryWidget(
-                          dateText: '1832 – 1882',
-                          image: imageList[5],
-                          mainText:
-                              """In 1832 an English man acquires a beautiful land surrounding Furnas lake. In 1858, it's next owner - Vines, an English Consul in Ponta Delgada - builds a summer house at the property and calls it Grená in tribute to his wife's who spent her childhood summers in Ireland at a family house with that name. After his dead in 1874, the property goes to a London surgeon, name Hinton, who also passes away one year later. In 1875 James Brown explores the house has a hotel for a few years. After his dead, in 1882, D. Catarina sells the property to Jorge Hayes who rents it to the Portuguese José do Canto a few years later.""",
-                        ),
+                            dateText: '1832 – 1882',
+                            image: imageList[5],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart0),
                         RowHistoryWidget(
-                          dateText: '1987',
-                          image: imageList[0],
-                          mainText:
-                              """In June of 1987 the Portuguese Governors, President Mario Soares and Primer Minister Cavaco Silva, are advised to buy the property from the last heirs - family Mendonça Dias - to accommodate the Government members when visiting the Azores.""",
-                        ),
+                            dateText: '1987',
+                            image: imageList[0],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart1),
                         RowHistoryWidget(
-                          dateText: '2009',
-                          image: imageList[1],
-                          mainText:
-                              """ Mota Amaral and Joaquim Ponte, representatives of the Azorean Region in the Portuguese Government, presented several claims to the abandon of Grená - a Portuguese patrimony - left to ruins by the Government over the last 22 years.""",
-                        ),
+                            dateText: '2009',
+                            image: imageList[1],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart2),
                         RowHistoryWidget(
-                          dateText: '2015',
-                          image: imageList[2],
-                          mainText:
-                              """Several years after many internal bureaucracy, the Portuguese Government gives Grená's ownership to the Azorean Autonomous Region.""",
-                        ),
+                            dateText: '2015',
+                            image: imageList[2],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart3),
                         RowHistoryWidget(
-                          dateText: '2018',
-                          image: imageList[3],
-                          mainText:
-                              """The Azorean Government decides to sell Grená's property, which was left abandoned in a high state of degradation. Feliz Terra buys it and initiates their hard work to clean and dignify the property again as a nature gift.""",
-                        ),
+                            dateText: '2018',
+                            image: imageList[3],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart4),
                         RowHistoryWidget(
-                          dateText: '2019',
-                          image: imageList[4],
-                          mainText:
-                              """More than one year later with a tremendous effort from a dedicated team to recover Grená's beauty, the park open to the general public, giving back preserved nature to people.""",
-                        ),
+                            dateText: '2019',
+                            image: imageList[4],
+                            mainText:
+                                AppLocalizations.of(context)!.historyPart5),
                         //end of history section
                       ],
                     ),
