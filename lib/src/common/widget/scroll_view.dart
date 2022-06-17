@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_text.dart';
 
 class ScrollViewWidget extends StatelessWidget {
-  ScrollViewWidget({
+  const ScrollViewWidget({
     Key? key,
     required this.imageList,
   }) : super(key: key);
 
-  List<String> imageList;
+  final List<String> imageList;
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +15,8 @@ class ScrollViewWidget extends StatelessWidget {
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return Container(
-                child: Image.asset(
-                  imageList[index % imageList.length],
-                ),
+              return Image.asset(
+                imageList[index % imageList.length],
               );
             },
             childCount: imageList.length * 2,

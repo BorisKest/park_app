@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LargeBoldText extends StatelessWidget {
-  double size;
+  final double size;
   final String text;
   final Color color;
-  LargeBoldText({
+  const LargeBoldText({
     Key? key,
     this.size = 33,
     required this.text,

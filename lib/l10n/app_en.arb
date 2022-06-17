@@ -1,10 +1,28 @@
 {
-    "aboutPark": "About park",
     "language": "English",
-    "leng": "Language1",
+    "leng": "Language",
     "@language":{
         "description": "The current Language"
     },
-    "descriptionText": "One of the highest waterfalls on the island.One of the oldest parks on the island.  Grena is home to many animals, including the morcego, the only endemic mammal of the Azores. Several trails, ranging from 500m up to 5,4km.One of the largest Eucalyptus on the island."
-    
+    "aboutPark": "About park",
+    "descriptionText": "One of the highest waterfalls on the island.One of the oldest parks on the island.  Grena is home to many animals, including the morcego, the only endemic mammal of the Azores. Several trails, ranging from 500m up to 5,4km.One of the largest Eucalyptus on the island.",
+    "parkHistory": "Park History",
+    "historyPart0": "In 1832 an English man acquires a beautiful land surrounding Furnas lake. In 1858, it's next owner - Vines, an English Consul in Ponta Delgada - builds a summer house at the property and calls it Grená in tribute to his wife's who spent her childhood summers in Ireland at a family house with that name. After his dead in 1874, the property goes to a London surgeon, name Hinton, who also passes away one year later. In 1875 James Brown explores the house has a hotel for a few years. After his dead, in 1882, D. Catarina sells the property to Jorge Hayes who rents it to the Portuguese José do Canto a few years later.",
+    "historyPart1": "In June of 1987 the Portuguese Governors, President Mario Soares and Primer Minister Cavaco Silva, are advised to buy the property from the last heirs - family Mendonça Dias - to accommodate the Government members when visiting the Azores.",
+    "historyPart2": "Mota Amaral and Joaquim Ponte, representatives of the Azorean Region in the Portuguese Government, presented several claims to the abandon of Grená - a Portuguese patrimony - left to ruins by the Government over the last 22 years.",
+    "historyPart3": "Several years after many internal bureaucracy, the Portuguese Government gives Grená's ownership to the Azorean Autonomous Region.",
+    "historyPart4": "The Azorean Government decides to sell Grená's property, which was left abandoned in a high state of degradation. Feliz Terra buys it and initiates their hard work to clean and dignify the property again as a nature gift.",
+    "historyPart5": "More than one year later with a tremendous effort from a dedicated team to recover Grená's beauty, the park open to the general public, giving back preserved nature to people.",
+
+    "canoe": "Canoe",
+    "canoeDescription": "You can go on a fantastic adventure on Lake Furnas in one of our canoes",
+    "pedalBoat": "Pedal Boat",
+    "pedalBoatDescription": "On our pedal boat you can enjoy a relaxing ride with friends",
+    "bike": "Bike",
+    "bikeDescription": "E-bikes allow you to ride around the lake in just one hour, without losing any of your energy and allowing you to continue your tour of the azores!",
+    "contacts": "Contacts",
+    "adres": "Adres",
+    "website": "Website",
+    "map": "Map",
+    "services": "Services"
 }

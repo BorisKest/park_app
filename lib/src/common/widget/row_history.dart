@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 
 class RowHistoryWidget extends StatelessWidget {
-  RowHistoryWidget({
+  const RowHistoryWidget({
+    Key? key,
     required this.dateText,
     required this.image,
     required this.mainText,
-  });
+  }) : super(key: key);
 
   final String dateText;
   final String image;
