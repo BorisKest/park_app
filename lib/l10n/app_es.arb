@@ -22,5 +22,6 @@
     "website": "Página web",
     "map": "Mapa",
     "services": "Servicios",
-    "settings": "configuros"
+    "settings": "configuros",
+    "theme":"Tema"
 }

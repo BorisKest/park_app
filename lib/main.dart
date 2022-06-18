@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
+import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'src/common/const/colors.dart';
 import 'l10n/l10n.dart';
 import 'package:provider/provider.dart';
+import 'package:park_app/src/common/widget/theme_provider.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -22,27 +24,34 @@ class ParkApp extends StatelessWidget {
   const ParkApp({super.key});
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (context) => LocaleProvider(),
-        builder: (context, child) {
-          final provider = Provider.of<LocaleProvider>(context);
-
-          return MaterialApp(
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            locale: provider.locale,
-            supportedLocales: L10n.all,
-            theme: ThemeData(
-              brightness: Brightness.dark,
-            ),
-            home: const MainScreen(),
-          );
-        },
-      );
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<LocaleProvider>(
+          create: (_) => LocaleProvider(),
+        ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
+        )
+      ],
+      builder: (context, child) {
+        final provider = Provider.of<LocaleProvider>(context);
+        final themeProvider = Provider.of<ThemeProvider>(context);
+        return MaterialApp(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: provider.locale,
+          supportedLocales: L10n.all,
+          theme: themeProvider.theme,
+          home: const MainScreen(),
+        );
+      },
+    );
+  }
 }
 
 class MainScreen extends StatefulWidget {
@@ -66,13 +75,16 @@ class _MainScreen extends State<MainScreen> {
     ProductScreen(),
     const MapScreen(),
     const ContactScreen(),
-    const SettingsScreen(),
+    SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(seconds: 1),
+        child: screens[_selectedIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
