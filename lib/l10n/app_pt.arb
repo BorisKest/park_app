@@ -20,5 +20,6 @@
     "adres": "Morada",
     "website": "Página Web",
     "map": "Mapa",
-    "services": "Serviços"
+    "services": "Serviços",
+    "settings": "Configuracoes"
 }

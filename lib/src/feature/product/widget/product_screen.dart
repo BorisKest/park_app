@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductScreen({Key? key}) : super(key: key);
@@ -14,41 +15,37 @@ class ProductScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(color: Colors.blueGrey),
-        child: Container(
-          margin: const EdgeInsets.fromLTRB(20, 10, 20, 5),
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(146, 105, 165, 214),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    LargeBoldText(text: productName),
-                    const Spacer(),
-                    LargeText(
-                      size: 25,
-                      text: '${'Price: $productPrice'}€',
-                    ),
-                  ],
-                ),
+        margin: const EdgeInsets.fromLTRB(20, 10, 20, 5),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(146, 105, 165, 214),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  LargeBoldText(text: productName),
+                  const Spacer(),
+                  LargeText(
+                    size: 25,
+                    text: '${'Price: $productPrice'}€',
+                  ),
+                ],
               ),
-              Container(
-                margin: const EdgeInsets.all(10),
-                child: image12,
+            ),
+            Container(
+              margin: const EdgeInsets.all(10),
+              child: image12,
+            ),
+            Container(
+              margin: const EdgeInsets.all(10),
+              child: Text(
+                productInfo,
               ),
-              Container(
-                margin: const EdgeInsets.all(10),
-                child: Text(
-                  productInfo,
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -59,8 +56,11 @@ class ProductScreen extends StatelessWidget {
   var prductImage3 = Image.asset('assets/images/product3.jpg');
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: SingleChildScrollView(
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.services),
+        ),
+        body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               SizedBox(

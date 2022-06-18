@@ -20,5 +20,6 @@
     "adres": "Cím",
     "website": "Honlap",
     "map": "Térkép",
-    "services": "Szolgáltatások"
+    "services": "Szolgáltatások",
+    "settings": "nast"
 }

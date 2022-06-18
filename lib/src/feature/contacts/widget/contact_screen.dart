@@ -16,6 +16,9 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.contacts),
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

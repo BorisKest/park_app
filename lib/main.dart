@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
@@ -6,6 +10,9 @@ import 'src/feature/contacts/widget/contact_screen.dart';
 import 'src/feature/settings/widget/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'src/common/const/colors.dart';
+import 'l10n/l10n.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -15,26 +22,27 @@ class ParkApp extends StatelessWidget {
   const ParkApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', ''), // English, no country code
-        Locale('es', ''), // Spanish, no country code
-        Locale('ru', ''),
-        Locale('pt', ''),
-        Locale('de', ''),
-        Locale('hu', ''),
-      ],
-      theme: ThemeData(),
-      home: const MainScreen(),
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => LocaleProvider(),
+        builder: (context, child) {
+          final provider = Provider.of<LocaleProvider>(context);
+
+          return MaterialApp(
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            locale: provider.locale,
+            supportedLocales: L10n.all,
+            theme: ThemeData(
+              brightness: Brightness.dark,
+            ),
+            home: const MainScreen(),
+          );
+        },
+      );
 }
 
 class MainScreen extends StatefulWidget {

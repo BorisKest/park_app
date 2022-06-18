@@ -5,7 +5,7 @@
 //  @override
 //  Widget build(BuildContext context) {
 //    final locale = Localizations.localeOf(context);
-//    final lenguageName = L10n.getLenguageName(locale.languageCode);
+//    final lenguageName = L10n.getLenguage(locale.languageCode);
 //    return Text(lenguageName);
 //  }
 //}
