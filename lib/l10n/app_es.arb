@@ -21,5 +21,6 @@
     "adres": "Dirección",
     "website": "Página web",
     "map": "Mapa",
-    "services": "Servicios"
+    "services": "Servicios",
+    "settings": "configuros"
 }

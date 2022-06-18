@@ -24,5 +24,6 @@
     "adres": "Adres",
     "website": "Website",
     "map": "Map",
-    "services": "Services"
+    "services": "Services",
+    "settings": "Settings"
 }
