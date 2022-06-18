@@ -173,6 +173,30 @@ class HomeScreen extends StatelessWidget {
                             mainText:
                                 AppLocalizations.of(context)!.historyPart5),
                         //end of history section
+                        // Row(
+                        //   children: [
+                        //     Column(
+                        //       children: [
+                        //         Expanded(
+                        //           child: Image.network(
+                        //               'https://instagram.flis6-1.fna.fbcdn.net/v/t51.2885-15/288871533_330126222668975_2835068592426741042_n.jpg?stp=dst-webp_e35_p1080x1080&cb=9ad74b5e-be52112b&_nc_ht=instagram.flis6-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=w-ui9r6ziv4AX_OKYwj&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjg2Mjc0MTg2ODM1OTM1MTkyMQ%3D%3D.2-ccb7-5&oh=00_AT-dBBhtxA5vOFlhi4nYX_dkv3zLy2-CyhG8GemJoXL0EQ&oe=62B55B00&_nc_sid=30a2ef'),
+                        //         ),
+                        //         Expanded(
+                        //           child: Image.network(
+                        //               'https://instagram.flis6-1.fna.fbcdn.net/v/t51.2885-15/278898576_718617589290661_8965175675426540560_n.jpg?stp=dst-webp_e35_s1080x1080&cb=9ad74b5e-be52112b&_nc_ht=instagram.flis6-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=-_qvvepWb28AX_xP0nI&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MjgyMDcwMTI5NzE5MzQ2MjIyNg%3D%3D.2-ccb7-5&oh=00_AT_eSd4jj_U7yyoh3xCMzoZ3he4_ih6yqwPzL3cyHgvY6A&oe=62B51CB3&_nc_sid=30a2ef'),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //     Column(
+                        //       children: [
+                        //         Expanded(
+                        //           child: Image.network(
+                        //               'https://instagram.flis6-1.fna.fbcdn.net/v/t51.2885-15/285309829_462289562369944_8245485446892871040_n.jpg?stp=dst-webp_e35&cb=9ad74b5e-be52112b&_nc_ht=instagram.flis6-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=xBj-VmTRxB4AX98w-5R&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjg1MDUwNDMxNjQ3NDcwMjQwMw%3D%3D.2-ccb7-5&oh=00_AT8kG8Pk1u1og5Ixqkt0I73RiO0Lg0zbRF8GjUrED5E-nA&oe=62B468EA&_nc_sid=30a2ef'),
+                        //         ),
+                        //       ],
+                        //     )
+                        //   ],
+                        // )
                       ],
                     ),
                   )

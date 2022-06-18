@@ -21,5 +21,6 @@
     "website": "Honlap",
     "map": "Térkép",
     "services": "Szolgáltatások",
-    "settings": "nast"
+    "settings": "nast",
+    "theme":"Téma"
 }

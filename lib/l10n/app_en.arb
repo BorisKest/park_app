@@ -25,5 +25,6 @@
     "website": "Website",
     "map": "Map",
     "services": "Services",
-    "settings": "Settings"
+    "settings": "Settings",
+    "theme":"Theme"
 }
