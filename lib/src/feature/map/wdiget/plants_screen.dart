@@ -26,14 +26,7 @@ class _PlantsScreenState extends State<PlantsScreen> {
               children: [
                 ExpansionPanel(
                   headerBuilder: ((context, isExpanded) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: Image.asset('plant1.jpg'),
-                        ),
-                        Expanded(child: Text('Palant1')),
-                      ],
-                    );
+                    return const Text('Plant1');
                   }),
                   body: const Text('Description for Plant1.'),
                   isExpanded: _isOpen[0],
