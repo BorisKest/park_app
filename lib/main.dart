@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
@@ -75,7 +75,7 @@ class _MainScreen extends State<MainScreen> {
     ProductScreen(),
     const MapScreen(),
     const ContactScreen(),
-    SettingsScreen(),
+    const SettingsScreen(),
   ];
 
   @override

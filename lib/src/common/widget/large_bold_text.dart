@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 class LargeText extends StatelessWidget {
   final double size;
   final String text;
-  final Color color;
   const LargeText({
     Key? key,
     this.size = 33,
     required this.text,
-    this.color = Colors.white,
   }) : super(key: key);
 
   @override
@@ -17,7 +15,6 @@ class LargeText extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: size,
-        color: color,
         fontWeight: FontWeight.bold,
       ),
     );
