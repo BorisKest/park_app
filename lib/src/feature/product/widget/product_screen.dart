@@ -6,9 +6,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductScreen({Key? key}) : super(key: key);
-
-  Widget productWidgenBuilder(String productName, String productPrice,
-      Image image12, String productInfo) {
+  Widget productWidgenBuilder(
+    BuildContext context,
+    String productName,
+    String productPrice,
+    Image image12,
+    String productInfo,
+  ) {
     productName;
     productPrice;
     productInfo;
@@ -17,7 +21,7 @@ class ProductScreen extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.fromLTRB(20, 10, 20, 5),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(146, 105, 165, 214),
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -58,14 +62,16 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).secondaryHeaderColor,
           title: Text(AppLocalizations.of(context)!.services),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              SizedBox(
-                height: 320.00,
+              Container(
+                height: 250,
                 child: productWidgenBuilder(
+                  context,
                   AppLocalizations.of(context)!.canoe,
                   "10",
                   prductImage1,
@@ -73,16 +79,19 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                  height: 320.00,
-                  child: productWidgenBuilder(
-                    AppLocalizations.of(context)!.pedalBoat,
-                    "20",
-                    prductImage2,
-                    AppLocalizations.of(context)!.pedalBoatDescription,
-                  )),
-              SizedBox(
-                height: 420.00,
+                height: 250,
                 child: productWidgenBuilder(
+                  context,
+                  AppLocalizations.of(context)!.pedalBoat,
+                  "20",
+                  prductImage2,
+                  AppLocalizations.of(context)!.pedalBoatDescription,
+                ),
+              ),
+              SizedBox(
+                height: 250,
+                child: productWidgenBuilder(
+                  context,
                   AppLocalizations.of(context)!.bike,
                   "30",
                   prductImage3,

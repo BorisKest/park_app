@@ -26,6 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: Center(
@@ -36,7 +37,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               height: 50,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.blueGrey,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
@@ -55,7 +56,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               height: 50,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: Colors.blueGrey,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Row(
@@ -72,10 +73,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           setState(() {
                             if (s == false) {
                               print(s);
-                              themeProvider.setTheme(ThemeData.dark());
+                              themeProvider.setTheme(ThemeProvider.lightTheme);
                             } else {
                               print(s);
-                              themeProvider.setTheme(ThemeData.light());
+                              themeProvider.setTheme(ThemeProvider.darkTheme);
                             }
                             state = s;
                           });
