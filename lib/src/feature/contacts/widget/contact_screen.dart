@@ -17,6 +17,7 @@ class ContactScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).secondaryHeaderColor,
           title: Text(AppLocalizations.of(context)!.contacts),
         ),
         body: Column(
@@ -26,7 +27,7 @@ class ContactScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.fromLTRB(5, 10, 5, 0),
               decoration: BoxDecoration(
-                color: Colors.blueGrey,
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -95,7 +96,7 @@ class RowBuilder extends StatelessWidget {
         height: 50,
         margin: const EdgeInsets.fromLTRB(5, 10, 5, 0),
         decoration: BoxDecoration(
-          color: Colors.blueGrey,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
