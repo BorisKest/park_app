@@ -1,7 +1,4 @@
-import 'dart:math';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'src/feature/home/widget/home_screen.dart';
@@ -82,7 +79,7 @@ class _MainScreen extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSwitcher(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 200),
         child: screens[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(

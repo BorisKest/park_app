@@ -30,45 +30,60 @@ class _BuildCardState extends State<BuildCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: GestureDetector(
         onTap: () {
-          flag = !flag;
           if (containerHeight > 200) {
             containerHeight = 200;
           } else {
             containerHeight = 450;
           }
+
+          flag = !flag;
           print(containerHeight);
           setState(() {});
         },
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(seconds: 1),
+          curve: Curves.bounceOut,
           color: Theme.of(context).primaryColor,
           height: containerHeight,
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(5),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.fastOutSlowIn,
+                  Container(
                     margin: EdgeInsets.all(10),
                     height: 180,
                     width: 180,
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                          image: AssetImage(image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
-                  Text(titleText),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(titleText),
+                  ),
                 ],
               ),
-              Visibility(
-                child: Text(bodyText),
-                visible: flag,
-              )
+              Expanded(
+                child: Visibility(
+                  visible: flag,
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(12, 5, 10, 10),
+                    child: Text(bodyText),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

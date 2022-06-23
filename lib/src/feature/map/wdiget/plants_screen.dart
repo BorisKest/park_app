@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/common/widget/expansion_panel.dart';
+import 'package:park_app/src/common/widget/expansion_card.dart';
 
 class PlantsScreen extends StatefulWidget {
   const PlantsScreen({Key? key, required this.openIndex}) : super(key: key);
@@ -20,6 +20,7 @@ class _PlantsScreenState extends State<PlantsScreen> {
     _isOpen[i] = true;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Plants'),
       ),
       body: ListView(

@@ -10,7 +10,7 @@ class ProductScreen extends StatelessWidget {
     BuildContext context,
     String productName,
     String productPrice,
-    Image image12,
+    String image12,
     String productInfo,
   ) {
     productName;
@@ -39,9 +39,14 @@ class ProductScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              child: image12,
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                child: Image.asset(
+                  image12,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             Container(
               margin: const EdgeInsets.all(10),
@@ -55,9 +60,11 @@ class ProductScreen extends StatelessWidget {
     );
   }
 
-  var prductImage1 = Image.asset('assets/images/product1.jpg');
-  var prductImage2 = Image.asset('assets/images/product2.jpg');
-  var prductImage3 = Image.asset('assets/images/product3.jpg');
+  final String prductImage1 = 'assets/images/product1.jpg';
+
+  final String prductImage2 = 'assets/images/product2.jpg';
+
+  final String prductImage3 = 'assets/images/product3.jpg';
 
   @override
   Widget build(BuildContext context) => Scaffold(
