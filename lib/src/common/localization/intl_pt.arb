@@ -1,4 +1,10 @@
 {
+    "@@locale": "pt",
+    "language_code": "pt",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "Português",
     "language": "Língua",
     "leng": "Português",
     "aboutPark": "Sobre o parque",

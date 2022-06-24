@@ -1,4 +1,10 @@
 {
+    "@@locale": "ru",
+    "language_code": "ru",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "Русский",
     "language": "Русский",
     "leng": "Язык",
     "aboutPark": "О парке",
