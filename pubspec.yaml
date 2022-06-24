@@ -19,11 +19,11 @@ dependencies:
   flutter_map: ^1.1.0
   latlong2: ^0.8.1
   provider: ^6.0.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  intl: ^0.17.0
   flutter_lints: ^2.0.0
 
 flutter:

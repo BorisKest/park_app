@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/feature/map/wdiget/decoder_widget.dart';
 
-class QrCodeScaner extends StatelessWidget {
-  QrCodeScaner({Key? key}) : super(key: key);
-  MobileScannerController cameraController = MobileScannerController();
-  late Widget findedPlant;
+class QrCodeScaner extends StatefulWidget {
+  const QrCodeScaner({Key? key}) : super(key: key);
+
+  @override
+  State<QrCodeScaner> createState() => _QrCodeScanerState();
+}
+
+class _QrCodeScanerState extends State<QrCodeScaner> {
+  final MobileScannerController cameraController = MobileScannerController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +44,10 @@ class QrCodeScaner extends StatelessWidget {
           } else {
             final String code = barcode.rawValue!;
             debugPrint('Found! $code');
-            findedPlant = DecoderWidget.getCode(code);
+            final findedPlant = DecoderWidget.getCode(code);
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      findedPlant), // not sure that its right, coz camera stay activ.
+              MaterialPageRoute(builder: (context) => findedPlant), // not sure that its right, coz camera stay activ.
             );
           }
         },

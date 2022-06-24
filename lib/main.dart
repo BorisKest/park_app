@@ -78,7 +78,7 @@ class _MainScreen extends State<MainScreen> {
 
   final screens = [
     HomeScreen(),
-    ProductScreen(),
+    const ProductScreen(),
     const MapScreen(),
     const ContactScreen(),
     const SettingsScreen(),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:park_app/src/feature/map/wdiget/qr_code_scaner.dart';
-import 'package:park_app/src/feature/map/wdiget/plants_screen.dart';
 import 'package:park_app/src/common/widget/map_widget.dart';
+import 'package:park_app/src/feature/map/wdiget/plants_screen.dart';
+import 'package:park_app/src/feature/map/wdiget/qr_code_scaner.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _MapScreenState extends State<MapScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            const SizedBox(
               height: 400,
               child: MakeMap(),
             ),
@@ -31,26 +31,22 @@ class _MapScreenState extends State<MapScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => QrCodeScaner()),
+                  MaterialPageRoute(builder: (context) => const QrCodeScaner()),
                 );
               },
-              child: Container(
-                child: Text('Sacan qr'),
-              ),
+              child: const Text('Sacan qr'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => PlantsScreen(
+                      builder: (context) => const PlantsScreen(
                             openIndex: 0,
                           )),
                 );
               },
-              child: Container(
-                child: Text('See all plants'),
-              ),
+              child: const Text('See all plants'),
             ),
           ],
         ),
