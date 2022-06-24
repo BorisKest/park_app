@@ -7,7 +7,6 @@ import 'package:park_app/src/common/localization/language.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
-
 import 'src/common/localization/l10n.dart';
 import 'src/feature/contacts/widget/contact_screen.dart';
 import 'src/feature/home/widget/home_screen.dart';
@@ -18,11 +17,9 @@ import 'src/feature/settings/widget/settings_screen.dart';
 void main() => runZonedGuarded<void>(
       () {
         WidgetsFlutterBinding.ensureInitialized();
-
-        /// ...
         runApp(const ParkApp());
       },
-      (error, stackTrace) => print('TOP LEVEL ERROR: $error\n$stackTrace'),
+      (error, stackTrace) => ('TOP LEVEL ERROR: $error\n$stackTrace'),
     );
 
 class ParkApp extends StatelessWidget {

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
+import 'package:park_app/src/common/widget/shered_preferences.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/localization/l10n.dart';
 import '../../../common/localization/language.dart';
+import '../models/settings.dart';
+import 'drop_down_menu.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -15,7 +18,23 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool state = true;
+  final _preferencesService = PreferencesServis();
+  bool themeToggle = false;
+  Language dropdownValue = Language.english;
+
+  @override
+  void initState() {
+    super.initState();
+    _popFilds();
+  }
+
+  void _popFilds() async {
+    final settings = await _preferencesService.getSettings();
+    setState(() {
+      Language dropdownValue = settings.lenguage;
+      bool themeToggle = settings.themeToggle;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +61,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     Text(
                       Localized.current.leng,
                     ),
-                    const DropDownMenu(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: DropDownMenu(dropdownValue: dropdownValue),
+                    ),
                   ],
                 ),
               ),
@@ -56,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 5),
+                  padding: const EdgeInsets.only(left: 5),
                   child: Row(
                     children: [
                       const Icon(Icons.light_mode), // add chenging icon dep on theme
@@ -66,7 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Container(
                         margin: const EdgeInsets.only(left: 5),
                         child: Switch(
-                          value: state,
+                          value: themeToggle,
                           onChanged: (bool s) {
                             setState(() {
                               if (s == false) {
@@ -74,7 +96,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               } else {
                                 themeProvider.setTheme(ThemeProvider.darkTheme);
                               }
-                              state = s;
+                              themeToggle = s;
+                              _saveSettings(dropdownValue, themeToggle);
                             });
                           },
                         ),
@@ -89,45 +112,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-}
 
-class DropDownMenu extends StatefulWidget {
-  const DropDownMenu({Key? key}) : super(key: key);
-
-  @override
-  State<DropDownMenu> createState() => _DropDownMenuState();
-}
-
-class _DropDownMenuState extends State<DropDownMenu> {
-  Language _dropdownValue = Language.english;
-
-  @override
-  void initState() {
-    super.initState();
-    _dropdownValue = Provider.of<LocaleProvider>(context, listen: false).language;
-    //dropdownValue
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<Language>(
-      value: _dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 10,
-      style: const TextStyle(
-        color: Colors.blue,
-      ),
-      onChanged: (Language? locale) {
-        if (locale == null) return;
-        setState(() => _dropdownValue = locale);
-      },
-      items: Language.values.map<DropdownMenuItem<Language>>((Language language) {
-        return DropdownMenuItem<Language>(
-          value: language,
-          child: Text(language.name),
-          onTap: () => Provider.of<LocaleProvider>(context, listen: false).setLocale(language),
-        );
-      }).toList(),
-    );
+  void _saveSettings(language, bool themeToggle) {
+    final newSettings = Settings(language, themeToggle);
+    _preferencesService.saveSettings(newSettings);
   }
 }

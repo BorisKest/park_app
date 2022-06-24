@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/expansion_card.dart';
-import 'package:sqflite/sqflite.dart';
 
 class PlantsScreen extends StatefulWidget {
   const PlantsScreen({Key? key, required this.openIndex}) : super(key: key);
