@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
 class BuildCard extends StatefulWidget {
-  BuildCard({
+  const BuildCard({
+    Key? key,
     required this.image,
     required this.titleText,
     required this.bodyText,
-  });
+  }) : super(key: key);
   final String titleText, bodyText, image;
   @override
   State<BuildCard> createState() => _BuildCardState(
@@ -40,7 +39,6 @@ class _BuildCardState extends State<BuildCard> {
           }
 
           flag = !flag;
-          print(containerHeight);
           setState(() {});
         },
         child: AnimatedContainer(
@@ -48,7 +46,7 @@ class _BuildCardState extends State<BuildCard> {
           curve: Curves.bounceOut,
           color: Theme.of(context).primaryColor,
           height: containerHeight,
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: Column(
             children: [
               Row(
@@ -56,7 +54,7 @@ class _BuildCardState extends State<BuildCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     height: 180,
                     width: 180,
                     child: DecoratedBox(
@@ -70,7 +68,7 @@ class _BuildCardState extends State<BuildCard> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     child: Text(titleText),
                   ),
                 ],

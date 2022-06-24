@@ -13,17 +13,17 @@ class L10n {
   static getLenguageCode(String code) {
     switch (code) {
       case 'English':
-        return Locale('en');
+        return const Locale('en');
       case 'Español':
-        return Locale('es');
+        return const Locale('es');
       case 'Русский':
-        return Locale('ru');
+        return const Locale('ru');
       case 'Português':
-        return Locale('pt');
+        return const Locale('pt');
       case 'Deutsch':
-        return Locale('de');
+        return const Locale('de');
       case 'Magyar':
-        return Locale('hu');
+        return const Locale('hu');
     }
   }
 }

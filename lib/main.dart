@@ -8,10 +8,8 @@ import 'src/feature/contacts/widget/contact_screen.dart';
 import 'src/feature/settings/widget/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'src/common/const/colors.dart';
 import 'l10n/l10n.dart';
 import 'package:provider/provider.dart';
-import 'package:park_app/src/common/widget/theme_provider.dart';
 
 void main() {
   runApp(const ParkApp());
@@ -83,35 +81,35 @@ class _MainScreen extends State<MainScreen> {
         child: screens[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: '',
-            backgroundColor: Color.fromARGB(255, 95, 95, 95),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
+            icon: const Icon(Icons.shopping_bag_outlined),
             label: '',
-            backgroundColor: Color.fromARGB(255, 138, 138, 137),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_rounded),
+            icon: const Icon(Icons.map_rounded),
             label: '',
-            backgroundColor: Color.fromARGB(255, 174, 175, 174),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
+            icon: const Icon(Icons.mail),
             label: '',
-            backgroundColor: Color.fromARGB(255, 174, 179, 184),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             label: '',
-            backgroundColor: Color.fromARGB(255, 199, 196, 196),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
+        selectedItemColor: Theme.of(context).highlightColor,
         onTap: _onItemTapped,
       ),
     );

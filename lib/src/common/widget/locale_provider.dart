@@ -3,7 +3,7 @@ import 'package:park_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class LocaleProvider extends ChangeNotifier {
-  Locale _locale = new Locale('en');
+  Locale _locale = const Locale('en');
 
   Locale get locale => _locale;
 

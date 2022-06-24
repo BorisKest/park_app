@@ -28,7 +28,10 @@ class _MakeMapState extends State<MakeMap> {
               height: 80.0,
               point: latLng.LatLng(51.5, -0.09),
               builder: (ctx) => Container(
-                child: FlutterLogo(),
+                child: Icon(
+                  Icons.location_searching,
+                  color: Colors.white,
+                ),
               ),
             ),
           ],

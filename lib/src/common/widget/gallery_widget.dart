@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_bold_text.dart';
 
 class GalleryBuilder extends StatelessWidget {
   const GalleryBuilder({
