@@ -1,5 +1,10 @@
 {
-    "aboutPark": "Sobre el parque ",
+    "@@locale": "es",
+    "language_code": "es",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "Espanhol",
     "language": "Espanhol",
     "leng": "idioma",
     "aboutPark": "Sobre el parque",

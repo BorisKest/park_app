@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/expansion_card.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -8,24 +7,22 @@ class PlantsScreen extends StatefulWidget {
   final int openIndex;
 
   @override
-  State<PlantsScreen> createState() => _PlantsScreenState(i: openIndex);
+  State<PlantsScreen> createState() => _PlantsScreenState();
 }
 
 class _PlantsScreenState extends State<PlantsScreen> {
-  _PlantsScreenState({required this.i});
-  final int i;
-  List<bool> _isOpen = [false, false, false, false];
+  final List<bool> _isOpen = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
-    _isOpen[i] = true;
+    _isOpen[widget.openIndex] = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Plants'),
       ),
       body: ListView(
-        children: [
+        children: const [
           BuildCard(
             image: 'assets/images/plant1.jpg',
             titleText: 'Plant Uritaka',

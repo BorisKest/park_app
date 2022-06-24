@@ -1,11 +1,9 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/row_history.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:park_app/src/common/widget/gallery_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -60,12 +58,7 @@ class HomeScreen extends StatelessWidget {
                                 fontFamily: 'TrajanPro',
                                 fontSize: 24,
                                 color: Colors.white,
-                                shadows: <Shadow>[
-                                  Shadow(
-                                      offset: Offset(0, 2.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.black)
-                                ],
+                                shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
                               ),
                             ),
                             Text(
@@ -75,12 +68,7 @@ class HomeScreen extends StatelessWidget {
                                 fontFamily: 'TrajanPro',
                                 fontSize: 90,
                                 color: Colors.white,
-                                shadows: <Shadow>[
-                                  Shadow(
-                                      offset: Offset(0, 2.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.black)
-                                ],
+                                shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
                               ),
                             ),
                             Text(
@@ -91,10 +79,7 @@ class HomeScreen extends StatelessWidget {
                                   fontSize: 29,
                                   color: Colors.white,
                                   shadows: <Shadow>[
-                                    Shadow(
-                                        offset: Offset(0, 2.0),
-                                        blurRadius: 2.0,
-                                        color: Colors.black)
+                                    Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)
                                   ]),
                             ),
                             SizedBox(
@@ -124,15 +109,12 @@ class HomeScreen extends StatelessWidget {
                                   top: 5,
                                   bottom: 5,
                                 ),
-                                child: LargeBoldText(
-                                    text: AppLocalizations.of(context)!
-                                        .aboutPark),
+                                child: LargeBoldText(text: AppLocalizations.of(context)!.aboutPark),
                               ),
                             ),
                             Container(
                               margin: const EdgeInsets.fromLTRB(10, 5, 20, 20),
-                              child: Text(AppLocalizations.of(context)!
-                                  .descriptionText),
+                              child: Text(AppLocalizations.of(context)!.descriptionText),
                             ),
                             //History section
                             Container(
@@ -148,42 +130,34 @@ class HomeScreen extends StatelessWidget {
                                   top: 5,
                                   bottom: 5,
                                 ),
-                                child: LargeBoldText(
-                                    text: AppLocalizations.of(context)!
-                                        .parkHistory),
+                                child: LargeBoldText(text: AppLocalizations.of(context)!.parkHistory),
                               ),
                             ),
 
                             RowHistoryWidget(
                                 dateText: '1832 – 1882',
                                 image: imageList[5],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart0),
+                                mainText: AppLocalizations.of(context)!.historyPart0),
                             RowHistoryWidget(
                                 dateText: '1987',
                                 image: imageList[0],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart1),
+                                mainText: AppLocalizations.of(context)!.historyPart1),
                             RowHistoryWidget(
                                 dateText: '2009',
                                 image: imageList[1],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart2),
+                                mainText: AppLocalizations.of(context)!.historyPart2),
                             RowHistoryWidget(
                                 dateText: '2015',
                                 image: imageList[2],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart3),
+                                mainText: AppLocalizations.of(context)!.historyPart3),
                             RowHistoryWidget(
                                 dateText: '2018',
                                 image: imageList[3],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart4),
+                                mainText: AppLocalizations.of(context)!.historyPart4),
                             RowHistoryWidget(
                                 dateText: '2019',
                                 image: imageList[4],
-                                mainText:
-                                    AppLocalizations.of(context)!.historyPart5),
+                                mainText: AppLocalizations.of(context)!.historyPart5),
                             //end of history section
                             //
                             //   const LargeBoldText(text: 'Gallery'),

@@ -1,19 +1,29 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/locale_provider.dart';
-import 'package:park_app/src/common/widget/theme_provider.dart';
-import 'src/feature/home/widget/home_screen.dart';
-import 'src/feature/product/widget/product_screen.dart';
-import 'src/feature/map/wdiget/map_screen.dart';
-import 'src/feature/contacts/widget/contact_screen.dart';
-import 'src/feature/settings/widget/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'l10n/l10n.dart';
+import 'package:park_app/src/common/localization/language.dart';
+import 'package:park_app/src/common/widget/locale_provider.dart';
+import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const ParkApp());
-}
+import 'src/common/localization/l10n.dart';
+import 'src/feature/contacts/widget/contact_screen.dart';
+import 'src/feature/home/widget/home_screen.dart';
+import 'src/feature/map/wdiget/map_screen.dart';
+import 'src/feature/product/widget/product_screen.dart';
+import 'src/feature/settings/widget/settings_screen.dart';
+
+void main() => runZonedGuarded<void>(
+      () {
+        WidgetsFlutterBinding.ensureInitialized();
+
+        /// ...
+        runApp(const ParkApp());
+      },
+      (error, stackTrace) => print('TOP LEVEL ERROR: $error\n$stackTrace'),
+    );
 
 class ParkApp extends StatelessWidget {
   const ParkApp({super.key});
@@ -38,9 +48,10 @@ class ParkApp extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
+            Localized.delegate,
           ],
           locale: provider.locale,
-          supportedLocales: L10n.all,
+          supportedLocales: Language.values.map<Locale>((e) => e.locale).toList(growable: false),
           theme: themeProvider.theme,
           home: const MainScreen(),
         );
@@ -67,7 +78,7 @@ class _MainScreen extends State<MainScreen> {
 
   final screens = [
     HomeScreen(),
-    ProductScreen(),
+    const ProductScreen(),
     const MapScreen(),
     const ContactScreen(),
     const SettingsScreen(),

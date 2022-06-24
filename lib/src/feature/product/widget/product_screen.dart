@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
-  ProductScreen({Key? key}) : super(key: key);
+  const ProductScreen({Key? key}) : super(key: key);
+
   Widget productWidgenBuilder(
     BuildContext context,
     String productName,
@@ -75,7 +75,7 @@ class ProductScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: 250,
                 child: productWidgenBuilder(
                   context,

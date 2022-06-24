@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/feature/map/wdiget/plants_screen.dart';
 
 class DecoderWidget {

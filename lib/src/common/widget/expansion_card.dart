@@ -2,27 +2,19 @@ import 'package:flutter/material.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard({
-    Key? key,
     required this.image,
     required this.titleText,
     required this.bodyText,
-  }) : super(key: key);
+    super.key,
+  });
+
   final String titleText, bodyText, image;
+
   @override
-  State<BuildCard> createState() => _BuildCardState(
-        bodyText: bodyText,
-        image: image,
-        titleText: titleText,
-      );
+  State<BuildCard> createState() => _BuildCardState();
 }
 
 class _BuildCardState extends State<BuildCard> {
-  _BuildCardState({
-    required this.image,
-    required this.titleText,
-    required this.bodyText,
-  });
-  final String titleText, bodyText, image;
   bool flag = false;
   double containerHeight = 200;
 
@@ -61,7 +53,7 @@ class _BuildCardState extends State<BuildCard> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
-                          image: AssetImage(image),
+                          image: AssetImage(widget.image),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -69,7 +61,7 @@ class _BuildCardState extends State<BuildCard> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: Text(titleText),
+                    child: Text(widget.titleText),
                   ),
                 ],
               ),
@@ -78,7 +70,7 @@ class _BuildCardState extends State<BuildCard> {
                   visible: flag,
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(12, 5, 10, 10),
-                    child: Text(bodyText),
+                    child: Text(widget.bodyText),
                   ),
                 ),
               ),
