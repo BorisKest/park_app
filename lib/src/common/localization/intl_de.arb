@@ -1,4 +1,10 @@
 {
+    "@@locale": "de",
+    "language_code": "de",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "Deutsch",
     "language": "Sprache",
     "leng": "Deutsch ",
     "parkHistory": "Die Geschichte des Parks",

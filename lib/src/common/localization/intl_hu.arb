@@ -1,4 +1,10 @@
 {
+    "@@locale": "hu",
+    "language_code": "hu",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "Magyar",
     "language": "Nyelv",
     "leng": "Magyar",
     "aboutPark": "A parkról",

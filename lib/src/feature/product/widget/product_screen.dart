@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ProductScreen extends StatelessWidget {
-  ProductScreen({Key? key}) : super(key: key);
+  const ProductScreen({Key? key}) : super(key: key);
+
   Widget productWidgenBuilder(
     BuildContext context,
     String productName,
     String productPrice,
-    Image image12,
+    String image12,
     String productInfo,
   ) {
     productName;
@@ -39,9 +39,14 @@ class ProductScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              child: image12,
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                child: Image.asset(
+                  image12,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             Container(
               margin: const EdgeInsets.all(10),
@@ -55,9 +60,11 @@ class ProductScreen extends StatelessWidget {
     );
   }
 
-  var prductImage1 = Image.asset('assets/images/product1.jpg');
-  var prductImage2 = Image.asset('assets/images/product2.jpg');
-  var prductImage3 = Image.asset('assets/images/product3.jpg');
+  final String prductImage1 = 'assets/images/product1.jpg';
+
+  final String prductImage2 = 'assets/images/product2.jpg';
+
+  final String prductImage3 = 'assets/images/product3.jpg';
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -68,7 +75,7 @@ class ProductScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: 250,
                 child: productWidgenBuilder(
                   context,

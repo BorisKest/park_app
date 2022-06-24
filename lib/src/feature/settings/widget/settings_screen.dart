@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
-import 'dart:math';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:park_app/src/common/widget/locale_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:park_app/l10n/l10n.dart';
-import 'package:provider/provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../../../common/localization/l10n.dart';
+import '../../../common/localization/language.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -44,7 +40,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     const Icon(Icons.language),
                     Text(
-                      AppLocalizations.of(context)!.leng,
+                      Localized.current.leng,
                     ),
                     const DropDownMenu(),
                   ],
@@ -102,38 +98,33 @@ class DropDownMenu extends StatefulWidget {
 }
 
 class _DropDownMenuState extends State<DropDownMenu> {
-  String dropdownValue = 'English';
+  Language _dropdownValue = Language.english;
+
+  @override
+  void initState() {
+    super.initState();
+    _dropdownValue = Provider.of<LocaleProvider>(context, listen: false).language;
+    //dropdownValue
+  }
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LocaleProvider>(context);
-    final locale = provider.locale;
-
-    return DropdownButton<String>(
-      value: dropdownValue,
+    return DropdownButton<Language>(
+      value: _dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 10,
       style: const TextStyle(
         color: Colors.blue,
       ),
-      onChanged: (String? locale) {
-        setState(() {
-          dropdownValue = locale!;
-        });
+      onChanged: (Language? locale) {
+        if (locale == null) return;
+        setState(() => _dropdownValue = locale);
       },
-      items: <String>[
-        'English',
-        'Português',
-        'Deutsch',
-        'Magyar',
-        'Español',
-        'Русский'
-      ].map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-          onTap: () {
-            provider.setLocale(L10n.getLenguageCode(value));
-          },
+      items: Language.values.map<DropdownMenuItem<Language>>((Language language) {
+        return DropdownMenuItem<Language>(
+          value: language,
+          child: Text(language.name),
+          onTap: () => Provider.of<LocaleProvider>(context, listen: false).setLocale(language),
         );
       }).toList(),
     );

@@ -1,4 +1,10 @@
 {
+    "@@locale": "en",
+    "language_code": "en",
+    "@language_code": {
+        "description": "Код языка"
+    },
+    "current_language": "English",
     "language": "English",
     "leng": "Language",
     "@language":{
