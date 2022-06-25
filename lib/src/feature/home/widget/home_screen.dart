@@ -3,12 +3,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/common/widget/row_history.dart';
+import 'package:park_app/src/feature/home/widget/row_history.dart';
+
+import '../../../common/widget/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final int index = 0;
+
+  static final Uri _urlAdress = Uri.parse('https://g.page/parquegrena?share');
+  static final Uri _urlFacebook = Uri.parse('https://www.facebook.com/parquegrena/');
+  static final Uri _urlInstagram = Uri.parse('https://www.instagram.com/parquegrena/');
+  static final Uri _urlWebSite = Uri.parse('https://parquegrena.pt/');
 
   final List<String> imageList = [
     "assets/images/imageHistory1.jpg",
@@ -112,6 +119,11 @@ class HomeScreen extends StatelessWidget {
                                 child: LargeBoldText(text: AppLocalizations.of(context)!.aboutPark),
                               ),
                             ),
+                            Card(
+                                child: Image.asset(
+                              'assets/images/map.jpg',
+                              fit: BoxFit.cover,
+                            )),
                             Container(
                               margin: const EdgeInsets.fromLTRB(10, 5, 20, 20),
                               child: Text(AppLocalizations.of(context)!.descriptionText),
@@ -134,30 +146,37 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
 
-                            RowHistoryWidget(
-                                dateText: '1832 – 1882',
-                                image: imageList[5],
-                                mainText: AppLocalizations.of(context)!.historyPart0),
-                            RowHistoryWidget(
-                                dateText: '1987',
-                                image: imageList[0],
-                                mainText: AppLocalizations.of(context)!.historyPart1),
-                            RowHistoryWidget(
-                                dateText: '2009',
-                                image: imageList[1],
-                                mainText: AppLocalizations.of(context)!.historyPart2),
-                            RowHistoryWidget(
-                                dateText: '2015',
-                                image: imageList[2],
-                                mainText: AppLocalizations.of(context)!.historyPart3),
-                            RowHistoryWidget(
-                                dateText: '2018',
-                                image: imageList[3],
-                                mainText: AppLocalizations.of(context)!.historyPart4),
-                            RowHistoryWidget(
-                                dateText: '2019',
-                                image: imageList[4],
-                                mainText: AppLocalizations.of(context)!.historyPart5),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  RowHistoryWidget(
+                                      dateText: '1832 – 1882',
+                                      image: imageList[5],
+                                      mainText: AppLocalizations.of(context)!.historyPart0),
+                                  RowHistoryWidget(
+                                      dateText: '1987',
+                                      image: imageList[0],
+                                      mainText: AppLocalizations.of(context)!.historyPart1),
+                                  RowHistoryWidget(
+                                      dateText: '2009',
+                                      image: imageList[1],
+                                      mainText: AppLocalizations.of(context)!.historyPart2),
+                                  RowHistoryWidget(
+                                      dateText: '2015',
+                                      image: imageList[2],
+                                      mainText: AppLocalizations.of(context)!.historyPart3),
+                                  RowHistoryWidget(
+                                      dateText: '2018',
+                                      image: imageList[3],
+                                      mainText: AppLocalizations.of(context)!.historyPart4),
+                                  RowHistoryWidget(
+                                      dateText: '2019',
+                                      image: imageList[4],
+                                      mainText: AppLocalizations.of(context)!.historyPart5),
+                                ],
+                              ),
+                            )
                             //end of history section
                             //
                             //   const LargeBoldText(text: 'Gallery'),
@@ -181,6 +200,26 @@ class HomeScreen extends StatelessWidget {
                       )
                     ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () => Utils.openLink(url: _urlFacebook),
+                        icon: Icon(Icons.facebook),
+                        label: Text(''),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () => Utils.openLink(url: _urlInstagram),
+                        icon: Icon(Icons.install_desktop),
+                        label: Text(''),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () => Utils.openLink(url: _urlWebSite),
+                        icon: Icon(Icons.web),
+                        label: Text(''),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

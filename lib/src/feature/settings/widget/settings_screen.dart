@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/shered_preferences.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +18,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final _preferencesService = PreferencesServis();
-  bool themeToggle = false;
+  var _themeToggle = false;
   Language dropdownValue = Language.english;
 
   @override
@@ -31,14 +30,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _popFilds() async {
     final settings = await _preferencesService.getSettings();
     setState(() {
-      Language dropdownValue = settings.lenguage;
-      bool themeToggle = settings.themeToggle;
+      dropdownValue = settings.lenguage;
+      _themeToggle = settings.themeToggle;
+      _setTheme(_themeToggle);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -88,20 +87,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Container(
                         margin: const EdgeInsets.only(left: 5),
                         child: Switch(
-                          value: themeToggle,
-                          onChanged: (bool s) {
-                            setState(() {
-                              if (s == false) {
-                                themeProvider.setTheme(ThemeProvider.lightTheme);
-                              } else {
-                                themeProvider.setTheme(ThemeProvider.darkTheme);
-                              }
-                              themeToggle = s;
-                              _saveSettings(dropdownValue, themeToggle);
-                            });
+                          value: _themeToggle,
+                          onChanged: (bool newValue) {
+                            setState(
+                              () {
+                                _setTheme(newValue);
+                                _saveSettings();
+                                _themeToggle = newValue;
+                              },
+                            );
                           },
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -113,8 +110,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _saveSettings(language, bool themeToggle) {
-    final newSettings = Settings(language, themeToggle);
+  void _saveSettings() {
+    final newSettings = Settings(lenguage: dropdownValue, themeToggle: _themeToggle);
     _preferencesService.saveSettings(newSettings);
+  }
+
+  void _setTheme(newValue) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    if (newValue == false) {
+      themeProvider.setTheme(ThemeProvider.lightTheme);
+    } else {
+      themeProvider.setTheme(ThemeProvider.darkTheme);
+    }
   }
 }

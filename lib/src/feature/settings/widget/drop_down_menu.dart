@@ -14,6 +14,15 @@ class DropDownMenu extends StatefulWidget {
 
 class _DropDownMenuState extends State<DropDownMenu> {
   final _preferencesService = PreferencesServis();
+  Language dropdownValue = Language.english;
+  @override
+  void initState() {
+    super.initState();
+    widget.dropdownValue = Provider.of<LocaleProvider>(context, listen: false).language;
+    _popFilds();
+    //dropdownValue
+  }
+
   void _popFilds() async {
     final settings = await _preferencesService.getSettings();
     setState(() {
@@ -22,16 +31,9 @@ class _DropDownMenuState extends State<DropDownMenu> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    widget.dropdownValue = Provider.of<LocaleProvider>(context, listen: false).language;
-    //dropdownValue
-  }
-
-  @override
   Widget build(BuildContext context) {
     return DropdownButton<Language>(
-      value: widget.dropdownValue,
+      value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 10,
       style: const TextStyle(
@@ -39,7 +41,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
       ),
       onChanged: (Language? locale) {
         if (locale == null) return;
-        setState(() => widget.dropdownValue = locale);
+        setState(() => dropdownValue = locale);
       },
       items: Language.values.map<DropdownMenuItem<Language>>((Language language) {
         return DropdownMenuItem<Language>(

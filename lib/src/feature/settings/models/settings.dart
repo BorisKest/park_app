@@ -4,5 +4,5 @@ class Settings {
   final Language lenguage;
   final bool themeToggle;
 
-  Settings(this.lenguage, this.themeToggle);
+  Settings({required this.lenguage, required this.themeToggle});
 }
