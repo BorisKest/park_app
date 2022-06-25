@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/map_widget.dart';
 import 'package:park_app/src/feature/map/wdiget/plants_screen.dart';
-import 'package:park_app/src/feature/map/wdiget/qr_code_scaner.dart';
+import 'package:park_app/src/feature/map/wdiget/promitions.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -29,12 +29,9 @@ class _MapScreenState extends State<MapScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QrCodeScaner()),
-                );
+                chekPromitions(context);
               },
-              child: const Text('Sacan qr'),
+              child: const Text('Scan qr'),
             ),
             ElevatedButton(
               onPressed: () {

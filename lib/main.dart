@@ -7,7 +7,6 @@ import 'package:park_app/src/common/localization/language.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
-
 import 'src/common/localization/l10n.dart';
 import 'src/feature/contacts/widget/contact_screen.dart';
 import 'src/feature/home/widget/home_screen.dart';
@@ -18,11 +17,9 @@ import 'src/feature/settings/widget/settings_screen.dart';
 void main() => runZonedGuarded<void>(
       () {
         WidgetsFlutterBinding.ensureInitialized();
-
-        /// ...
         runApp(const ParkApp());
       },
-      (error, stackTrace) => print('TOP LEVEL ERROR: $error\n$stackTrace'),
+      (error, stackTrace) => ('TOP LEVEL ERROR: $error\n$stackTrace'),
     );
 
 class ParkApp extends StatelessWidget {
@@ -92,35 +89,35 @@ class _MainScreen extends State<MainScreen> {
         child: screens[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: const Icon(Icons.home),
             label: '',
-            backgroundColor: Color.fromARGB(255, 95, 95, 95),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
+            icon: const Icon(Icons.shopping_bag_outlined),
             label: '',
-            backgroundColor: Color.fromARGB(255, 138, 138, 137),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_rounded),
+            icon: const Icon(Icons.map_rounded),
             label: '',
-            backgroundColor: Color.fromARGB(255, 174, 175, 174),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
+            icon: const Icon(Icons.mail),
             label: '',
-            backgroundColor: Color.fromARGB(255, 174, 179, 184),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             label: '',
-            backgroundColor: Color.fromARGB(255, 199, 196, 196),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
+        selectedItemColor: Theme.of(context).highlightColor,
         onTap: _onItemTapped,
       ),
     );

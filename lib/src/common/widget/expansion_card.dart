@@ -31,7 +31,6 @@ class _BuildCardState extends State<BuildCard> {
           }
 
           flag = !flag;
-          print(containerHeight);
           setState(() {});
         },
         child: AnimatedContainer(

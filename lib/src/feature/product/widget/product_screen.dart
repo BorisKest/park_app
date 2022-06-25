@@ -1,64 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:park_app/src/common/widget/large_bold_text.dart';
-import 'package:park_app/src/common/widget/large_text.dart';
+import 'package:park_app/src/feature/product/card_builder.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
-
-  Widget productWidgenBuilder(
-    BuildContext context,
-    String productName,
-    String productPrice,
-    String image12,
-    String productInfo,
-  ) {
-    productName;
-    productPrice;
-    productInfo;
-
-    return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.fromLTRB(20, 10, 20, 5),
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  LargeBoldText(text: productName),
-                  const Spacer(),
-                  LargeText(
-                    size: 25,
-                    text: '${'Price: $productPrice'}€',
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                child: Image.asset(
-                  image12,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(10),
-              child: Text(
-                productInfo,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   final String prductImage1 = 'assets/images/product1.jpg';
 
@@ -76,33 +21,30 @@ class ProductScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: 250,
-                child: productWidgenBuilder(
-                  context,
-                  AppLocalizations.of(context)!.canoe,
-                  "10",
-                  prductImage1,
-                  AppLocalizations.of(context)!.canoeDescription,
+                height: 300,
+                child: BuildCardWidget(
+                  productName: AppLocalizations.of(context)!.canoe,
+                  productPrice: "10",
+                  image: prductImage1,
+                  productInfo: AppLocalizations.of(context)!.canoeDescription,
                 ),
               ),
               SizedBox(
-                height: 250,
-                child: productWidgenBuilder(
-                  context,
-                  AppLocalizations.of(context)!.pedalBoat,
-                  "20",
-                  prductImage2,
-                  AppLocalizations.of(context)!.pedalBoatDescription,
+                height: 300,
+                child: BuildCardWidget(
+                  productName: AppLocalizations.of(context)!.pedalBoat,
+                  productPrice: "20",
+                  image: prductImage2,
+                  productInfo: AppLocalizations.of(context)!.pedalBoatDescription,
                 ),
               ),
               SizedBox(
-                height: 250,
-                child: productWidgenBuilder(
-                  context,
-                  AppLocalizations.of(context)!.bike,
-                  "30",
-                  prductImage3,
-                  AppLocalizations.of(context)!.bikeDescription,
+                height: 300,
+                child: BuildCardWidget(
+                  productName: AppLocalizations.of(context)!.bike,
+                  productPrice: "30",
+                  image: prductImage3,
+                  productInfo: AppLocalizations.of(context)!.bikeDescription,
                 ),
               ),
             ],

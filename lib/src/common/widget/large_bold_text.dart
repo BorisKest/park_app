@@ -5,7 +5,7 @@ class LargeText extends StatelessWidget {
   final String text;
   const LargeText({
     Key? key,
-    this.size = 33,
+    this.size = 28,
     required this.text,
   }) : super(key: key);
 

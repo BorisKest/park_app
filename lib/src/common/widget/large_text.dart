@@ -5,7 +5,7 @@ class LargeBoldText extends StatelessWidget {
   final String text;
   const LargeBoldText({
     Key? key,
-    this.size = 33,
+    this.size = 28,
     required this.text,
   }) : super(key: key);
 
