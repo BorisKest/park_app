@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 text: const TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'WATERFALLS PARK ' + '\n',
+                      text: 'WATERFALLS PARK ' '\n',
                       style: TextStyle(
                         fontFamily: 'TrajanPro',
                         fontSize: 15,
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: 'Grená' + '\n',
+                      text: 'Grená' '\n',
                       style: TextStyle(
                         fontFamily: 'TrajanPro',
                         fontSize: 70,

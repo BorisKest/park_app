@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_bold_text.dart';
 
 class RowHistoryWidget extends StatelessWidget {
-  RowHistoryWidget({
+  const RowHistoryWidget({
     Key? key,
     required this.dateText,
     required this.image,
@@ -19,7 +19,7 @@ class RowHistoryWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Theme.of(context).primaryColor),
       width: mediaQueryData.size.width - 30,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Column(
         children: [
           LargeText(text: dateText),

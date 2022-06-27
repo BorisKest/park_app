@@ -127,6 +127,7 @@ class _MainScreen extends State<MainScreen> {
                 PopupMenuItem<String>(value: 'test1', child: DropDownMenu()),
                 PopupMenuItem<String>(value: 'test2', child: SwitchWidget()),
               ],
+              color: Theme.of(context).primaryColor,
               elevation: 8.0,
             );
           } else {

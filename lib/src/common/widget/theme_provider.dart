@@ -25,7 +25,7 @@ class ThemeProvider extends ChangeNotifier {
         bodyText1: TextStyle(color: Colors.black),
         bodyText2: TextStyle(color: Colors.black),
       ),
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: Colors.black),
     );
   }
 
@@ -46,7 +46,7 @@ class ThemeProvider extends ChangeNotifier {
         bodyText1: TextStyle(color: Colors.white),
         bodyText2: TextStyle(color: Colors.white),
       ),
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: const IconThemeData(color: Colors.white),
     );
   }
 }
