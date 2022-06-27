@@ -6,19 +6,21 @@ import '../../../common/widget/locale_provider.dart';
 import '../../../common/widget/shered_preferences.dart';
 
 class DropDownMenu extends StatefulWidget {
-  DropDownMenu({Key? key, required this.dropdownValue}) : super(key: key);
-  Language dropdownValue;
+  DropDownMenu({
+    Key? key,
+  }) : super(key: key);
   @override
   State<DropDownMenu> createState() => _DropDownMenuState();
 }
 
 class _DropDownMenuState extends State<DropDownMenu> {
   final _preferencesService = PreferencesServis();
-  Language dropdownValue = Language.english;
+  Language language = Language.english;
+
   @override
   void initState() {
     super.initState();
-    widget.dropdownValue = Provider.of<LocaleProvider>(context, listen: false).language;
+    language = Provider.of<LocaleProvider>(context, listen: false).language;
     _popFilds();
     //dropdownValue
   }
@@ -26,14 +28,14 @@ class _DropDownMenuState extends State<DropDownMenu> {
   void _popFilds() async {
     final settings = await _preferencesService.getSettings();
     setState(() {
-      Language dropdownValue = settings.lenguage;
+      language = settings.lenguage;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<Language>(
-      value: dropdownValue,
+      value: language,
       icon: const Icon(Icons.arrow_downward),
       elevation: 10,
       style: const TextStyle(
@@ -41,7 +43,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
       ),
       onChanged: (Language? locale) {
         if (locale == null) return;
-        setState(() => dropdownValue = locale);
+        setState(() => language = locale);
       },
       items: Language.values.map<DropdownMenuItem<Language>>((Language language) {
         return DropdownMenuItem<Language>(

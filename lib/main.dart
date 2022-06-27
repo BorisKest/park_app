@@ -6,13 +6,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:park_app/src/common/localization/language.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
+import 'package:park_app/src/feature/settings/widget/drop_down_menu.dart';
+import 'package:park_app/src/feature/settings/widget/toggle_switch.dart';
 import 'package:provider/provider.dart';
 import 'src/common/localization/l10n.dart';
-import 'src/feature/contacts/widget/contact_screen.dart';
-import 'src/feature/home/widget/home_screen.dart';
+import 'src/feature/home/widget/new_home_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
-import 'src/feature/settings/widget/settings_screen.dart';
+
+enum Menu { lenguage, theme }
 
 void main() => runZonedGuarded<void>(
       () {
@@ -77,8 +79,6 @@ class _MainScreen extends State<MainScreen> {
     HomeScreen(),
     const ProductScreen(),
     const MapScreen(),
-    const ContactScreen(),
-    const SettingsScreen(),
   ];
 
   @override
@@ -105,11 +105,11 @@ class _MainScreen extends State<MainScreen> {
             label: '',
             backgroundColor: Theme.of(context).primaryColor,
           ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.mail),
-            label: '',
-            backgroundColor: Theme.of(context).primaryColor,
-          ),
+          // BottomNavigationBarItem(
+          //   icon: const Icon(Icons.mail),
+          //   label: '',
+          //   backgroundColor: Theme.of(context).primaryColor,
+          // ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: '',
@@ -118,7 +118,22 @@ class _MainScreen extends State<MainScreen> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).highlightColor,
-        onTap: _onItemTapped,
+        onTap: (int index) async {
+          if (index == 3) {
+            await showMenu<String>(
+              context: context,
+              position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
+              items: <PopupMenuItem<String>>[
+                PopupMenuItem<String>(value: 'test1', child: DropDownMenu()),
+                PopupMenuItem<String>(value: 'test2', child: SwitchWidget()),
+              ],
+              color: Theme.of(context).primaryColor,
+              elevation: 8.0,
+            );
+          } else {
+            _onItemTapped(index);
+          }
+        },
       ),
     );
   }

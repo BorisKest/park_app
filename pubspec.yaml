@@ -22,6 +22,9 @@ dependencies:
   intl: ^0.17.0
   permission_handler: ^10.0.0
   shared_preferences: ^2.0.15
+  syncfusion_flutter_maps: ^20.1.61
+  syncfusion_flutter_core: ^20.1.61
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +37,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/map.json
  
   fonts:
     - family: MavenPro

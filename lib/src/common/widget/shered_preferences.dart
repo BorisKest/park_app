@@ -17,6 +17,9 @@ class PreferencesServis {
     final lenguage = Language.values[preferences.getInt('lenguage') ?? 0];
     final themeToggle = preferences.getBool('themeToggle');
 
-    return Settings(lenguage: lenguage, themeToggle: themeToggle!);
+    return Settings(
+      lenguage: lenguage,
+      themeToggle: themeToggle!,
+    );
   }
 }

@@ -205,18 +205,18 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () => Utils.openLink(url: _urlFacebook),
-                        icon: Icon(Icons.facebook),
-                        label: Text(''),
+                        icon: const Icon(Icons.facebook),
+                        label: const Text(''),
                       ),
                       ElevatedButton.icon(
                         onPressed: () => Utils.openLink(url: _urlInstagram),
-                        icon: Icon(Icons.install_desktop),
-                        label: Text(''),
+                        icon: const Icon(Icons.install_desktop),
+                        label: const Text(''),
                       ),
                       ElevatedButton.icon(
                         onPressed: () => Utils.openLink(url: _urlWebSite),
-                        icon: Icon(Icons.web),
-                        label: Text(''),
+                        icon: const Icon(Icons.web),
+                        label: const Text(''),
                       ),
                     ],
                   )
