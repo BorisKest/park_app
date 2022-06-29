@@ -6,7 +6,7 @@ import '../../../common/widget/locale_provider.dart';
 import '../../../common/widget/shered_preferences.dart';
 
 class DropDownMenu extends StatefulWidget {
-  DropDownMenu({
+  const DropDownMenu({
     Key? key,
   }) : super(key: key);
   @override

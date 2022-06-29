@@ -16,53 +16,69 @@ class _MapScreenState extends State<MapScreen> {
   late MapShapeSource _mapSource;
   final double _markerSize = 24;
   late MapZoomPanBehavior _zoomPanBehavior;
-  var location = new Location();
-  late LocationData _locationData;
+  Location location = Location();
+  LocationData? currentPosition;
+  double currentLatitude = 37.7681286;
+  double currentLongitude = -25.3317694;
 
   @override
   void initState() {
     _getLocation();
     _zoomPanBehavior = MapZoomPanBehavior();
-
-    _mapSource = MapShapeSource.asset(
+    _mapSource = const MapShapeSource.asset(
       'assets/map.json',
       shapeDataField: 'STATE_NAME',
     );
 
     super.initState();
-
     location.onLocationChanged.listen(
       (value) {
         setState(
           () {
-            _locationData = value;
+            currentPosition = value;
+            if (currentPosition != null) {
+              currentLatitude = currentPosition!.latitude!;
+              currentLongitude = currentPosition!.longitude!;
+            }
           },
         );
       },
     );
   }
 
-  Future<LocationData?> _getLocation() async {
-    bool _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return null;
+  void _getCurrentPosition() async {
+    currentPosition = await _getLocation();
+    if (currentPosition != null) {
+      currentLatitude = currentPosition!.latitude!;
+      currentLongitude = currentPosition!.longitude!;
+    }
+    setState(() {});
+  }
+
+  Future<LocationData> _getLocation() async {
+    bool serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return _getLocation();
       }
     }
 
-    PermissionStatus _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return null;
+    PermissionStatus permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return _getLocation();
       }
     }
-    return await location.getLocation();
+    return currentPosition = await location.getLocation();
   }
 
   @override
   Widget build(BuildContext context) {
+    currentPosition == null ? Container() : _getCurrentPosition();
+
+    //in case that you use the HomeScreen as Screen
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -75,6 +91,15 @@ class _MapScreenState extends State<MapScreen> {
             SfMaps(
               layers: [
                 MapShapeLayer(
+                  loadingBuilder: (BuildContext context) {
+                    return const SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 3,
+                      ),
+                    );
+                  },
                   source: _mapSource,
                   showDataLabels: true,
                   dataLabelSettings: const MapDataLabelSettings(
@@ -89,8 +114,8 @@ class _MapScreenState extends State<MapScreen> {
                   initialMarkersCount: 1,
                   markerBuilder: (BuildContext context, int index) {
                     return MapMarker(
-                      latitude: _locationData.latitude!,
-                      longitude: _locationData.longitude!,
+                      latitude: currentLatitude,
+                      longitude: currentLongitude,
                       offset: Offset(0, -_markerSize / 2),
                       size: Size(_markerSize, _markerSize * 2),
                       child: const Icon(

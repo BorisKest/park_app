@@ -7,7 +7,7 @@ import '../../../common/widget/theme_provider.dart';
 import '../models/settings.dart';
 
 class SwitchWidget extends StatefulWidget {
-  SwitchWidget({Key? key}) : super(key: key);
+  const SwitchWidget({Key? key}) : super(key: key);
 
   @override
   State<SwitchWidget> createState() => _SwitchWidgetState();

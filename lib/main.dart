@@ -123,7 +123,7 @@ class _MainScreen extends State<MainScreen> {
             await showMenu<String>(
               context: context,
               position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
-              items: <PopupMenuItem<String>>[
+              items: const <PopupMenuItem<String>>[
                 PopupMenuItem<String>(value: 'test1', child: DropDownMenu()),
                 PopupMenuItem<String>(value: 'test2', child: SwitchWidget()),
               ],
