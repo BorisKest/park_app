@@ -18,7 +18,7 @@ class _MapScreenState extends State<MapScreen> {
   late MapZoomPanBehavior _zoomPanBehavior;
   Location location = Location();
   LocationData? currentPosition;
-  double currentLatitude = 37.7681286;
+  double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
 
   @override

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,10 +11,12 @@ import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:park_app/src/feature/settings/widget/drop_down_menu.dart';
 import 'package:park_app/src/feature/settings/widget/toggle_switch.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'src/common/localization/l10n.dart';
 import 'src/feature/home/widget/new_home_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
+import 'package:park_app/src/common/widget/shered_preferences.dart';
 
 enum Menu { lenguage, theme }
 
@@ -26,6 +30,12 @@ void main() => runZonedGuarded<void>(
 
 class ParkApp extends StatelessWidget {
   const ParkApp({super.key});
+
+  Future<bool> _getBool() async {
+    final pref = await SharedPreferences.getInstance();
+    final themeToggle = pref.getBool('_themeToggle');
+    return themeToggle!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +62,7 @@ class ParkApp extends StatelessWidget {
           locale: provider.locale,
           supportedLocales: Language.values.map<Locale>((e) => e.locale).toList(growable: false),
           theme: themeProvider.theme,
-          home: const MainScreen(),
+          home: SplashScreen(),
         );
       },
     );
@@ -135,6 +145,33 @@ class _MainScreen extends State<MainScreen> {
           }
         },
       ),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      splash: SizedBox(
+        width: 250.0,
+        child: DefaultTextStyle(
+          style: const TextStyle(
+            fontSize: 70.0,
+            fontFamily: 'MavenPro',
+          ),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              ScaleAnimatedText('Explore'),
+              ScaleAnimatedText('Azores'),
+              ScaleAnimatedText('Nature'),
+            ],
+          ),
+        ),
+      ),
+      nextScreen: MainScreen(),
     );
   }
 }
