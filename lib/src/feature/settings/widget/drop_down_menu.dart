@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/localization/language.dart';
 import '../../../common/widget/locale_provider.dart';
-import '../../../common/widget/shered_preferences.dart';
 
 class DropDownMenu extends StatefulWidget {
   const DropDownMenu({
@@ -14,44 +14,54 @@ class DropDownMenu extends StatefulWidget {
 }
 
 class _DropDownMenuState extends State<DropDownMenu> {
-  final _preferencesService = PreferencesServis();
-  Language language = Language.english;
-
   @override
   void initState() {
     super.initState();
-    language = Provider.of<LocaleProvider>(context, listen: false).language;
-    _popFilds();
-    //dropdownValue
+    _getLanguage();
   }
 
-  void _popFilds() async {
-    final settings = await _preferencesService.getSettings();
-    setState(() {
-      language = settings.lenguage;
-    });
+  Future<Language> _getLanguage() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return Language.values[prefs.getInt('lenguage') ?? 0];
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<Language>(
-      value: language,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 10,
-      style: const TextStyle(
-        color: Colors.blue,
-      ),
-      onChanged: (Language? locale) {
-        if (locale == null) return;
-        setState(() => language = locale);
+    return FutureBuilder<Language>(
+      future: _getLanguage(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return DropdownButton<Language>(
+            value: snapshot.data,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 10,
+            style: const TextStyle(
+              color: Colors.blue,
+            ),
+            onChanged: (Language? locale) {
+              if (locale == null) return;
+              setState(() {
+                _getLanguage();
+              });
+            },
+            items: Language.values.map<DropdownMenuItem<Language>>(
+              (Language language) {
+                return DropdownMenuItem<Language>(
+                    value: language,
+                    child: Text(language.name),
+                    onTap: () {
+                      Provider.of<LocaleProvider>(context, listen: false).setLocale(language);
+                      setState(() {
+                        _getLanguage();
+                      });
+                    });
+              },
+            ).toList(),
+          );
+        }
+        return const Text('Error: 210');
       },
-      items: Language.values.map<DropdownMenuItem<Language>>((Language language) {
-        return DropdownMenuItem<Language>(
-          value: language,
-          child: Text(language.name),
-          onTap: () => Provider.of<LocaleProvider>(context, listen: false).setLocale(language),
-        );
-      }).toList(),
     );
   }
 }

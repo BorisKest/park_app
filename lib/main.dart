@@ -11,12 +11,10 @@ import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:park_app/src/feature/settings/widget/drop_down_menu.dart';
 import 'package:park_app/src/feature/settings/widget/toggle_switch.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'src/common/localization/l10n.dart';
 import 'src/feature/home/widget/new_home_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
-import 'package:park_app/src/common/widget/shered_preferences.dart';
 
 enum Menu { lenguage, theme }
 
@@ -31,21 +29,13 @@ void main() => runZonedGuarded<void>(
 class ParkApp extends StatelessWidget {
   const ParkApp({super.key});
 
-  Future<bool> _getBool() async {
-    final pref = await SharedPreferences.getInstance();
-    final themeToggle = pref.getBool('_themeToggle');
-    return themeToggle!;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<LocaleProvider>(
-          create: (_) => LocaleProvider(),
-        ),
+        ChangeNotifierProvider<LocaleProvider>(create: (_) => LocaleProvider()),
         ChangeNotifierProvider<ThemeProvider>(
-          create: (_) => ThemeProvider(),
+          create: (_) => ThemeProvider()..initializeTheme(),
         )
       ],
       builder: (context, child) {
@@ -62,7 +52,7 @@ class ParkApp extends StatelessWidget {
           locale: provider.locale,
           supportedLocales: Language.values.map<Locale>((e) => e.locale).toList(growable: false),
           theme: themeProvider.theme,
-          home: SplashScreen(),
+          home: const SplashScreen(),
         );
       },
     );
@@ -171,7 +161,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ),
       ),
-      nextScreen: MainScreen(),
+      nextScreen: const MainScreen(),
     );
   }
 }

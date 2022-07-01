@@ -52,7 +52,9 @@ class _MapScreenState extends State<MapScreen> {
       currentLatitude = currentPosition!.latitude!;
       currentLongitude = currentPosition!.longitude!;
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<LocationData> _getLocation() async {
