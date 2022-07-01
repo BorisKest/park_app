@@ -1,60 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/localization/language.dart';
-import '../../../common/widget/shered_preferences.dart';
 import '../../../common/widget/theme_provider.dart';
 import '../models/settings.dart';
 
 class SwitchWidget extends StatefulWidget {
-  SwitchWidget({Key? key}) : super(key: key);
+  const SwitchWidget({Key? key}) : super(key: key);
 
   @override
   State<SwitchWidget> createState() => _SwitchWidgetState();
 }
 
 class _SwitchWidgetState extends State<SwitchWidget> {
-  final _preferencesService = PreferencesServis();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late Future<bool> _themeToggle;
+
+  Future<void> _setBool(value) async {
+    final SharedPreferences prefs = await _prefs;
+    final bool themeToggle = prefs.getBool('_themeToggle') ?? false;
+    prefs.setBool('_themeToggle', themeToggle);
+  }
+
   @override
   void initState() {
     super.initState();
-    _popFilds();
-  }
-
-  var _themeToggle = true;
-  Language dropdownValue = Language.english;
-
-  void _popFilds() async {
-    final settings = await _preferencesService.getSettings();
-    setState(() {
-      dropdownValue = settings.lenguage;
-      _themeToggle = settings.themeToggle;
-      _setTheme(_themeToggle);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-      value: _themeToggle,
-      onChanged: (bool newValue) {
-        setState(
-          () {
-            _setTheme(newValue);
-            _saveSettings();
-            _themeToggle = newValue;
-          },
-        );
+    _themeToggle = _prefs.then(
+      (SharedPreferences prefs) {
+        return prefs.getBool('_themeToggle') ?? false;
       },
     );
   }
 
-  void _saveSettings() {
-    final newSettings = Settings(
-      lenguage: dropdownValue,
-      themeToggle: _themeToggle,
+  bool trigger = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+      future: _themeToggle,
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) => Switch(
+        value: trigger,
+        onChanged: (bool newValue) {
+          setState(
+            () {
+              trigger = newValue;
+              _setBool(newValue);
+              _setTheme(newValue);
+            },
+          );
+        },
+      ),
     );
-    _preferencesService.saveSettings(newSettings);
   }
 
   void _setTheme(newValue) {

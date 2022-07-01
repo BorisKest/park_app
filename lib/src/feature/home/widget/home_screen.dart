@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   final int index = 0;
 
-  static final Uri _urlAdress = Uri.parse('https://g.page/parquegrena?share');
+  //static final Uri _urlAdress = Uri.parse('https://g.page/parquegrena?share');
   static final Uri _urlFacebook = Uri.parse('https://www.facebook.com/parquegrena/');
   static final Uri _urlInstagram = Uri.parse('https://www.instagram.com/parquegrena/');
   static final Uri _urlWebSite = Uri.parse('https://parquegrena.pt/');

@@ -10,7 +10,7 @@
 		<string>ru</string>
 	</array>
 	<key>CFBundleDisplayName</key>
-	<string>Park App</string>
+	<string>Grená</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,7 +18,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>park_app</string>
+	<string>Grená</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
