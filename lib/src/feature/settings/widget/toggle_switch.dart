@@ -37,20 +37,17 @@ class _SwitchWidgetState extends State<SwitchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
-      future: _themeToggle,
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) => Switch(
-        value: trigger,
-        onChanged: (bool newValue) {
-          setState(
-            () {
-              trigger = newValue;
-              _setBool(newValue);
-              _setTheme(newValue);
-            },
-          );
-        },
-      ),
+    return Switch(
+      value: trigger,
+      onChanged: (bool newValue) {
+        setState(
+          () {
+            trigger = newValue;
+            _setBool(newValue);
+            _setTheme(newValue);
+          },
+        );
+      },
     );
   }
 

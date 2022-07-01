@@ -45,7 +45,7 @@ class ParkApp extends StatelessWidget {
           create: (_) => LocaleProvider(),
         ),
         ChangeNotifierProvider<ThemeProvider>(
-          create: (_) => ThemeProvider(),
+          create: (_) => ThemeProvider()..initializeTheme(),
         )
       ],
       builder: (context, child) {

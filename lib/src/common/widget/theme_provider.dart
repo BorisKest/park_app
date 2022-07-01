@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/const/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeData _theme = darkTheme;
 
   ThemeData get theme => _theme;
 
-  void setTheme(ThemeData theme) {
+  void setTheme(ThemeData theme) async {
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+
+    await _prefs.setString('theme', _theme.toString());
     _theme = theme;
+    notifyListeners();
+  }
+
+  initializeTheme() async {
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+
+    if (_prefs.getString('theme') == 'darkTheme') {
+      _theme = darkTheme;
+    } else {
+      _theme = lightTheme;
+    }
     notifyListeners();
   }
 
