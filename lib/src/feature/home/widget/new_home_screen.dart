@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
 
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        physics: ScrollPhysics(),
+                        physics: const ScrollPhysics(),
                         child: Row(
                           children: [
                             RowHistoryWidget(

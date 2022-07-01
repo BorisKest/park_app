@@ -29,6 +29,7 @@ dependencies:
   path_provider: ^2.0.11
   animated_splash_screen: ^1.2.0
   animated_text_kit: ^4.2.2
+  path: ^1.8.2
 
 dev_dependencies:
   flutter_test:

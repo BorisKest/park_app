@@ -13,9 +13,9 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   initializeTheme() async {
-    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (_prefs.getString('theme') == 'darkTheme') {
+    if (prefs.getString('theme') == 'darkTheme') {
       _theme = darkTheme;
     } else {
       _theme = lightTheme;
