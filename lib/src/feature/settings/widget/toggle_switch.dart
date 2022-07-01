@@ -14,38 +14,37 @@ class SwitchWidget extends StatefulWidget {
 }
 
 class _SwitchWidgetState extends State<SwitchWidget> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late bool _themeToggle;
-
-  Future<void> _setBool() async {
+  Future<bool> _setBool() async {
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
-
-    if (_prefs.getString('theme') == 'ThemeData#ab495') {
-      _themeToggle = true;
+    final String theme = _prefs.getString('theme')!;
+    if (theme == 'darkTheme') {
+      return true;
     } else {
-      _themeToggle = false;
+      return false;
     }
   }
 
   @override
-  void initState() {
-    super.initState();
-    _setBool();
-  }
-
-  bool trigger = false;
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      value: trigger,
-      onChanged: (bool newValue) {
-        setState(
-          () {
-            trigger = newValue;
-            _setTheme(newValue);
-          },
-        );
+    return FutureBuilder<bool>(
+      future: _setBool(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Switch(
+            value: snapshot.data ?? false,
+            onChanged: (bool newValue) {
+              setState(
+                () {
+                  _setTheme(newValue);
+                },
+              );
+            },
+          );
+        }
+        return Center(child: CircularProgressIndicator());
       },
     );
   }
