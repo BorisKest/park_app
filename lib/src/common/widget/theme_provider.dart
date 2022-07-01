@@ -8,9 +8,6 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData get theme => _theme;
 
   void setTheme(ThemeData theme) async {
-    final SharedPreferences _prefs = await SharedPreferences.getInstance();
-
-    await _prefs.setString('theme', _theme.toString());
     _theme = theme;
     notifyListeners();
   }

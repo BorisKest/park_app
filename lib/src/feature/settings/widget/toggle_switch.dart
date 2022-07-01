@@ -15,22 +15,22 @@ class SwitchWidget extends StatefulWidget {
 
 class _SwitchWidgetState extends State<SwitchWidget> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late Future<bool> _themeToggle;
+  late bool _themeToggle;
 
-  Future<void> _setBool(value) async {
-    final SharedPreferences prefs = await _prefs;
-    final bool themeToggle = prefs.getBool('_themeToggle') ?? false;
-    prefs.setBool('_themeToggle', themeToggle);
+  Future<void> _setBool() async {
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+
+    if (_prefs.getString('theme') == 'ThemeData#ab495') {
+      _themeToggle = true;
+    } else {
+      _themeToggle = false;
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    _themeToggle = _prefs.then(
-      (SharedPreferences prefs) {
-        return prefs.getBool('_themeToggle') ?? false;
-      },
-    );
+    _setBool();
   }
 
   bool trigger = false;
@@ -43,7 +43,6 @@ class _SwitchWidgetState extends State<SwitchWidget> {
         setState(
           () {
             trigger = newValue;
-            _setBool(newValue);
             _setTheme(newValue);
           },
         );
@@ -51,11 +50,14 @@ class _SwitchWidgetState extends State<SwitchWidget> {
     );
   }
 
-  void _setTheme(newValue) {
+  void _setTheme(newValue) async {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
     if (newValue == false) {
+      await _prefs.setString('theme', 'lightTheme');
       themeProvider.setTheme(ThemeProvider.lightTheme);
     } else {
+      await _prefs.setString('theme', 'darkTheme');
       themeProvider.setTheme(ThemeProvider.darkTheme);
     }
   }
