@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PlantScreenBuilder extends StatelessWidget {
-  PlantScreenBuilder({
+  const PlantScreenBuilder({
     Key? key,
     required this.image,
     required this.name,
@@ -13,14 +13,19 @@ class PlantScreenBuilder extends StatelessWidget {
   final String descriptionText;
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Image(
-          image: NetworkImage(image),
-        ),
-        Text(name),
-        Text(descriptionText),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text(name),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Image(
+            image: NetworkImage(image),
+          ),
+          Container(margin: const EdgeInsets.all(25), child: Text(descriptionText)),
+        ],
+      ),
     );
   }
 }

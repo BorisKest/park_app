@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/feature/map/wdiget/decoder_widget.dart';
+import 'package:park_app/src/feature/map/wdiget/sql_helper.dart';
+
+import 'one_plant_screen.dart';
 
 class QrCodeScaner extends StatefulWidget {
   const QrCodeScaner({Key? key}) : super(key: key);
@@ -11,6 +14,31 @@ class QrCodeScaner extends StatefulWidget {
 
 class _QrCodeScanerState extends State<QrCodeScaner> {
   final MobileScannerController cameraController = MobileScannerController();
+  List<Map<String, dynamic>> _plants = [];
+
+  void openPlantScreen(index) async {
+    final data = await DBHelper.getItems();
+    setState(
+      () {
+        _plants = data;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PlantScreenBuilder(
+              image: _plants[index]['image'],
+              name: _plants[index]['name'],
+              descriptionText: _plants[index]['description'],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +73,8 @@ class _QrCodeScanerState extends State<QrCodeScaner> {
             final String code = barcode.rawValue!;
             debugPrint('Found! $code');
             final findedPlant = DecoderWidget.getCode(code);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => findedPlant), // not sure that its right, coz camera stay activ.
-            );
+            openPlantScreen(findedPlant); // not sure that its right, coz camera stay activ.
+
           }
         },
       ),

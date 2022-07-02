@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/map/wdiget/one_plant_screen.dart';
 
 class BuildCard extends StatefulWidget {
@@ -8,7 +9,6 @@ class BuildCard extends StatefulWidget {
     required this.bodyText,
     super.key,
   });
-
   final String titleText;
   final String bodyText;
   final String image;
@@ -41,50 +41,34 @@ class _BuildCardState extends State<BuildCard> {
       child: GestureDetector(
         onTap: () {
           _openPlantScreen();
-
-          flag = !flag;
-          setState(() {});
         },
         child: AnimatedContainer(
           duration: const Duration(seconds: 1),
           curve: Curves.bounceOut,
           color: Theme.of(context).primaryColor,
-          height: 350,
+          height: 300,
           margin: const EdgeInsets.all(5),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    height: 180,
-                    width: 180,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                          image: NetworkImage(widget.image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+              Container(
+                height: 250,
+                width: 230,
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                      image: NetworkImage(widget.image),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    child: Text(widget.titleText),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Visibility(
-                  visible: flag,
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(12, 5, 10, 10),
-                    child: Text(widget.bodyText),
-                  ),
                 ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 5),
+                child: LargeBoldText(text: widget.titleText),
               ),
             ],
           ),
