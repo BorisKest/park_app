@@ -14,36 +14,39 @@ class QrCodeScaner extends StatefulWidget {
 
 class _QrCodeScanerState extends State<QrCodeScaner> {
   final MobileScannerController cameraController = MobileScannerController();
-  List<Map<String, dynamic>> _plants = [];
+  List<Map<String, dynamic>> plants = [];
 
-  void openPlantScreen(index) async {
+  void SetList() async {
     final data = await DBHelper.getItems();
-    setState(
-      () {
-        _plants = data;
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PlantScreenBuilder(
-              image: _plants[index]['image'],
-              name: _plants[index]['name'],
-              descriptionText: _plants[index]['description'],
-            ),
-          ),
-        );
-      },
+    setState(() {
+      plants = data;
+    });
+  }
+
+  void openPlantScreen(index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PlantScreenBuilder(
+          image: plants[index]['image'],
+          name: plants[index]['name'],
+          descriptionText: plants[index]['description'],
+        ),
+      ),
     );
   }
 
   @override
   void initState() {
     super.initState();
+    SetList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Scan Qr code'),
         actions: [
           IconButton(
@@ -72,7 +75,7 @@ class _QrCodeScanerState extends State<QrCodeScaner> {
           } else {
             final String code = barcode.rawValue!;
             debugPrint('Found! $code');
-            final findedPlant = DecoderWidget.getCode(code);
+            int findedPlant = DecoderWidget(code: code, length: plants.length).getCode(code);
             openPlantScreen(findedPlant); // not sure that its right, coz camera stay activ.
 
           }

@@ -1,17 +1,17 @@
-class DecoderWidget {
-  DecoderWidget({required this.code});
-  final String code;
+import 'package:park_app/src/feature/map/wdiget/sql_helper.dart';
 
-  static getCode(String code) {
-    switch (code) {
-      case 'Plant1':
-        return 0;
-      case 'Plant2':
-        return 1;
-      case 'Plant3':
-        return 2;
-      case 'Plant4':
-        return 3;
+class DecoderWidget {
+  DecoderWidget({required this.code, required this.length});
+  String code;
+  int length;
+
+  int getCode(String code) {
+    int index = 0;
+    for (var i = 0; i < length; i++) {
+      if (code == 'Plant$i') {
+        index = i;
+      }
     }
+    return index;
   }
 }
