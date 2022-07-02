@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/feature/map/wdiget/one_plant_screen.dart';
+import 'package:park_app/src/feature/plants/widget/one_plant_screen.dart';
+
+import 'network_image.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard({
@@ -53,19 +55,10 @@ class _BuildCardState extends State<BuildCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                height: 250,
-                width: 230,
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    image: DecorationImage(
-                      image: NetworkImage(widget.image),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+                  height: 250,
+                  width: 230,
+                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: NetworkImageBuilder(image: widget.image)),
               Container(
                 margin: const EdgeInsets.only(top: 5),
                 child: LargeBoldText(text: widget.titleText),

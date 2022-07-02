@@ -115,10 +115,12 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       Card(
-                          child: Image.asset(
-                        'assets/images/map.jpg',
-                        fit: BoxFit.cover,
-                      )),
+                        margin: const EdgeInsets.only(left: 10, right: 20),
+                        child: Image.asset(
+                          'assets/images/map.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(10, 5, 20, 20),
                         child: Text(AppLocalizations.of(context)!.descriptionText),

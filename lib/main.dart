@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:park_app/src/common/localization/language.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/common/widget/theme_provider.dart';
+import 'package:park_app/src/feature/plants/widget/plants_screen.dart';
 import 'package:park_app/src/feature/settings/widget/drop_down_menu.dart';
 import 'package:park_app/src/feature/settings/widget/toggle_switch.dart';
 import 'package:provider/provider.dart';
@@ -79,6 +80,7 @@ class _MainScreen extends State<MainScreen> {
     HomeScreen(),
     const ProductScreen(),
     const MapScreen(),
+    const PlantsScreen(),
   ];
 
   @override
@@ -105,11 +107,11 @@ class _MainScreen extends State<MainScreen> {
             label: '',
             backgroundColor: Theme.of(context).primaryColor,
           ),
-          // BottomNavigationBarItem(
-          //   icon: const Icon(Icons.mail),
-          //   label: '',
-          //   backgroundColor: Theme.of(context).primaryColor,
-          // ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.search),
+            label: '',
+            backgroundColor: Theme.of(context).primaryColor,
+          ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings),
             label: '',
@@ -119,7 +121,7 @@ class _MainScreen extends State<MainScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).highlightColor,
         onTap: (int index) async {
-          if (index == 3) {
+          if (index == 4) {
             await showMenu<String>(
               context: context,
               position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
