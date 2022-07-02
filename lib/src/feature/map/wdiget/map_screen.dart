@@ -141,9 +141,7 @@ class _MapScreenState extends State<MapScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PlantsScreen(
-                      openIndex: 0,
-                    ),
+                    builder: (context) => const PlantsScreen(),
                   ),
                 );
               },

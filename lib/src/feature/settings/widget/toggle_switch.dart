@@ -14,7 +14,7 @@ class SwitchWidget extends StatefulWidget {
 class _SwitchWidgetState extends State<SwitchWidget> {
   Future<bool> _setBool() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String theme = prefs.getString('theme')!;
+    final String theme = prefs.getString('theme') ?? 'lightTheme';
     if (theme == 'darkTheme') {
       return true;
     } else {

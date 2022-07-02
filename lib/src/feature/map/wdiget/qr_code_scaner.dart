@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/feature/map/wdiget/decoder_widget.dart';
+import 'package:park_app/src/feature/map/wdiget/sql_helper.dart';
+
+import 'one_plant_screen.dart';
 
 class QrCodeScaner extends StatefulWidget {
   const QrCodeScaner({Key? key}) : super(key: key);
@@ -11,11 +14,39 @@ class QrCodeScaner extends StatefulWidget {
 
 class _QrCodeScanerState extends State<QrCodeScaner> {
   final MobileScannerController cameraController = MobileScannerController();
+  List<Map<String, dynamic>> plants = [];
+
+  void SetList() async {
+    final data = await DBHelper.getItems();
+    setState(() {
+      plants = data;
+    });
+  }
+
+  void openPlantScreen(index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PlantScreenBuilder(
+          image: plants[index]['image'],
+          name: plants[index]['name'],
+          descriptionText: plants[index]['description'],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SetList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Scan Qr code'),
         actions: [
           IconButton(
@@ -44,11 +75,9 @@ class _QrCodeScanerState extends State<QrCodeScaner> {
           } else {
             final String code = barcode.rawValue!;
             debugPrint('Found! $code');
-            final findedPlant = DecoderWidget.getCode(code);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => findedPlant), // not sure that its right, coz camera stay activ.
-            );
+            int findedPlant = DecoderWidget(code: code, length: plants.length).getCode(code);
+            openPlantScreen(findedPlant); // not sure that its right, coz camera stay activ.
+
           }
         },
       ),
