@@ -232,7 +232,7 @@ packages:
     source: hosted
     version: "2.0.9"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"

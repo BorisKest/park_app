@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/feature/map/wdiget/one_plant_screen.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard({
@@ -8,7 +9,9 @@ class BuildCard extends StatefulWidget {
     super.key,
   });
 
-  final String titleText, bodyText, image;
+  final String titleText;
+  final String bodyText;
+  final String image;
 
   @override
   State<BuildCard> createState() => _BuildCardState();
@@ -18,17 +21,26 @@ class _BuildCardState extends State<BuildCard> {
   bool flag = false;
   double containerHeight = 200;
 
+  void _openPlantScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PlantScreenBuilder(
+          image: widget.image,
+          name: widget.titleText,
+          descriptionText: widget.bodyText,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: GestureDetector(
         onTap: () {
-          if (containerHeight > 200) {
-            containerHeight = 200;
-          } else {
-            containerHeight = 450;
-          }
+          _openPlantScreen();
 
           flag = !flag;
           setState(() {});
@@ -37,7 +49,7 @@ class _BuildCardState extends State<BuildCard> {
           duration: const Duration(seconds: 1),
           curve: Curves.bounceOut,
           color: Theme.of(context).primaryColor,
-          height: containerHeight,
+          height: 350,
           margin: const EdgeInsets.all(5),
           child: Column(
             children: [
@@ -53,7 +65,7 @@ class _BuildCardState extends State<BuildCard> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
-                          image: AssetImage(widget.image),
+                          image: NetworkImage(widget.image),
                           fit: BoxFit.cover,
                         ),
                       ),
