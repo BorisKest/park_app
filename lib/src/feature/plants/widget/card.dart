@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/feature/map/wdiget/one_plant_screen.dart';
+import 'package:park_app/src/feature/plants/widget/one_plant_screen.dart';
+
+import '../../../common/widget/network_image.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard({
@@ -37,38 +39,33 @@ class _BuildCardState extends State<BuildCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      padding: const EdgeInsets.all(6),
       child: GestureDetector(
         onTap: () {
           _openPlantScreen();
         },
         child: AnimatedContainer(
           duration: const Duration(seconds: 1),
-          curve: Curves.bounceOut,
-          color: Theme.of(context).primaryColor,
-          height: 300,
-          margin: const EdgeInsets.all(5),
+          curve: Curves.linear,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).primaryColor,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                height: 250,
-                width: 230,
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    image: DecorationImage(
-                      image: NetworkImage(widget.image),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+                  height: 140,
+                  width: 170,
+                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: NetworkImageBuilder(image: widget.image)),
               Container(
                 margin: const EdgeInsets.only(top: 5),
-                child: LargeBoldText(text: widget.titleText),
+                child: LargeBoldText(
+                  text: widget.titleText,
+                  size: 14,
+                ),
               ),
             ],
           ),

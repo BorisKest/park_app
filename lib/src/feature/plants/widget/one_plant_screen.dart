@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/widget/network_image.dart';
 
 class PlantScreenBuilder extends StatelessWidget {
   const PlantScreenBuilder({
@@ -20,9 +21,7 @@ class PlantScreenBuilder extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Image(
-            image: NetworkImage(image),
-          ),
+          NetworkImageBuilder(image: image),
           Container(margin: const EdgeInsets.all(25), child: Text(descriptionText)),
         ],
       ),

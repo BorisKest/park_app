@@ -1,5 +1,3 @@
-import 'package:park_app/src/feature/map/wdiget/sql_helper.dart';
-
 class DecoderWidget {
   DecoderWidget({required this.code, required this.length});
   String code;

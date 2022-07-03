@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:park_app/src/feature/map/wdiget/decoder_widget.dart';
-import 'package:park_app/src/feature/map/wdiget/sql_helper.dart';
+import 'package:park_app/src/feature/plants/widget/decoder_widget.dart';
+import 'package:park_app/src/feature/plants/widget/sql_helper.dart';
 
 import 'one_plant_screen.dart';
 
@@ -16,7 +16,7 @@ class _QrCodeScanerState extends State<QrCodeScaner> {
   final MobileScannerController cameraController = MobileScannerController();
   List<Map<String, dynamic>> plants = [];
 
-  void SetList() async {
+  void setList() async {
     final data = await DBHelper.getItems();
     setState(() {
       plants = data;
@@ -39,7 +39,7 @@ class _QrCodeScanerState extends State<QrCodeScaner> {
   @override
   void initState() {
     super.initState();
-    SetList();
+    setList();
   }
 
   @override

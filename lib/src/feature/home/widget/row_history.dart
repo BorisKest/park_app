@@ -17,7 +17,10 @@ class RowHistoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Theme.of(context).primaryColor),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: Theme.of(context).primaryColor,
+      ),
       width: mediaQueryData.size.width - 30,
       margin: const EdgeInsets.all(10),
       child: Column(
