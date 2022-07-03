@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/card.dart';
+import 'package:park_app/src/feature/plants/widget/card.dart';
 import 'package:park_app/src/feature/plants/widget/promitions.dart';
 import 'package:park_app/src/feature/plants/widget/sql_helper.dart';
 
@@ -49,7 +49,12 @@ class _PlantsScreenState extends State<PlantsScreen> {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : ListView.builder(
+            : GridView.builder(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  mainAxisSpacing: 0,
+                  crossAxisSpacing: 0,
+                  maxCrossAxisExtent: 392,
+                ),
                 itemCount: _plants.length,
                 itemBuilder: (context, index) => BuildCard(
                   image: _plants[index]['image'],

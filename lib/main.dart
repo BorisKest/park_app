@@ -119,15 +119,15 @@ class _MainScreen extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Theme.of(context).highlightColor,
+        selectedItemColor: Theme.of(context).secondaryHeaderColor,
         onTap: (int index) async {
           if (index == 4) {
             await showMenu<String>(
               context: context,
               position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
               items: const <PopupMenuItem<String>>[
-                PopupMenuItem<String>(value: 'test1', child: DropDownMenu()),
-                PopupMenuItem<String>(value: 'test2', child: SwitchWidget()),
+                PopupMenuItem<String>(value: 'lenguage', child: DropDownMenu()),
+                PopupMenuItem<String>(value: 'theme', child: SwitchWidget()),
               ],
               color: Theme.of(context).primaryColor,
               elevation: 8.0,

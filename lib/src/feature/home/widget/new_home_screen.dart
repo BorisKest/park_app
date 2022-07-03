@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                 return Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).backgroundColor,
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Column(
                     children: [
@@ -102,8 +102,8 @@ class HomeScreen extends StatelessWidget {
                         width: max(300, 500),
                         margin: const EdgeInsets.fromLTRB(10, 20, 20, 5),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(5),
+                          color: Theme.of(context).secondaryHeaderColor,
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -130,8 +130,8 @@ class HomeScreen extends StatelessWidget {
                         width: max(300, 500),
                         margin: const EdgeInsets.fromLTRB(10, 20, 20, 5),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(5),
+                          color: Theme.of(context).secondaryHeaderColor,
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(
@@ -196,7 +196,7 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.all(30),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5), color: Theme.of(context).primaryColor),
+                            borderRadius: BorderRadius.circular(5), color: Theme.of(context).secondaryHeaderColor),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
