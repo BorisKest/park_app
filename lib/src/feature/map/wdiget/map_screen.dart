@@ -88,60 +88,65 @@ class _MapScreenState extends State<MapScreen> {
       ),
       body: Center(
         child: FlutterMap(
-          
-    controller: ,
-    options: MapOptions(
-              center: LatLng(37.768449, -25.332746),
-              zoom: 13.0,
-              maxZoom: 19.0,
-              
-    ),
-    children: [
+          options: MapOptions(
+            center: LatLng(37.768449, -25.332746),
+            zoom: 13.0,
+            maxZoom: 19.0,
+          ),
+          layers: [
+            TileLayerOptions(
+              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              subdomains: ['a', 'b', 'c'],
+              tileProvider: NonCachingNetworkTileProvider(),
+              tileBounds: LatLngBounds(
+                LatLng(37.781144, -25.359088),
+                LatLng(37.725494, -25.302919),
+              ),
+            ),
+          ],
+          children: [],
+        ),
 
-    ],
-),
-
-
-       // SfMaps(
-       //   layers: [
-       //     MapShapeLayer(
-       //       loadingBuilder: (BuildContext context) {
-       //         return const SizedBox(
-       //           height: 25,
-       //           width: 25,
-       //           child: CircularProgressIndicator(
-       //             strokeWidth: 3,
-       //           ),
-       //         );
-       //       },
-       //       source: _mapSource,
-       //       showDataLabels: true,
-       //       dataLabelSettings: const MapDataLabelSettings(
-       //         overflowMode: MapLabelOverflow.ellipsis,
-       //         textStyle: TextStyle(
-       //           color: Color.fromRGBO(45, 45, 45, 1),
-       //         ),
-       //       ),
-       //       tooltipSettings: const MapTooltipSettings(
-       //         color: Colors.white,
-       //       ),
-       //       initialMarkersCount: 1,
-       //       markerBuilder: (BuildContext context, int index) {
-       //         return MapMarker(
-       //           latitude: currentLatitude,
-       //           longitude: currentLongitude,
-       //           offset: Offset(0, -_markerSize / 2),
-       //           size: Size(_markerSize, _markerSize * 2),
-       //           child: const Icon(
-       //             Icons.location_on,
-       //             color: Color.fromRGBO(199, 42, 89, 1),
-       //           ),
-       //         );
-       //       },
-       //       zoomPanBehavior: _zoomPanBehavior,
-       //     ),
-       //   ],
-       // ),
+        // SfMaps(
+        //   layers: [
+        //     MapShapeLayer(
+        //       loadingBuilder: (BuildContext context) {
+        //         return const SizedBox(
+        //           height: 25,
+        //           width: 25,
+        //           child: CircularProgressIndicator(
+        //             strokeWidth: 3,
+        //           ),
+        //         );
+        //       },
+        //       source: _mapSource,
+        //       showDataLabels: true,
+        //       dataLabelSettings: const MapDataLabelSettings(
+        //         overflowMode: MapLabelOverflow.ellipsis,
+        //         textStyle: TextStyle(
+        //           color: Color.fromRGBO(45, 45, 45, 1),
+        //         ),
+        //       ),
+        //       tooltipSettings: const MapTooltipSettings(
+        //         color: Colors.white,
+        //       ),
+        //       initialMarkersCount: 1,
+        //       markerBuilder: (BuildContext context, int index) {
+        //         return MapMarker(
+        //           latitude: currentLatitude,
+        //           longitude: currentLongitude,
+        //           offset: Offset(0, -_markerSize / 2),
+        //           size: Size(_markerSize, _markerSize * 2),
+        //           child: const Icon(
+        //             Icons.location_on,
+        //             color: Color.fromRGBO(199, 42, 89, 1),
+        //           ),
+        //         );
+        //       },
+        //       zoomPanBehavior: _zoomPanBehavior,
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
