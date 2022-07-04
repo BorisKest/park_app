@@ -153,12 +153,13 @@ class SplashScreen extends StatelessWidget {
           style: const TextStyle(
             fontSize: 70.0,
             fontFamily: 'MavenPro',
+            color: Colors.black,
           ),
           child: AnimatedTextKit(
             animatedTexts: [
               ScaleAnimatedText('Explore'),
-              ScaleAnimatedText('Azores'),
               ScaleAnimatedText('Nature'),
+              ScaleAnimatedText('of Azores'),
             ],
           ),
         ),

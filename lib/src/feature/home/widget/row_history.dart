@@ -21,7 +21,7 @@ class RowHistoryWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         color: Theme.of(context).primaryColor,
       ),
-      width: mediaQueryData.size.width - 30,
+      width: mediaQueryData.size.width - 45,
       margin: const EdgeInsets.all(10),
       child: Column(
         children: [

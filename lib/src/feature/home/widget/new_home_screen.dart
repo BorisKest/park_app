@@ -147,6 +147,7 @@ class HomeScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         physics: const ScrollPhysics(),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RowHistoryWidget(
                                 dateText: '1832 – 1882',

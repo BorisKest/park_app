@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 import 'package:location/location.dart';
+import 'package:flutter_map/flutter_map.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -85,46 +87,61 @@ class _MapScreenState extends State<MapScreen> {
         title: Text(AppLocalizations.of(context)!.map),
       ),
       body: Center(
-        child: SfMaps(
-          layers: [
-            MapShapeLayer(
-              loadingBuilder: (BuildContext context) {
-                return const SizedBox(
-                  height: 25,
-                  width: 25,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 3,
-                  ),
-                );
-              },
-              source: _mapSource,
-              showDataLabels: true,
-              dataLabelSettings: const MapDataLabelSettings(
-                overflowMode: MapLabelOverflow.ellipsis,
-                textStyle: TextStyle(
-                  color: Color.fromRGBO(45, 45, 45, 1),
-                ),
-              ),
-              tooltipSettings: const MapTooltipSettings(
-                color: Colors.white,
-              ),
-              initialMarkersCount: 1,
-              markerBuilder: (BuildContext context, int index) {
-                return MapMarker(
-                  latitude: currentLatitude,
-                  longitude: currentLongitude,
-                  offset: Offset(0, -_markerSize / 2),
-                  size: Size(_markerSize, _markerSize * 2),
-                  child: const Icon(
-                    Icons.location_on,
-                    color: Color.fromRGBO(199, 42, 89, 1),
-                  ),
-                );
-              },
-              zoomPanBehavior: _zoomPanBehavior,
-            ),
-          ],
-        ),
+        child: FlutterMap(
+          
+    controller: ,
+    options: MapOptions(
+              center: LatLng(37.768449, -25.332746),
+              zoom: 13.0,
+              maxZoom: 19.0,
+              
+    ),
+    children: [
+
+    ],
+),
+
+
+       // SfMaps(
+       //   layers: [
+       //     MapShapeLayer(
+       //       loadingBuilder: (BuildContext context) {
+       //         return const SizedBox(
+       //           height: 25,
+       //           width: 25,
+       //           child: CircularProgressIndicator(
+       //             strokeWidth: 3,
+       //           ),
+       //         );
+       //       },
+       //       source: _mapSource,
+       //       showDataLabels: true,
+       //       dataLabelSettings: const MapDataLabelSettings(
+       //         overflowMode: MapLabelOverflow.ellipsis,
+       //         textStyle: TextStyle(
+       //           color: Color.fromRGBO(45, 45, 45, 1),
+       //         ),
+       //       ),
+       //       tooltipSettings: const MapTooltipSettings(
+       //         color: Colors.white,
+       //       ),
+       //       initialMarkersCount: 1,
+       //       markerBuilder: (BuildContext context, int index) {
+       //         return MapMarker(
+       //           latitude: currentLatitude,
+       //           longitude: currentLongitude,
+       //           offset: Offset(0, -_markerSize / 2),
+       //           size: Size(_markerSize, _markerSize * 2),
+       //           child: const Icon(
+       //             Icons.location_on,
+       //             color: Color.fromRGBO(199, 42, 89, 1),
+       //           ),
+       //         );
+       //       },
+       //       zoomPanBehavior: _zoomPanBehavior,
+       //     ),
+       //   ],
+       // ),
       ),
     );
   }
