@@ -481,20 +481,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  syncfusion_flutter_core:
-    dependency: "direct main"
-    description:
-      name: syncfusion_flutter_core
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "20.1.61"
-  syncfusion_flutter_maps:
-    dependency: "direct main"
-    description:
-      name: syncfusion_flutter_maps
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "20.1.61"
   synchronized:
     dependency: transitive
     description:

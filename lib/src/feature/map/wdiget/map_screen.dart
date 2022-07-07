@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
 
@@ -13,22 +12,34 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  late MapShapeSource _mapSource;
   final double _markerSize = 24;
-  late MapZoomPanBehavior _zoomPanBehavior;
   Location location = Location();
   LocationData? currentPosition;
   double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
+  static const String _heroMark = 'show_marker_info';
+
+  //  List<LatLng> pointList = [
+  //  LatLng(37.769495, -25.337934),
+  //  LatLng(37.770096, -25.336740),
+  //  LatLng(37.769520, -25.336879),
+  //  LatLng(37.769399, -25.335963),
+  //  LatLng(37.769832, -25.335416),
+  //  LatLng(37.769272, -25.335319),
+  //  LatLng(37.768071, -25.334812),
+  //  LatLng(37.767961, -25.334361),
+  //  LatLng(37.766326, -25.335566),
+  //  LatLng(37.766635, -25.335263),
+  //  LatLng(37.765392, -25.333311),
+  //  LatLng(37.766094, -25.333657),
+  //  LatLng(37.767870, -25.333355)
+  //  ];
+  late final MapController mapController;
 
   @override
   void initState() {
+    mapController = MapController();
     _getLocation();
-    _zoomPanBehavior = MapZoomPanBehavior();
-    _mapSource = const MapShapeSource.asset(
-      'assets/map.json',
-      shapeDataField: 'STATE_NAME',
-    );
 
     super.initState();
     location.onLocationChanged.listen(
@@ -92,6 +103,7 @@ class _MapScreenState extends State<MapScreen> {
             center: LatLng(37.768449, -25.332746),
             zoom: 13.0,
             maxZoom: 19.0,
+            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
           ),
           layers: [
             TileLayerOptions(
@@ -103,50 +115,75 @@ class _MapScreenState extends State<MapScreen> {
                 LatLng(37.725494, -25.302919),
               ),
             ),
+            MarkerLayerOptions(
+              markers: [
+                Marker(
+                  point: LatLng(currentLatitude, currentLongitude),
+                  builder: (context) => const Icon(
+                    Icons.location_on,
+                    color: Colors.blue,
+                  ),
+                ),
+                Marker(
+                  point: LatLng(37.769495, -25.337934),
+                  builder: (context) => Hero(
+                    tag: _heroMark,
+                    child: const Icon(Icons.location_pin),
+                  ),
+                ),
+                Marker(
+                  point: LatLng(37.770096, -25.336740),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.769520, -25.336879),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.769399, -25.335963),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.769832, -25.335416),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.769272, -25.335319),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.768071, -25.334812),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.767961, -25.334361),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.766326, -25.335566),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.766635, -25.335263),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.765392, -25.333311),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.766094, -25.333657),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+                Marker(
+                  point: LatLng(37.767870, -25.333355),
+                  builder: (context) => const Icon(Icons.location_pin),
+                ),
+              ],
+            ),
           ],
           children: [],
         ),
-
-        // SfMaps(
-        //   layers: [
-        //     MapShapeLayer(
-        //       loadingBuilder: (BuildContext context) {
-        //         return const SizedBox(
-        //           height: 25,
-        //           width: 25,
-        //           child: CircularProgressIndicator(
-        //             strokeWidth: 3,
-        //           ),
-        //         );
-        //       },
-        //       source: _mapSource,
-        //       showDataLabels: true,
-        //       dataLabelSettings: const MapDataLabelSettings(
-        //         overflowMode: MapLabelOverflow.ellipsis,
-        //         textStyle: TextStyle(
-        //           color: Color.fromRGBO(45, 45, 45, 1),
-        //         ),
-        //       ),
-        //       tooltipSettings: const MapTooltipSettings(
-        //         color: Colors.white,
-        //       ),
-        //       initialMarkersCount: 1,
-        //       markerBuilder: (BuildContext context, int index) {
-        //         return MapMarker(
-        //           latitude: currentLatitude,
-        //           longitude: currentLongitude,
-        //           offset: Offset(0, -_markerSize / 2),
-        //           size: Size(_markerSize, _markerSize * 2),
-        //           child: const Icon(
-        //             Icons.location_on,
-        //             color: Color.fromRGBO(199, 42, 89, 1),
-        //           ),
-        //         );
-        //       },
-        //       zoomPanBehavior: _zoomPanBehavior,
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
