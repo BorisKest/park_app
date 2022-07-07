@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:park_app/src/feature/map/wdiget/popup_marker.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -17,7 +18,6 @@ class _MapScreenState extends State<MapScreen> {
   LocationData? currentPosition;
   double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
-  static const String _heroMark = 'show_marker_info';
 
   //  List<LatLng> pointList = [
   //  LatLng(37.769495, -25.337934),
@@ -126,9 +126,10 @@ class _MapScreenState extends State<MapScreen> {
                 ),
                 Marker(
                   point: LatLng(37.769495, -25.337934),
-                  builder: (context) => Hero(
-                    tag: _heroMark,
-                    child: const Icon(Icons.location_pin),
+                  builder: (context) => PopupMarker(
+                    titleText: 'Waterfall',
+                    image: 'assets/images/marker1.jpg',
+                    bodyText: 'Waterfall description',
                   ),
                 ),
                 Marker(
