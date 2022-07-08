@@ -33,34 +33,35 @@ class _PlantsScreenState extends State<PlantsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          title: const Text('Plants'),
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {
-                chekPromitions(context);
-              },
-              icon: const Icon(Icons.qr_code),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text('Plants'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              chekPromitions(context);
+            },
+            icon: const Icon(Icons.qr_code),
+          ),
+        ],
+      ),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                mainAxisSpacing: 0,
+                crossAxisSpacing: 0,
+                maxCrossAxisExtent: 392,
+              ),
+              itemCount: _plants.length,
+              itemBuilder: (context, index) => BuildCard(
+                image: _plants[index]['image'],
+                titleText: _plants[index]['name'],
+                bodyText: _plants[index]['description'],
+              ),
             ),
-          ],
-        ),
-        body: _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : GridView.builder(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  mainAxisSpacing: 0,
-                  crossAxisSpacing: 0,
-                  maxCrossAxisExtent: 392,
-                ),
-                itemCount: _plants.length,
-                itemBuilder: (context, index) => BuildCard(
-                  image: _plants[index]['image'],
-                  titleText: _plants[index]['name'],
-                  bodyText: _plants[index]['description'],
-                ),
-              ));
+    );
   }
 }

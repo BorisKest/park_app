@@ -27,7 +27,7 @@ class BuildCardWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: Image.asset(
                   image,
                   fit: BoxFit.fill,
@@ -35,7 +35,7 @@ class BuildCardWidget extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 0),
               child: Row(
                 children: [
                   LargeBoldText(text: productName),
@@ -46,6 +46,10 @@ class BuildCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            const Divider(
+              color: Colors.white,
+              thickness: 0.2,
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),

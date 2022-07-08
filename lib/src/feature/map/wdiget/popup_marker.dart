@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/map/wdiget/custom_page_route.dart';
@@ -9,11 +8,13 @@ class PopupMarker extends StatelessWidget {
     required this.titleText,
     required this.image,
     required this.bodyText,
+    required this.heroMark,
   }) : super(key: key);
 
   final String titleText;
   final String image;
   final String bodyText;
+  final String heroMark;
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +23,20 @@ class PopupMarker extends StatelessWidget {
         Navigator.of(context).push(
           CustomPageRoute(
             builder: (context) {
-              return _PopupMarkerCard(
-                titleText: titleText,
-                image: image,
-                bodyText: bodyText,
-              );
+              return _PopupMarkerCard(titleText: titleText, image: image, bodyText: bodyText, heroMark: heroMark);
             },
           ),
         );
       },
       child: Hero(
-        tag: _heroMark,
-        child: Material(
-          color: Theme.of(context).secondaryHeaderColor,
-          elevation: 3,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
-          child: const Icon(
-            Icons.location_pin,
-          ),
+        tag: heroMark,
+        child: const Icon(
+          Icons.local_see,
         ),
       ),
     );
   }
 }
-
-const String _heroMark = 'show_marker_info';
 
 class _PopupMarkerCard extends StatelessWidget {
   const _PopupMarkerCard({
@@ -54,11 +44,13 @@ class _PopupMarkerCard extends StatelessWidget {
     required this.titleText,
     required this.image,
     required this.bodyText, // i dont like the way how var's is coming, need to finde other way ..
+    required this.heroMark,
   }) : super(key: key);
 
   final String titleText;
   final String image;
   final String bodyText;
+  final String heroMark;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +58,7 @@ class _PopupMarkerCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Hero(
-          tag: _heroMark,
+          tag: heroMark,
           child: Material(
             color: Theme.of(context).secondaryHeaderColor,
             elevation: 3,

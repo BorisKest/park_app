@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomPageRoute<T> extends PageRoute<T> {
@@ -26,7 +25,6 @@ class CustomPageRoute<T> extends PageRoute<T> {
   @override
   Color get barrierColor => Colors.black45;
 
-  @override
   Widget buildTransition(
       BuildContext context, Animation<double> animation, Animation<double> secondoryAnimation, Widget child) {
     return child;

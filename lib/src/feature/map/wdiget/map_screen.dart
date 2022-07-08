@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:park_app/src/common/widget/utils.dart';
 import 'package:park_app/src/feature/map/wdiget/popup_marker.dart';
 
 class MapScreen extends StatefulWidget {
@@ -13,7 +14,6 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  final double _markerSize = 24;
   Location location = Location();
   LocationData? currentPosition;
   double currentLatitude = 32.7681286;
@@ -57,17 +57,6 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  void _getCurrentPosition() async {
-    currentPosition = await _getLocation();
-    if (currentPosition != null) {
-      currentLatitude = currentPosition!.latitude!;
-      currentLongitude = currentPosition!.longitude!;
-    }
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
   Future<LocationData> _getLocation() async {
     bool serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
@@ -89,101 +78,178 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    currentPosition == null ? Container() : _getCurrentPosition();
-
-    //in case that you use the HomeScreen as Screen
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Text(AppLocalizations.of(context)!.map),
       ),
       body: Center(
-        child: FlutterMap(
-          options: MapOptions(
-            center: LatLng(37.768449, -25.332746),
-            zoom: 13.0,
-            maxZoom: 19.0,
-            interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-          ),
-          layers: [
-            TileLayerOptions(
-              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-              subdomains: ['a', 'b', 'c'],
-              tileProvider: NonCachingNetworkTileProvider(),
-              tileBounds: LatLngBounds(
-                LatLng(37.781144, -25.359088),
-                LatLng(37.725494, -25.302919),
+        child: Stack(
+          children: [
+            SizedBox(
+              height: mediaQueryData.size.height,
+              child: FlutterMap(
+                options: MapOptions(
+                  center: LatLng(37.768449, -25.332746),
+                  minZoom: 1,
+                  maxZoom: 19.0,
+                  bounds: LatLngBounds(
+                    LatLng(37.770278, -25.339618),
+                    LatLng(37.764454, -25.329514),
+                  ),
+                  maxBounds: LatLngBounds(
+                    LatLng(37.773741, -25.341170),
+                    LatLng(37.758501, -25.319407),
+                  ),
+                  interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                ),
+                layers: [
+                  TileLayerOptions(
+                    urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    subdomains: ['a', 'b', 'c'],
+                    tileProvider: const NonCachingNetworkTileProvider(),
+                  ),
+                  MarkerLayerOptions(
+                    markers: [
+                      Marker(
+                        point: LatLng(currentLatitude, currentLongitude),
+                        builder: (context) => const Icon(
+                          Icons.location_on,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      Marker(
+                        point: LatLng(37.769495, -25.337934),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Waterfall',
+                            image: 'assets/images/marker1.jpg',
+                            bodyText: 'Waterfall description',
+                            heroMark: 'Marker1'),
+                      ),
+                      Marker(
+                        point: LatLng(37.770000, -25.336750),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'View poit',
+                            image: 'assets/images/marker2.jpg',
+                            bodyText: 'View description',
+                            heroMark: 'Marker2'),
+                      ),
+                      Marker(
+                        point: LatLng(37.769520, -25.336879),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Waterfall2',
+                            image: 'assets/images/backgroundMain.jpg',
+                            bodyText: 'Waterfall 2 description',
+                            heroMark: 'Marker3'),
+                      ),
+                      Marker(
+                        point: LatLng(37.769399, -25.335963),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Waterfall3',
+                            image: 'assets/images/marker4.jpg',
+                            bodyText: 'Waterfall 3 description',
+                            heroMark: 'Marker4'),
+                      ),
+                      Marker(
+                        point: LatLng(37.769832, -25.335416),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Trails',
+                            image: 'assets/images/marker5.jpg',
+                            bodyText: 'WTrails description',
+                            heroMark: 'Marker5'),
+                      ),
+                      Marker(
+                        point: LatLng(37.769272, -25.335319),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'River',
+                            image: 'assets/images/marker6.jpg',
+                            bodyText: 'River description',
+                            heroMark: 'Marker6'),
+                      ),
+                      Marker(
+                        point: LatLng(37.768071, -25.334812),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Forest',
+                            image: 'assets/images/marker7.jpg',
+                            bodyText: 'Forest description',
+                            heroMark: 'Marker7'),
+                      ),
+                      Marker(
+                        point: LatLng(37.766326, -25.335566),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Grena House',
+                            image: 'assets/images/marker8.jpg',
+                            bodyText: 'Grena House description',
+                            heroMark: 'Marker8'),
+                      ),
+                      Marker(
+                        point: LatLng(37.766635, -25.335263),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Grena House',
+                            image: 'assets/images/marker9.jpg',
+                            bodyText: 'Grena House description',
+                            heroMark: 'Marker9'),
+                      ),
+                      Marker(
+                        point: LatLng(37.765392, -25.333311),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Morsegu hose',
+                            image: 'assets/images/marker10.jpg',
+                            bodyText: 'Morsegu hose description',
+                            heroMark: 'Marker10'),
+                      ),
+                      Marker(
+                        point: LatLng(37.766094, -25.333657),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'View poit 3',
+                            image: 'assets/images/marker11.jpg',
+                            bodyText: 'View poit 3 description',
+                            heroMark: 'Marker11'),
+                      ),
+                      Marker(
+                        point: LatLng(37.767961, -25.334361),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'View poit 4',
+                            image: 'assets/images/marker12.jpg',
+                            bodyText: 'View poit 4 description',
+                            heroMark: 'Marker12'),
+                      ),
+                      Marker(
+                        point: LatLng(37.767870, -25.333355),
+                        builder: (context) => const PopupMarker(
+                            titleText: 'Grena lake',
+                            image: 'assets/images/marker13.jpg',
+                            bodyText: 'Grena lake description',
+                            heroMark: 'Marker13'),
+                      ),
+                    ],
+                  ),
+                ],
+                children: const [],
               ),
             ),
-            MarkerLayerOptions(
-              markers: [
-                Marker(
-                  point: LatLng(currentLatitude, currentLongitude),
-                  builder: (context) => const Icon(
-                    Icons.location_on,
-                    color: Colors.blue,
+            Positioned(
+              right: 5,
+              bottom: 5,
+              child: SizedBox(
+                height: 25,
+                child: ElevatedButton(
+                  onPressed: () => Utils.openLink(url: Uri.parse('https://www.openstreetmap.org/copyright')),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white24,
+                    elevation: 0,
+                    padding: EdgeInsets.all(5),
+                    textStyle: TextStyle(fontSize: 12, color: Colors.black45),
+                  ),
+                  child: const Text(
+                    'Map data from OpenStreetMap',
+                    style: TextStyle(color: Colors.black54),
                   ),
                 ),
-                Marker(
-                  point: LatLng(37.769495, -25.337934),
-                  builder: (context) => PopupMarker(
-                    titleText: 'Waterfall',
-                    image: 'assets/images/marker1.jpg',
-                    bodyText: 'Waterfall description',
-                  ),
-                ),
-                Marker(
-                  point: LatLng(37.770096, -25.336740),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.769520, -25.336879),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.769399, -25.335963),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.769832, -25.335416),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.769272, -25.335319),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.768071, -25.334812),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.767961, -25.334361),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.766326, -25.335566),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.766635, -25.335263),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.765392, -25.333311),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.766094, -25.333657),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-                Marker(
-                  point: LatLng(37.767870, -25.333355),
-                  builder: (context) => const Icon(Icons.location_pin),
-                ),
-              ],
+              ),
             ),
           ],
-          children: [],
         ),
       ),
     );

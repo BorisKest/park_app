@@ -30,6 +30,7 @@ class ThemeProvider extends ChangeNotifier {
       secondaryHeaderColor: kSecibdaryHederColorLite,
       backgroundColor: kBackgroundColorLite,
       scaffoldBackgroundColor: kBackgroundColorLite,
+      focusColor: kNegativColorDark,
       textTheme: const TextTheme(
         headline1: TextStyle(color: Colors.black),
         headline2: TextStyle(color: Colors.black),
@@ -48,6 +49,7 @@ class ThemeProvider extends ChangeNotifier {
       secondaryHeaderColor: kSecibdaryHederColorDark,
       backgroundColor: kBackgroundColorDark,
       scaffoldBackgroundColor: kBackgroundColorDark,
+      focusColor: kNegativColorLite,
       textTheme: const TextTheme(
         headline1: TextStyle(color: Colors.white),
         headline2: TextStyle(color: Colors.white),
