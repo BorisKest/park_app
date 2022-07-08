@@ -14,12 +14,15 @@ class PlantsScreen extends StatefulWidget {
 
 class _PlantsScreenState extends State<PlantsScreen> {
   List<Map<String, dynamic>> _plants = [];
+  List<Map<String, dynamic>> _plantsImages = [];
   bool _isLoading = true;
 
   void _refreshJournals() async {
     final data = await DBHelper.getItems();
+    final images = await DBHelper.getImages();
     setState(() {
       _plants = data;
+      _plantsImages = images;
       _isLoading = false;
     });
   }
@@ -57,7 +60,7 @@ class _PlantsScreenState extends State<PlantsScreen> {
               ),
               itemCount: _plants.length,
               itemBuilder: (context, index) => BuildCard(
-                image: _plants[index]['image'],
+                image: _plantsImages[index]['image'],
                 titleText: _plants[index]['name'],
                 bodyText: _plants[index]['description'],
               ),
