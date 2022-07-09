@@ -74,6 +74,7 @@ class _PopupMarkerCard extends StatelessWidget {
                       thickness: 0.2,
                     ),
                     Image(image: AssetImage(image)),
+                    const Divider(),
                     Text(bodyText),
                   ],
                 ),

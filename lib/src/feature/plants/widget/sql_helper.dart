@@ -1,11 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:park_app/src/common/localization/l10n.dart';
 import 'package:park_app/src/common/localization/language.dart';
-import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:path/path.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 

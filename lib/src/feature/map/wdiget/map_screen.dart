@@ -92,7 +92,6 @@ class _MapScreenState extends State<MapScreen> {
               child: FlutterMap(
                 options: MapOptions(
                   center: LatLng(37.768449, -25.332746),
-                  minZoom: 1,
                   maxZoom: 19.0,
                   bounds: LatLngBounds(
                     LatLng(37.770278, -25.339618),
@@ -239,8 +238,8 @@ class _MapScreenState extends State<MapScreen> {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white24,
                     elevation: 0,
-                    padding: EdgeInsets.all(5),
-                    textStyle: TextStyle(fontSize: 12, color: Colors.black45),
+                    padding: const EdgeInsets.all(5),
+                    textStyle: const TextStyle(fontSize: 12, color: Colors.black45),
                   ),
                   child: const Text(
                     'Map data from OpenStreetMap',
