@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../common/localization/language.dart';
 import '../../../common/widget/locale_provider.dart';
 
@@ -37,7 +36,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
             icon: const Icon(Icons.arrow_downward),
             elevation: 10,
             style: const TextStyle(
-              color: Colors.blue,
+              color: Colors.black,
             ),
             onChanged: (Language? locale) {
               if (locale == null) return;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NetworkImageBuilder extends StatelessWidget {
-  NetworkImageBuilder({required this.image});
+  const NetworkImageBuilder({Key? key, required this.image}) : super(key: key);
   final String image;
 
   @override

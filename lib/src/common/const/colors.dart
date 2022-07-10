@@ -10,3 +10,5 @@ const Color kSecibdaryHederColorLite = Color.fromARGB(255, 131, 177, 160);
 const Color kSecibdaryHederColorDark = Color.fromARGB(255, 78, 100, 84);
 const Color kHighlitghtColorLite = Color.fromARGB(255, 29, 49, 48);
 const Color kHighlitghtColorDark = Color.fromARGB(255, 233, 229, 214);
+const Color kNegativColorLite = Colors.black;
+const Color kNegativColorDark = Colors.white;
