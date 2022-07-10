@@ -120,107 +120,107 @@ class _MapScreenState extends State<MapScreen> {
                       ),
                       Marker(
                         point: LatLng(37.769495, -25.337934),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Waterfall',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle1,
                             image: 'assets/images/marker1.jpg',
-                            bodyText: 'Waterfall description',
-                            heroMark: 'Marker1'),
+                            bodyText: AppLocalizations.of(context)!.markerBody1,
+                            heroMark: '1'),
                       ),
                       Marker(
                         point: LatLng(37.770000, -25.336750),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'View poit',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle2,
                             image: 'assets/images/marker2.jpg',
-                            bodyText: 'View description',
-                            heroMark: 'Marker2'),
+                            bodyText: AppLocalizations.of(context)!.markerBody2,
+                            heroMark: '2'),
                       ),
                       Marker(
                         point: LatLng(37.769520, -25.336879),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Waterfall2',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle3,
                             image: 'assets/images/backgroundMain.jpg',
-                            bodyText: 'Waterfall 2 description',
-                            heroMark: 'Marker3'),
+                            bodyText: AppLocalizations.of(context)!.markerBody3,
+                            heroMark: '3'),
                       ),
                       Marker(
                         point: LatLng(37.769399, -25.335963),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Waterfall3',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle4,
                             image: 'assets/images/marker4.jpg',
-                            bodyText: 'Waterfall 3 description',
-                            heroMark: 'Marker4'),
+                            bodyText: AppLocalizations.of(context)!.markerBody4,
+                            heroMark: '4'),
                       ),
                       Marker(
                         point: LatLng(37.769832, -25.335416),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Trails',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle5,
                             image: 'assets/images/marker5.jpg',
-                            bodyText: 'WTrails description',
-                            heroMark: 'Marker5'),
+                            bodyText: AppLocalizations.of(context)!.markerBody5,
+                            heroMark: '5'),
                       ),
                       Marker(
                         point: LatLng(37.769272, -25.335319),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'River',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle6,
                             image: 'assets/images/marker6.jpg',
-                            bodyText: 'River description',
-                            heroMark: 'Marker6'),
+                            bodyText: AppLocalizations.of(context)!.markerBody6,
+                            heroMark: '6'),
                       ),
                       Marker(
                         point: LatLng(37.768071, -25.334812),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Forest',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle7,
                             image: 'assets/images/marker7.jpg',
-                            bodyText: 'Forest description',
-                            heroMark: 'Marker7'),
+                            bodyText: AppLocalizations.of(context)!.markerBody7,
+                            heroMark: '7'),
                       ),
                       Marker(
                         point: LatLng(37.766326, -25.335566),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Grena House',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle8,
                             image: 'assets/images/marker8.jpg',
-                            bodyText: 'Grena House description',
-                            heroMark: 'Marker8'),
+                            bodyText: AppLocalizations.of(context)!.markerBody8,
+                            heroMark: '8'),
                       ),
                       Marker(
                         point: LatLng(37.766635, -25.335263),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Grena House',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle9,
                             image: 'assets/images/marker9.jpg',
-                            bodyText: 'Grena House description',
-                            heroMark: 'Marker9'),
+                            bodyText: AppLocalizations.of(context)!.markerBody9,
+                            heroMark: '9'),
                       ),
                       Marker(
                         point: LatLng(37.765392, -25.333311),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Morsegu hose',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle10,
                             image: 'assets/images/marker10.jpg',
-                            bodyText: 'Morsegu hose description',
-                            heroMark: 'Marker10'),
+                            bodyText: AppLocalizations.of(context)!.markerBody10,
+                            heroMark: '10'),
                       ),
                       Marker(
                         point: LatLng(37.766094, -25.333657),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'View poit 3',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle11,
                             image: 'assets/images/marker11.jpg',
-                            bodyText: 'View poit 3 description',
-                            heroMark: 'Marker11'),
+                            bodyText: AppLocalizations.of(context)!.markerBody11,
+                            heroMark: '11'),
                       ),
                       Marker(
                         point: LatLng(37.767961, -25.334361),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'View poit 4',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle12,
                             image: 'assets/images/marker12.jpg',
-                            bodyText: 'View poit 4 description',
-                            heroMark: 'Marker12'),
+                            bodyText: AppLocalizations.of(context)!.markerBody12,
+                            heroMark: '12'),
                       ),
                       Marker(
                         point: LatLng(37.767870, -25.333355),
-                        builder: (context) => const PopupMarker(
-                            titleText: 'Grena lake',
+                        builder: (context) => PopupMarker(
+                            titleText: AppLocalizations.of(context)!.markerTitle13,
                             image: 'assets/images/marker13.jpg',
-                            bodyText: 'Grena lake description',
-                            heroMark: 'Marker13'),
+                            bodyText: AppLocalizations.of(context)!.markerBody13,
+                            heroMark: '13'),
                       ),
                     ],
                   ),

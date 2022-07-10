@@ -18,20 +18,28 @@ class PopupMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          CustomPageRoute(
-            builder: (context) {
-              return _PopupMarkerCard(titleText: titleText, image: image, bodyText: bodyText, heroMark: heroMark);
-            },
+    return SizedBox(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            CustomPageRoute(
+              builder: (context) {
+                return _PopupMarkerCard(titleText: titleText, image: image, bodyText: bodyText, heroMark: heroMark);
+              },
+            ),
+          );
+        },
+        child: Hero(
+          tag: heroMark,
+          child: Material(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            color: Theme.of(context).secondaryHeaderColor,
+            child: Center(
+              child: Text(heroMark),
+            ),
           ),
-        );
-      },
-      child: Hero(
-        tag: heroMark,
-        child: const Icon(
-          Icons.local_see,
         ),
       ),
     );
@@ -56,13 +64,13 @@ class _PopupMarkerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(40.0),
         child: Hero(
           tag: heroMark,
           child: Material(
             color: Theme.of(context).secondaryHeaderColor,
             elevation: 3,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
