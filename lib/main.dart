@@ -43,6 +43,7 @@ class ParkApp extends StatelessWidget {
         final provider = Provider.of<LocaleProvider>(context);
         final themeProvider = Provider.of<ThemeProvider>(context);
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
