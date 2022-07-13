@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final ScrollController _firstController = ScrollController();
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -143,37 +144,42 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
 
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        physics: const ScrollPhysics(),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            RowHistoryWidget(
-                                dateText: '1832 – 1882',
-                                image: imageList[5],
-                                mainText: AppLocalizations.of(context)!.historyPart0),
-                            RowHistoryWidget(
-                                dateText: '1987',
-                                image: imageList[0],
-                                mainText: AppLocalizations.of(context)!.historyPart1),
-                            RowHistoryWidget(
-                                dateText: '2009',
-                                image: imageList[1],
-                                mainText: AppLocalizations.of(context)!.historyPart2),
-                            RowHistoryWidget(
-                                dateText: '2015',
-                                image: imageList[2],
-                                mainText: AppLocalizations.of(context)!.historyPart3),
-                            RowHistoryWidget(
-                                dateText: '2018',
-                                image: imageList[3],
-                                mainText: AppLocalizations.of(context)!.historyPart4),
-                            RowHistoryWidget(
-                                dateText: '2019',
-                                image: imageList[4],
-                                mainText: AppLocalizations.of(context)!.historyPart5),
-                          ],
+                      Scrollbar(
+                        thumbVisibility: true,
+                        controller: _firstController,
+                        child: SingleChildScrollView(
+                          controller: _firstController,
+                          scrollDirection: Axis.horizontal,
+                          physics: const PageScrollPhysics(),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              RowHistoryWidget(
+                                  dateText: '1832 – 1882',
+                                  image: imageList[5],
+                                  mainText: AppLocalizations.of(context)!.historyPart0),
+                              RowHistoryWidget(
+                                  dateText: '1987',
+                                  image: imageList[0],
+                                  mainText: AppLocalizations.of(context)!.historyPart1),
+                              RowHistoryWidget(
+                                  dateText: '2009',
+                                  image: imageList[1],
+                                  mainText: AppLocalizations.of(context)!.historyPart2),
+                              RowHistoryWidget(
+                                  dateText: '2015',
+                                  image: imageList[2],
+                                  mainText: AppLocalizations.of(context)!.historyPart3),
+                              RowHistoryWidget(
+                                  dateText: '2018',
+                                  image: imageList[3],
+                                  mainText: AppLocalizations.of(context)!.historyPart4),
+                              RowHistoryWidget(
+                                  dateText: '2019',
+                                  image: imageList[4],
+                                  mainText: AppLocalizations.of(context)!.historyPart5),
+                            ],
+                          ),
                         ),
                       ),
                       //end of history section

@@ -101,7 +101,7 @@ class _MapScreenState extends State<MapScreen> {
                     LatLng(37.773741, -25.341170),
                     LatLng(37.758501, -25.319407),
                   ),
-                  interactiveFlags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                  interactiveFlags: InteractiveFlag.all,
                 ),
                 layers: [
                   TileLayerOptions(
