@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    final ScrollController _firstController = ScrollController();
+    final ScrollController firstController = ScrollController();
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -146,9 +146,9 @@ class HomeScreen extends StatelessWidget {
 
                       Scrollbar(
                         thumbVisibility: true,
-                        controller: _firstController,
+                        controller: firstController,
                         child: SingleChildScrollView(
-                          controller: _firstController,
+                          controller: firstController,
                           scrollDirection: Axis.horizontal,
                           physics: const PageScrollPhysics(),
                           child: Row(

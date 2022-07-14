@@ -107,7 +107,7 @@ class _MapScreenState extends State<MapScreen> {
                   TileLayerOptions(
                     urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                     subdomains: ['a', 'b', 'c'],
-                    tileProvider: const NonCachingNetworkTileProvider(),
+                    tileProvider: NetworkTileProvider(),
                   ),
                   MarkerLayerOptions(
                     markers: [
