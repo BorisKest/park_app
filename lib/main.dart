@@ -124,7 +124,7 @@ class _MainScreen extends State<MainScreen> {
           if (index == 4) {
             await showMenu<String>(
               context: context,
-              position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
+              position: const RelativeRect.fromLTRB(1000.0, 666.0, 0.0, 0.0),
               items: const <PopupMenuItem<String>>[
                 PopupMenuItem<String>(value: 'lenguage', child: DropDownMenu()),
                 PopupMenuItem<String>(value: 'theme', child: SwitchWidget()),

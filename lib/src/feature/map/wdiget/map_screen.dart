@@ -4,7 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:park_app/src/common/widget/utils.dart';
-import 'package:park_app/src/feature/map/Services/fpv_mode.dart';
+import 'package:park_app/src/feature/map/Services/auto_rotatation_mode.dart';
 import 'package:park_app/src/feature/map/Services/popup_marker.dart';
 
 class MapScreen extends StatefulWidget {
@@ -248,7 +248,10 @@ class _MapScreenState extends State<MapScreen> {
               bottom: 15,
               child: FloatingActionButton(
                 onPressed: () {
-                  AutoRotation();
+                  AutoRotation(
+                    currentLatitude: currentLatitude,
+                    currentLongitude: currentLongitude,
+                  ).rotateCamera;
                 },
                 child: const Icon(Icons.adjust),
               ),
