@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
-import 'package:park_app/src/feature/map/wdiget/custom_page_route.dart';
+import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
 
 class PopupMarker extends StatelessWidget {
   const PopupMarker({

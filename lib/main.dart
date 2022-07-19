@@ -12,7 +12,7 @@ import 'package:park_app/src/feature/settings/widget/drop_down_menu.dart';
 import 'package:park_app/src/feature/settings/widget/toggle_switch.dart';
 import 'package:provider/provider.dart';
 import 'src/common/localization/l10n.dart';
-import 'src/feature/home/widget/new_home_screen.dart';
+import 'src/feature/home/widget/home_screen.dart';
 import 'src/feature/map/wdiget/map_screen.dart';
 import 'src/feature/product/widget/product_screen.dart';
 
@@ -124,7 +124,7 @@ class _MainScreen extends State<MainScreen> {
           if (index == 4) {
             await showMenu<String>(
               context: context,
-              position: const RelativeRect.fromLTRB(1000.0, 1000.0, 0.0, 0.0),
+              position: const RelativeRect.fromLTRB(1000.0, 666.0, 0.0, 0.0),
               items: const <PopupMenuItem<String>>[
                 PopupMenuItem<String>(value: 'lenguage', child: DropDownMenu()),
                 PopupMenuItem<String>(value: 'theme', child: SwitchWidget()),
