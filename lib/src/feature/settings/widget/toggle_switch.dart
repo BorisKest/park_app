@@ -12,12 +12,16 @@ class SwitchWidget extends StatefulWidget {
 }
 
 class _SwitchWidgetState extends State<SwitchWidget> {
+  IconData icon = Icons.dark_mode;
+
   Future<bool> _setBool() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String theme = prefs.getString('theme') ?? 'lightTheme';
     if (theme == 'darkTheme') {
+      icon = Icons.dark_mode;
       return true;
     } else {
+      icon = Icons.light_mode;
       return false;
     }
   }
@@ -28,15 +32,20 @@ class _SwitchWidgetState extends State<SwitchWidget> {
       future: _setBool(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Switch(
-            value: snapshot.data ?? false,
-            onChanged: (bool newValue) {
-              setState(
-                () {
-                  _setTheme(newValue);
+          return Row(
+            children: [
+              Icon(icon),
+              Switch(
+                value: snapshot.data ?? false,
+                onChanged: (bool newValue) {
+                  setState(
+                    () {
+                      _setTheme(newValue);
+                    },
+                  );
                 },
-              );
-            },
+              ),
+            ],
           );
         }
         return const Text('Error: 210');
