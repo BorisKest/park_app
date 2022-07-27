@@ -88,14 +88,14 @@ class _MapScreenState extends State<MapScreen> {
                 options: MapOptions(
                   center: LatLng(37.768449, -25.332746),
                   maxZoom: 19.0,
-                  bounds: LatLngBounds(
-                    LatLng(37.770278, -25.339618),
-                    LatLng(37.764454, -25.329514),
-                  ),
-                  maxBounds: LatLngBounds(
-                    LatLng(37.773741, -25.341170),
-                    LatLng(37.758501, -25.319407),
-                  ),
+                  // bounds: LatLngBounds(
+                  //   LatLng(37.770278, -25.339618),
+                  //   LatLng(37.764454, -25.329514),
+                  // ),
+                  // maxBounds: LatLngBounds(
+                  //   LatLng(37.773741, -25.341170),
+                  //   LatLng(37.758501, -25.319407),
+                  // ),
                   interactiveFlags: InteractiveFlag.all,
                 ),
                 layers: [
@@ -148,9 +148,12 @@ class _MapScreenState extends State<MapScreen> {
               left: 15,
               bottom: 15,
               child: FloatingActionButton(
+                heroTag: "btn1",
                 onPressed: () {
-                  double angule = atan2(currentLatitude, currentLongitude);
-                  setState(() {}); // not finisd
+                  // double angule = atan2(currentLatitude, currentLongitude);
+                  setState(() {
+                    mapController.rotate(15);
+                  }); // not finisd
                 },
                 child: const Icon(Icons.adjust),
               ),
@@ -160,6 +163,7 @@ class _MapScreenState extends State<MapScreen> {
               left: 15,
               bottom: 60,
               child: FloatingActionButton(
+                heroTag: "btn2",
                 onPressed: () {
                   setState(() {
                     rootLines1 = ShowLines(isRootsShown: isRootsShown).showFirstRoot();
