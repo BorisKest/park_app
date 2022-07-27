@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:park_app/src/feature/map/Services/popup_marker.dart';
@@ -8,15 +7,6 @@ class MapMarkers {
   MarkerLayerOptions setMarkers() {
     return MarkerLayerOptions(
       markers: [
-        Marker(
-          point: LatLng(37.769520, -25.336879),
-          rotate: true,
-          builder: (context) => PopupMarker(
-              titleText: AppLocalizations.of(context)!.markerTitle3,
-              image: 'assets/images/backgroundMain.jpg',
-              bodyText: AppLocalizations.of(context)!.markerBody3,
-              heroMark: '3'),
-        ),
         Marker(
           point: LatLng(37.769495, -25.337934),
           rotate: true,

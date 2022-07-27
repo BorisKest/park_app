@@ -1,16 +1,11 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/common/widget/utils.dart';
-import 'package:park_app/src/feature/map/Services/auto_rotatation_mode.dart';
-import 'package:park_app/src/feature/map/Services/popup_marker.dart';
-import 'package:geojson/geojson.dart';
+import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/markers.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';
 
@@ -27,22 +22,13 @@ class _MapScreenState extends State<MapScreen> {
   double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
 
-  //  List<LatLng> pointList = [
-  //  LatLng(37.769495, -25.337934),
-  //  LatLng(37.770096, -25.336740),
-  //  LatLng(37.769520, -25.336879),
-  //  LatLng(37.769399, -25.335963),
-  //  LatLng(37.769832, -25.335416),
-  //  LatLng(37.769272, -25.335319),
-  //  LatLng(37.768071, -25.334812),
-  //  LatLng(37.767961, -25.334361),
-  //  LatLng(37.766326, -25.335566),
-  //  LatLng(37.766635, -25.335263),
-  //  LatLng(37.765392, -25.333311),
-  //  LatLng(37.766094, -25.333657),
-  //  LatLng(37.767870, -25.333355)
-  //  ];
+  bool isRootsShown = false;
+
   late final MapController mapController;
+
+  var rootLines1 = <LatLng>[LatLng(0, 0)];
+  var rootLines2 = <LatLng>[LatLng(0, 0)];
+  var rootLines3 = <LatLng>[LatLng(0, 0)];
 
   @override
   void initState() {
@@ -118,6 +104,27 @@ class _MapScreenState extends State<MapScreen> {
                     subdomains: ['a', 'b', 'c'],
                     tileProvider: NetworkTileProvider(),
                   ),
+
+                  PolylineLayerOptions(
+                    polylines: [
+                      Polyline(
+                        strokeWidth: 5,
+                        points: rootLines1,
+                        color: Colors.blue,
+                      ),
+                      Polyline(
+                        strokeWidth: 5,
+                        points: rootLines2,
+                        color: Colors.orange,
+                      ),
+                      Polyline(
+                        strokeWidth: 5,
+                        points: rootLines3,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+
                   MapMarkers().setMarkers(), //static markers
                   MarkerLayerOptions(
                     // current location marker
@@ -132,30 +139,12 @@ class _MapScreenState extends State<MapScreen> {
                       ),
                     ],
                   ),
-                  PolylineLayerOptions(
-                    polylines: [
-                      Polyline(
-                        strokeWidth: 5,
-                        points: lines,
-                        color: Colors.blue,
-                      ),
-                      Polyline(
-                        strokeWidth: 5,
-                        points: lines1,
-                        color: Colors.orange,
-                      ),
-                      Polyline(
-                        strokeWidth: 5,
-                        points: lines2,
-                        color: Colors.red,
-                      ),
-                    ],
-                  ),
                 ],
                 children: const [],
               ),
             ),
             Positioned(
+              //auto rotation
               left: 15,
               bottom: 15,
               child: FloatingActionButton(
@@ -167,6 +156,23 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
             Positioned(
+              //show root
+              left: 15,
+              bottom: 60,
+              child: FloatingActionButton(
+                onPressed: () {
+                  setState(() {
+                    rootLines1 = ShowLines(isRootsShown: isRootsShown).showFirstRoot();
+                    rootLines2 = ShowLines(isRootsShown: isRootsShown).showSecondRoot();
+                    rootLines3 = ShowLines(isRootsShown: isRootsShown).showThirdRoot();
+                    isRootsShown = ShowLines(isRootsShown: isRootsShown).setBool();
+                  });
+                },
+                child: const Icon(Icons.adjust),
+              ),
+            ),
+            Positioned(
+              // credits to OSM
               right: 5,
               bottom: 5,
               child: SizedBox(
