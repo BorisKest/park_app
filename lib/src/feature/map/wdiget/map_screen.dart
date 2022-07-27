@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:park_app/src/common/widget/utils.dart';
 import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/markers.dart';
-import 'package:park_app/src/feature/map/models/polylins.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -23,6 +21,7 @@ class _MapScreenState extends State<MapScreen> {
   double currentLongitude = -25.3317694;
 
   bool isRootsShown = false;
+  bool autoRotation = false;
 
   late final MapController mapController;
 
@@ -36,6 +35,7 @@ class _MapScreenState extends State<MapScreen> {
     _getLocation();
 
     super.initState();
+
     location.onLocationChanged.listen(
       (value) {
         setState(
@@ -44,11 +44,21 @@ class _MapScreenState extends State<MapScreen> {
             if (currentPosition != null) {
               currentLatitude = currentPosition!.latitude!;
               currentLongitude = currentPosition!.longitude!;
+              _getLocation();
+              _getHeading();
             }
           },
         );
       },
     );
+  }
+
+  void _getHeading() {
+    if (currentPosition != null && currentPosition!.heading != null && autoRotation == true) {
+      mapController.rotate(currentPosition!.heading!);
+    } else if (autoRotation == false) {
+      mapController.rotate(0);
+    }
   }
 
   Future<LocationData> _getLocation() async {
@@ -73,7 +83,6 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -85,6 +94,7 @@ class _MapScreenState extends State<MapScreen> {
             SizedBox(
               height: mediaQueryData.size.height,
               child: FlutterMap(
+                mapController: mapController,
                 options: MapOptions(
                   center: LatLng(37.768449, -25.332746),
                   maxZoom: 19.0,
@@ -150,9 +160,14 @@ class _MapScreenState extends State<MapScreen> {
               child: FloatingActionButton(
                 heroTag: "btn1",
                 onPressed: () {
-                  // double angule = atan2(currentLatitude, currentLongitude);
                   setState(() {
-                    mapController.rotate(15);
+                    if (autoRotation == false) {
+                      autoRotation = true;
+                      _getHeading();
+                    } else {
+                      autoRotation = false;
+                      _getHeading();
+                    }
                   }); // not finisd
                 },
                 child: const Icon(Icons.adjust),
