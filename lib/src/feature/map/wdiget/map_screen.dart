@@ -4,8 +4,11 @@ import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:park_app/src/common/widget/utils.dart';
+import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
 import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/markers.dart';
+import 'package:park_app/src/feature/map/models/polylins.dart';
+import 'package:park_app/src/feature/map/wdiget/roots_popup.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -20,14 +23,9 @@ class _MapScreenState extends State<MapScreen> {
   double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
 
-  bool isRootsShown = false;
   bool autoRotation = false;
 
   late final MapController mapController;
-
-  var rootLines1 = <LatLng>[LatLng(0, 0)];
-  var rootLines2 = <LatLng>[LatLng(0, 0)];
-  var rootLines3 = <LatLng>[LatLng(0, 0)];
 
   @override
   void initState() {
@@ -85,6 +83,9 @@ class _MapScreenState extends State<MapScreen> {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          RootPopUp(),
+        ],
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Text(AppLocalizations.of(context)!.map),
       ),
@@ -169,23 +170,6 @@ class _MapScreenState extends State<MapScreen> {
                       _getHeading();
                     }
                   }); // not finisd
-                },
-                child: const Icon(Icons.adjust),
-              ),
-            ),
-            Positioned(
-              //show root
-              left: 15,
-              bottom: 60,
-              child: FloatingActionButton(
-                heroTag: "btn2",
-                onPressed: () {
-                  setState(() {
-                    rootLines1 = ShowLines(isRootsShown: isRootsShown).showFirstRoot();
-                    rootLines2 = ShowLines(isRootsShown: isRootsShown).showSecondRoot();
-                    rootLines3 = ShowLines(isRootsShown: isRootsShown).showThirdRoot();
-                    isRootsShown = ShowLines(isRootsShown: isRootsShown).setBool();
-                  });
                 },
                 child: const Icon(Icons.adjust),
               ),
