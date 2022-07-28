@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/feature/plants/widget/card.dart';
-import 'package:park_app/src/feature/plants/widget/promitions.dart';
-import 'package:park_app/src/feature/plants/widget/sql_helper.dart';
+import 'package:park_app/src/feature/plants/services/promitions.dart';
+import 'package:park_app/src/feature/plants/services/sql_helper.dart';
 
 class PlantsScreen extends StatefulWidget {
   const PlantsScreen({
