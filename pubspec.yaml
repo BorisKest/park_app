@@ -17,6 +17,7 @@ dependencies:
   url_launcher: ^6.1.3
   mobile_scanner: ^2.0.0
   flutter_map: ^2.0.0
+  geojson: ^1.0.0
   latlong2: ^0.8.1
   provider: ^6.0.0
   intl: ^0.17.0
@@ -41,8 +42,8 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/map.json
     - assets/app_data.db
+    
  
   fonts:
     - family: MavenPro
