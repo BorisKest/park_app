@@ -3,9 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/utils.dart';
-import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
-import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/markers.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';
 import 'package:park_app/src/feature/map/wdiget/roots_popup.dart';
@@ -83,7 +82,7 @@ class _MapScreenState extends State<MapScreen> {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: const [
           RootPopUp(),
         ],
         backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -99,14 +98,14 @@ class _MapScreenState extends State<MapScreen> {
                 options: MapOptions(
                   center: LatLng(37.768449, -25.332746),
                   maxZoom: 19.0,
-                  // bounds: LatLngBounds(
-                  //   LatLng(37.770278, -25.339618),
-                  //   LatLng(37.764454, -25.329514),
-                  // ),
-                  // maxBounds: LatLngBounds(
-                  //   LatLng(37.773741, -25.341170),
-                  //   LatLng(37.758501, -25.319407),
-                  // ),
+                  bounds: LatLngBounds(
+                    LatLng(37.770278, -25.339618),
+                    LatLng(37.764454, -25.329514),
+                  ),
+                  maxBounds: LatLngBounds(
+                    LatLng(37.773741, -25.341170),
+                    LatLng(37.758501, -25.319407),
+                  ),
                   interactiveFlags: InteractiveFlag.all,
                 ),
                 layers: [
@@ -171,7 +170,7 @@ class _MapScreenState extends State<MapScreen> {
                     }
                   }); // not finisd
                 },
-                child: const Icon(Icons.adjust),
+                child: const Icon(Icons.gps_fixed),
               ),
             ),
             Positioned(
@@ -189,7 +188,7 @@ class _MapScreenState extends State<MapScreen> {
                     textStyle: const TextStyle(fontSize: 12, color: Colors.black45),
                   ),
                   child: const Text(
-                    'Map data from OpenStreetMap',
+                    'OpenStreetMap contributors',
                     style: TextStyle(color: Colors.black54),
                   ),
                 ),

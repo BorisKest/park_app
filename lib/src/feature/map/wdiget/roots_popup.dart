@@ -5,7 +5,7 @@ import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';
 
 class RootPopUp extends StatelessWidget {
-  RootPopUp({Key? key}) : super(key: key);
+  const RootPopUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,11 @@ class RootPopUp extends StatelessWidget {
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () => rootLines1 = ShowLines().showFirstRoot(),
-                        child: RootCard(
+                        onTap: () {
+                          rootLines1 = ShowLines().showFirstRoot();
+                          Navigator.of(context).pop();
+                        },
+                        child: const RootCard(
                           image: 'assets/images/firstroot.jpg',
                           name: 'Root 1',
                           distance: '5 km.',
@@ -30,20 +33,26 @@ class RootPopUp extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => rootLines2 = ShowLines().showSecondRoot(),
-                        child: RootCard(
+                        onTap: () {
+                          rootLines2 = ShowLines().showSecondRoot();
+                          Navigator.of(context).pop();
+                        },
+                        child: const RootCard(
                           image: 'assets/images/secondroot.jpg',
-                          name: 'Root 1',
+                          name: 'Root 2',
                           distance: '5 km.',
                           elevation: ' 300 m.',
                           calories: '400 kCl.',
                         ),
                       ),
                       GestureDetector(
-                        onTap: () => rootLines3 = ShowLines().showThirdRoot(),
-                        child: RootCard(
+                        onTap: () {
+                          rootLines3 = ShowLines().showThirdRoot();
+                          Navigator.of(context).pop();
+                        },
+                        child: const RootCard(
                           image: 'assets/images/tirdroot.jpg',
-                          name: 'Root 1',
+                          name: 'Root 3',
                           distance: '5 km.',
                           elevation: ' 300 m.',
                           calories: '400 kCl.',
@@ -75,13 +84,13 @@ class RootPopUp extends StatelessWidget {
 }
 
 class RootCard extends StatelessWidget {
-  String image;
-  String name;
-  String distance;
-  String elevation;
-  String calories;
+  final String image;
+  final String name;
+  final String distance;
+  final String elevation;
+  final String calories;
 
-  RootCard({
+  const RootCard({
     Key? key,
     required this.image,
     required this.name,
@@ -102,14 +111,14 @@ class RootCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  LargeBoldText(text: '$name'),
+                  LargeBoldText(text: name),
                   Text(
                     '''
         distance: $distance
         elevation: $elevation
         calories: $calories
  ''',
-                    style: TextStyle(),
+                    style: const TextStyle(),
                     textAlign: TextAlign.start,
                   ),
                 ],

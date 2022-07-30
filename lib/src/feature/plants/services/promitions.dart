@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/feature/plants/widget/qr_code_scaner.dart';
+import 'package:park_app/src/feature/plants/services/qr_code_scaner.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void chekPromitions(context) async {
