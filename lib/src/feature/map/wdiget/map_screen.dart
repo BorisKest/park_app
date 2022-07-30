@@ -53,8 +53,6 @@ class _MapScreenState extends State<MapScreen> {
   void _getHeading() {
     if (currentPosition != null && currentPosition!.heading != null && autoRotation == true) {
       mapController.rotate(currentPosition!.heading!);
-    } else if (autoRotation == false) {
-      mapController.rotate(0);
     }
   }
 

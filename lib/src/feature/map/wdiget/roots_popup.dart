@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
 import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RootPopUp extends StatelessWidget {
   const RootPopUp({Key? key}) : super(key: key);
@@ -24,9 +24,9 @@ class RootPopUp extends StatelessWidget {
                           rootLines1 = ShowLines().showFirstRoot();
                           Navigator.of(context).pop();
                         },
-                        child: const RootCard(
+                        child: RootCard(
                           image: 'assets/images/firstroot.jpg',
-                          name: 'Root 1',
+                          name: AppLocalizations.of(context)!.rootName1,
                           distance: '5 km.',
                           elevation: ' 300 m.',
                           calories: '400 kCl.',
@@ -37,9 +37,9 @@ class RootPopUp extends StatelessWidget {
                           rootLines2 = ShowLines().showSecondRoot();
                           Navigator.of(context).pop();
                         },
-                        child: const RootCard(
+                        child: RootCard(
                           image: 'assets/images/secondroot.jpg',
-                          name: 'Root 2',
+                          name: AppLocalizations.of(context)!.rootName2,
                           distance: '5 km.',
                           elevation: ' 300 m.',
                           calories: '400 kCl.',
@@ -50,9 +50,9 @@ class RootPopUp extends StatelessWidget {
                           rootLines3 = ShowLines().showThirdRoot();
                           Navigator.of(context).pop();
                         },
-                        child: const RootCard(
+                        child: RootCard(
                           image: 'assets/images/tirdroot.jpg',
-                          name: 'Root 3',
+                          name: AppLocalizations.of(context)!.rootName3,
                           distance: '5 km.',
                           elevation: ' 300 m.',
                           calories: '400 kCl.',
@@ -104,20 +104,22 @@ class RootCard extends StatelessWidget {
     return SizedBox(
       height: 160,
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         child: Row(
           children: [
             Image.asset(image),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(15.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  LargeBoldText(text: name),
                   Text(
-                    '''
-        distance: $distance
-        elevation: $elevation
-        calories: $calories
- ''',
+                    name,
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.start,
+                  ),
+                  Text(
+                    '\n${AppLocalizations.of(context)!.rootDistance}$distance\n${AppLocalizations.of(context)!.rootElevation}$elevation\n${AppLocalizations.of(context)!.calories}$calories',
                     style: const TextStyle(),
                     textAlign: TextAlign.start,
                   ),

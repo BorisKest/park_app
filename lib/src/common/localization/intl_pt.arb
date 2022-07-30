@@ -54,5 +54,14 @@
     "markerTitle12":"Miradouro",
     "markerBody12":"Um local bastante isolado com um banco. É um óptimo lugar para se sentar depois de um passeio no parque e desfrutar da solidão de uma bela vista",
     "markerTitle13":"Um lago com carpas",
-    "markerBody13":"Pequenos lagos onde vivem os peixes, com uma banheira de água quente no centro de um dos lagos"
+    "markerBody13":"Pequenos lagos onde vivem os peixes, com uma banheira de água quente no centro de um dos lagos",
+
+    "rootName1": "O trilho para a cascata",
+    "rootName2": "Pontes",
+    "rootName3": "Trilha para a casa",
+    "rootDistance": "curso",
+    "rootElevation": "escalada",
+    "calories": "calorias",
+
+    "boatRoot":"Comparação do percurso por água e por terra"
 }

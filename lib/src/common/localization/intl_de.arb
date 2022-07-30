@@ -54,5 +54,14 @@
     "markerTitle12":"Aussichtspunkt",
     "markerBody12":"Ein ziemlich abgelegener Ort mit einer Bank. Ein toller Ort, um sich nach einem Spaziergang im Park hinzusetzen und die Einsamkeit und die schöne Aussicht zu genießen",
     "markerTitle13":"Ein See mit Karpfen",
-    "markerBody13":"Kleine Seen, in denen Fische leben, mit einem Whirlpool in der Mitte eines der Seen"
+    "markerBody13":"Kleine Seen, in denen Fische leben, mit einem Whirlpool in der Mitte eines der Seen",
+
+    "rootName1": "Der Weg zum Wasserfall",
+    "rootName2": "Brücken",
+    "rootName3": "Der Weg zum Haus",
+    "rootDistance": "Kurs",
+    "rootElevation": "Klettern",
+    "calories": "Kalorien",
+
+    "boatRoot":"Vergleich der Route auf dem Wasser und dem Landweg"
 }

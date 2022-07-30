@@ -54,5 +54,15 @@
     "markerTitle12":"Egy nézőpont",
     "markerBody12":"Eléggé eldugott hely egy paddal. Remek hely arra, hogy leüljünk egy séta után a parkban, és élvezzük a gyönyörű kilátás magányát",
     "markerTitle13":"Egy tó pontyokkal",
-    "markerBody13":"Kis tavak, ahol halak élnek, az egyik tó közepén egy pezsgőfürdővel"
+    "markerBody13":"Kis tavak, ahol halak élnek, az egyik tó közepén egy pezsgőfürdővel",
+
+    "rootName1": "Jalan setapak menuju air terjun",
+    "rootName2": "Jembatan",
+    "rootName3": "Jalan setapak menuju rumah",
+    "rootDistance": "saja",
+    "rootElevation": "mendaki",
+    "calories": "kalori",
+
+    "boatRoot":"A vízi és szárazföldi útvonal összehasonlítása"
+    
 }
