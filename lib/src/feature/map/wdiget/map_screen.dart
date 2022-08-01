@@ -144,6 +144,12 @@ class _MapScreenState extends State<MapScreen> {
                           color: Colors.blue,
                         ),
                       ),
+                      Marker(
+                        width: 100,
+                        rotate: true,
+                        point: LatLng(37.768168, -25.332367),
+                        builder: ((context) => Text('Entry / Exit')),
+                      ),
                     ],
                   ),
                 ],
