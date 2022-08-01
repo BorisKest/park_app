@@ -6,9 +6,7 @@ class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
 
   final String prductImage1 = 'assets/images/product1.jpg';
-
   final String prductImage2 = 'assets/images/product2.jpg';
-
   final String prductImage3 = 'assets/images/product3.jpg';
 
   @override

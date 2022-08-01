@@ -43,7 +43,10 @@ class Product extends StatelessWidget {
                     const Divider(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(AppLocalizations.of(context)!.boatRoot, style: TextStyle(fontSize: 20)),
+                      child: Text(
+                        AppLocalizations.of(context)!.boatRoot,
+                        style: const TextStyle(fontSize: 20),
+                      ),
                     ),
                     InteractiveViewer(
                       child: Image.asset('assets/images/root.jpg'),

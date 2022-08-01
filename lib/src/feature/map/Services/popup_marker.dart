@@ -3,7 +3,7 @@ import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
 
 class PopupMarker extends StatelessWidget {
-  PopupMarker({
+  const PopupMarker({
     Key? key,
     required this.titleText,
     required this.image,
