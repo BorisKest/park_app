@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/utils.dart';
 import 'package:park_app/src/feature/map/models/markers.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';

@@ -3,7 +3,7 @@ import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
 
 class PopupMarker extends StatelessWidget {
-  const PopupMarker({
+  PopupMarker({
     Key? key,
     required this.titleText,
     required this.image,
@@ -12,7 +12,7 @@ class PopupMarker extends StatelessWidget {
   }) : super(key: key);
 
   final String titleText;
-  final String image;
+  final List<String> image;
   final String bodyText;
   final String heroMark;
 
@@ -47,7 +47,7 @@ class PopupMarker extends StatelessWidget {
 }
 
 class _PopupMarkerCard extends StatelessWidget {
-  const _PopupMarkerCard({
+  _PopupMarkerCard({
     Key? key,
     required this.titleText,
     required this.image,
@@ -56,9 +56,30 @@ class _PopupMarkerCard extends StatelessWidget {
   }) : super(key: key);
 
   final String titleText;
-  final String image;
+  final List<String> image;
   final String bodyText;
   final String heroMark;
+
+  final ScrollController imageScriollController = ScrollController();
+
+  List<Widget> _imageList() {
+    List<Widget> imagesToReturn = [];
+
+    for (int i = 0; i < image.length; i++) {
+      imagesToReturn.add(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 280),
+            child: Image(
+              image: AssetImage(image[i]),
+            ),
+          ),
+        ),
+      );
+    }
+    return imagesToReturn;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +102,18 @@ class _PopupMarkerCard extends StatelessWidget {
                       color: Colors.white,
                       thickness: 0.2,
                     ),
-                    Image(image: AssetImage(image)),
+                    Scrollbar(
+                      thumbVisibility: true,
+                      controller: imageScriollController,
+                      child: SingleChildScrollView(
+                        controller: imageScriollController,
+                        scrollDirection: Axis.horizontal,
+                        physics: const PageScrollPhysics(),
+                        child: Row(
+                          children: _imageList(),
+                        ),
+                      ),
+                    ),
                     const Divider(),
                     Text(bodyText),
                   ],

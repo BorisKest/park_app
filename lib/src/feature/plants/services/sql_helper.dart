@@ -5,7 +5,6 @@ import 'package:park_app/src/common/localization/language.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart' as sql;
-import 'package:park_app/src/common/localization/language.dart';
 
 class DBHelper {
   static Future<sql.Database> db() async {
