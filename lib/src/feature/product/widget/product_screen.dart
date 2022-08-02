@@ -36,15 +36,15 @@ class ProductScreen extends StatelessWidget {
                   productInfo: AppLocalizations.of(context)!.pedalBoatDescription,
                 ),
               ),
-              SizedBox(
-                height: 300,
-                child: BuildCardWidget(
-                  productName: AppLocalizations.of(context)!.bike,
-                  productPrice: "30",
-                  image: prductImage3,
-                  productInfo: AppLocalizations.of(context)!.bikeDescription,
-                ),
-              ),
+              // SizedBox(
+              //   height: 300,
+              //   child: BuildCardWidget(
+              //     productName: AppLocalizations.of(context)!.bike,
+              //     productPrice: "30",
+              //     image: prductImage3,
+              //     productInfo: AppLocalizations.of(context)!.bikeDescription,
+              //   ),
+              // ),
             ],
           ),
         ),

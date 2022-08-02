@@ -148,7 +148,12 @@ class _MapScreenState extends State<MapScreen> {
                         width: 100,
                         rotate: true,
                         point: LatLng(37.768168, -25.332367),
-                        builder: ((context) => const Text('Entry / Exit')),
+                        builder: ((context) => Material(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            color: Theme.of(context).secondaryHeaderColor,
+                            child: Center(child: const Text('Entry / Exit')))),
                       ),
                     ],
                   ),

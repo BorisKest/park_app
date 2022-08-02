@@ -26,7 +26,7 @@ class Product extends StatelessWidget {
             children: [
               LargeBoldText(text: name),
               const Spacer(),
-              LargeText(text: price),
+              Text('$price Euro'),
             ],
           ),
         ),
@@ -42,7 +42,7 @@ class Product extends StatelessWidget {
                     Text(bodyText),
                     const Divider(),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: Text(
                         AppLocalizations.of(context)!.boatRoot,
                         style: const TextStyle(fontSize: 20),

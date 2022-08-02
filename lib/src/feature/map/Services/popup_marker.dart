@@ -97,7 +97,10 @@ class _PopupMarkerCard extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    LargeBoldText(text: titleText),
+                    LargeBoldText(
+                      text: titleText,
+                      size: 20,
+                    ),
                     const Divider(
                       color: Colors.white,
                       thickness: 0.2,
