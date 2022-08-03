@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
@@ -15,23 +16,26 @@ class MapScreen extends StatefulWidget {
   State<MapScreen> createState() => _MapScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
   Location location = Location();
   LocationData? currentPosition;
   double currentLatitude = 32.7681286;
   double currentLongitude = -25.3317694;
+  double previousHading = 0.0;
 
   bool autoRotation = false;
 
   late final MapController mapController;
+  late AnimationController controller;
 
   @override
   void initState() {
-    mapController = MapController();
-    _getLocation();
-
     super.initState();
+    mapController = MapController();
+    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
 
+    _getLocation();
+    _getHeading(controller);
     location.onLocationChanged.listen(
       (value) {
         setState(
@@ -41,7 +45,6 @@ class _MapScreenState extends State<MapScreen> {
               currentLatitude = currentPosition!.latitude!;
               currentLongitude = currentPosition!.longitude!;
               _getLocation();
-              _getHeading();
             }
           },
         );
@@ -49,9 +52,29 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  void _getHeading() {
-    if (currentPosition != null && currentPosition!.heading != null && autoRotation == true) {
-      mapController.rotate(currentPosition!.heading!);
+  void _getHeading(controller) {
+    if (FlutterCompass.events != null) {
+      final subscription = FlutterCompass.events!.listen(null);
+      subscription.onData(
+        (data) {
+          if (autoRotation == true) {
+            double x = 0.0;
+            var animatedHeading = Tween<double>(begin: previousHading, end: data.heading)
+                .animate(CurvedAnimation(parent: controller, curve: Curves.linear)); //something wrong ...
+            animatedHeading.addListener(() {
+              setState(() {
+                x = animatedHeading.value;
+                print(x);
+              });
+            });
+            mapController.rotate(animatedHeading.value);
+
+            previousHading = data.heading!;
+          } else {
+            subscription.cancel();
+          }
+        },
+      );
     }
   }
 
@@ -171,12 +194,12 @@ class _MapScreenState extends State<MapScreen> {
                   setState(() {
                     if (autoRotation == false) {
                       autoRotation = true;
-                      _getHeading();
+                      _getHeading(controller);
                     } else {
                       autoRotation = false;
-                      _getHeading();
+                      _getHeading(controller);
                     }
-                  }); // not finisd
+                  });
                 },
                 child: const Icon(Icons.gps_fixed),
               ),
