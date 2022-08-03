@@ -12,7 +12,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle1,
-              image: 'assets/images/marker1.jpg',
+              image: const ['assets/images/marker1.jpg', 'assets/images/marker1_1.jpeg'],
               bodyText: AppLocalizations.of(context)!.markerBody1,
               heroMark: '1'),
         ),
@@ -21,7 +21,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle2,
-              image: 'assets/images/marker2.jpg',
+              image: const ['assets/images/marker2.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody2,
               heroMark: '2'),
         ),
@@ -30,7 +30,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle3,
-              image: 'assets/images/backgroundMain.jpg',
+              image: const ['assets/images/backgroundMain.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody3,
               heroMark: '3'),
         ),
@@ -39,7 +39,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle4,
-              image: 'assets/images/marker4.jpg',
+              image: const ['assets/images/marker4.jpg', 'assets/images/marker4_1.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody4,
               heroMark: '4'),
         ),
@@ -48,7 +48,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle5,
-              image: 'assets/images/marker5.jpg',
+              image: const ['assets/images/marker5.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody5,
               heroMark: '5'),
         ),
@@ -57,7 +57,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle6,
-              image: 'assets/images/marker6.jpg',
+              image: const ['assets/images/marker6.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody6,
               heroMark: '6'),
         ),
@@ -66,7 +66,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle7,
-              image: 'assets/images/marker7.jpg',
+              image: const ['assets/images/marker7.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody7,
               heroMark: '7'),
         ),
@@ -75,7 +75,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle8,
-              image: 'assets/images/marker8.jpg',
+              image: const ['assets/images/marker8.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody8,
               heroMark: '8'),
         ),
@@ -84,7 +84,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle9,
-              image: 'assets/images/marker9.jpg',
+              image: const ['assets/images/marker9.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody9,
               heroMark: '9'),
         ),
@@ -93,7 +93,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle10,
-              image: 'assets/images/marker10.jpg',
+              image: const ['assets/images/marker10.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody10,
               heroMark: '10'),
         ),
@@ -102,7 +102,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle11,
-              image: 'assets/images/marker11.jpg',
+              image: const ['assets/images/marker11.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody11,
               heroMark: '11'),
         ),
@@ -111,7 +111,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle12,
-              image: 'assets/images/marker12.jpg',
+              image: const ['assets/images/marker12.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody12,
               heroMark: '12'),
         ),
@@ -120,7 +120,7 @@ class MapMarkers {
           rotate: true,
           builder: (context) => PopupMarker(
               titleText: AppLocalizations.of(context)!.markerTitle13,
-              image: 'assets/images/marker13.jpg',
+              image: const ['assets/images/marker13.jpg'],
               bodyText: AppLocalizations.of(context)!.markerBody13,
               heroMark: '13'),
         ),

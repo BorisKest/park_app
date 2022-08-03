@@ -54,5 +54,15 @@
     "markerTitle12":"Un punto de vista",
     "markerBody12":"Un lugar bastante aislado con un banco. Es un buen lugar para sentarse después de un paseo por el parque y disfrutar de la soledad de una hermosa vista",
     "markerTitle13":"Un lago con carpas",
-    "markerBody13":"Pequeños lagos donde viven los peces, con un jacuzzi en el centro de uno de los lagos"
+    "markerBody13":"Pequeños lagos donde viven los peces, con un jacuzzi en el centro de uno de los lagos",
+
+    "rootName1": "El camino a la cascada",
+    "rootName2": "Puentes",
+    "rootName3": "Camino a la casa",
+    "rootDistance": "curso",
+    "rootElevation": "escalada",
+    "calories": "calorías",
+
+    "boatRoot":"Comparación de la ruta por agua y por tierra"
+
 }

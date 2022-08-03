@@ -58,5 +58,14 @@
     "markerTitle12":"Viewpoint",
     "markerBody12":"Quite a secluded spot with a bench. It's a great place to sit down after a walk in the park and enjoy the solitude of a beautiful view",
     "markerTitle13":"A lake with carps",
-    "markerBody13":"Small lakes where fish live, with a hot tub in the centre of one of the lakes"
+    "markerBody13":"Small lakes where fish live, with a hot tub in the centre of one of the lakes",
+
+    "rootName1": "The trail to the waterfall",
+    "rootName2": "Bridges",
+    "rootName3": "Trail to the House",
+    "rootDistance": "distance",
+    "rootElevation": "climb",
+    "calories": "calories",
+
+    "boatRoot":"Comparison of the route by water and by land"
 }
