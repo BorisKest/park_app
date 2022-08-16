@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/localization/language.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../localization/language.dart';
 
 class LocaleProvider extends ChangeNotifier {
   LocaleProvider([Language? language]) : _language = language ?? Language.english;

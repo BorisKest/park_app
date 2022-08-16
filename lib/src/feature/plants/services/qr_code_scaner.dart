@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:park_app/src/feature/plants/services/decoder_widget.dart';
 import 'package:park_app/src/feature/plants/services/sql_helper.dart';
-
-import '../widget/one_plant_screen.dart';
+import 'package:park_app/src/feature/plants/widget/one_plant_screen.dart';
 
 class QrCodeScaner extends StatefulWidget {
   const QrCodeScaner({Key? key}) : super(key: key);

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/widget/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../common/widget/theme_provider.dart';
 
 class SwitchWidget extends StatefulWidget {
   const SwitchWidget({Key? key}) : super(key: key);

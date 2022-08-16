@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
+import 'package:park_app/src/common/widget/network_image.dart';
 import 'package:park_app/src/feature/plants/widget/one_plant_screen.dart';
-
-import '../../../common/widget/network_image.dart';
 
 class BuildCard extends StatefulWidget {
   const BuildCard({

@@ -3,9 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
+import 'package:park_app/src/common/widget/utils.dart';
 import 'package:park_app/src/feature/home/widget/row_history.dart';
-
-import '../../../common/widget/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
