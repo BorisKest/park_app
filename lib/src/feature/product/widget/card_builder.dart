@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/feature/product/widget/product.dart';
-
-import '../../../common/widget/large_bold_text.dart';
 
 class BuildCardWidget extends StatelessWidget {
   const BuildCardWidget({

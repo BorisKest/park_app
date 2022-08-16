@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/localization/language.dart';
+import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../common/localization/language.dart';
-import '../../../common/widget/locale_provider.dart';
 
 class DropDownMenu extends StatefulWidget {
   const DropDownMenu({
