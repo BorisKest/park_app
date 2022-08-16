@@ -37,9 +37,10 @@ class HomeScreen extends StatelessWidget {
             floating: false,
             backgroundColor: Theme.of(context).backgroundColor,
             flexibleSpace: FlexibleSpaceBar(
+              expandedTitleScale: 50,
               centerTitle: true,
               collapseMode: CollapseMode.parallax,
-              titlePadding: EdgeInsets.only(bottom: mediaQueryData.size.height / 2.5),
+              titlePadding: EdgeInsets.only(bottom: mediaQueryData.size.height / 2.2),
               title: RichText(
                 textWidthBasis: TextWidthBasis.longestLine,
                 textAlign: TextAlign.center,
@@ -49,27 +50,28 @@ class HomeScreen extends StatelessWidget {
                       text: 'WATERFALLS PARK ' '\n',
                       style: TextStyle(
                         fontFamily: 'TrajanPro',
-                        fontSize: 15,
+                        fontSize: 0.4,
                         color: Colors.white,
-                        shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
+                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.05), blurRadius: 2.0, color: Colors.black)],
                       ),
                     ),
                     TextSpan(
                       text: 'Grená' '\n',
                       style: TextStyle(
                         fontFamily: 'TrajanPro',
-                        fontSize: 70,
+                        fontSize: 2,
                         color: Colors.white,
-                        shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
+                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.08), blurRadius: 2.0, color: Colors.black)],
                       ),
                     ),
                     TextSpan(
                       text: '1832',
                       style: TextStyle(
-                          fontFamily: 'TrajanPro',
-                          fontSize: 20,
-                          color: Colors.white,
-                          shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)]),
+                        fontFamily: 'TrajanPro',
+                        fontSize: 0.6,
+                        color: Colors.white,
+                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.06), blurRadius: 2.0, color: Colors.black)],
+                      ),
                     ),
                   ],
                 ),
