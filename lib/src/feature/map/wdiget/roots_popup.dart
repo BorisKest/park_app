@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:park_app/src/feature/map/Services/custom_page_route.dart';
-import 'package:park_app/src/feature/map/Services/showLines.dart';
 import 'package:park_app/src/feature/map/models/polylins.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RootPopUp extends StatelessWidget {
   const RootPopUp({Key? key}) : super(key: key);
+
+  List<LatLng> showRoot(List<LatLng> root, int index) {
+    List<LatLng> result = lineNull;
+    if (root == lineNull) {
+      switch (index) {
+        case 1:
+          return result = lines;
+        case 2:
+          return result = lines2;
+        case 3:
+          return result = lines3;
+      }
+    } else {
+      result = lineNull;
+    }
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +38,7 @@ class RootPopUp extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          rootLines1 = ShowLines().showFirstRoot();
+                          rootLines1 = showRoot(rootLines1, 1);
                           Navigator.of(context).pop();
                         },
                         child: RootCard(
@@ -34,7 +51,7 @@ class RootPopUp extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          rootLines2 = ShowLines().showSecondRoot();
+                          rootLines2 = showRoot(rootLines2, 2);
                           Navigator.of(context).pop();
                         },
                         child: RootCard(
@@ -47,7 +64,7 @@ class RootPopUp extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          rootLines3 = ShowLines().showThirdRoot();
+                          rootLines3 = showRoot(rootLines3, 3);
                           Navigator.of(context).pop();
                         },
                         child: RootCard(
@@ -104,6 +121,7 @@ class RootCard extends StatelessWidget {
     return SizedBox(
       height: 160,
       child: Card(
+        color: Theme.of(context).backgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         child: Row(
           children: [

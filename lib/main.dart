@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -68,7 +67,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreen extends State<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -93,7 +92,7 @@ class _MainScreen extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(Icons.home),
+            icon: const Icon(Icons.info_outline),
             label: '',
             backgroundColor: Theme.of(context).primaryColor,
           ),
@@ -147,20 +146,55 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: SizedBox(
-        width: 250.0,
-        child: DefaultTextStyle(
-          style: const TextStyle(
-            fontSize: 70.0,
-            fontFamily: 'MavenPro',
-            color: Colors.black,
+      splashIconSize: MediaQuery.of(context).size.height,
+      splash: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 500,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage("assets/images/backgroundMain.jpg"),
+            fit: BoxFit.fill,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.15),
+              BlendMode.darken,
+            ),
           ),
-          child: AnimatedTextKit(
-            animatedTexts: [
-              ScaleAnimatedText('Explore'),
-              ScaleAnimatedText('Nature'),
-              ScaleAnimatedText('of Azores'),
-            ],
+        ),
+        child: Center(
+          child: RichText(
+            textWidthBasis: TextWidthBasis.longestLine,
+            textAlign: TextAlign.center,
+            text: const TextSpan(
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'WATERFALLS PARK ' '\n',
+                  style: TextStyle(
+                    fontFamily: 'TrajanPro',
+                    fontSize: 20,
+                    color: Colors.white,
+                    shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
+                  ),
+                ),
+                TextSpan(
+                  text: 'Grená' '\n',
+                  style: TextStyle(
+                    fontFamily: 'TrajanPro',
+                    fontSize: 80,
+                    color: Colors.white,
+                    shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
+                  ),
+                ),
+                TextSpan(
+                  text: '1832',
+                  style: TextStyle(
+                    fontFamily: 'TrajanPro',
+                    fontSize: 30,
+                    color: Colors.white,
+                    shadows: <Shadow>[Shadow(offset: Offset(0, 2.0), blurRadius: 2.0, color: Colors.black)],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

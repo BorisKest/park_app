@@ -26,7 +26,7 @@ class Product extends StatelessWidget {
             children: [
               LargeBoldText(text: name),
               const Spacer(),
-              Text('$price Euro'),
+              Text('$price €'),
             ],
           ),
         ),
