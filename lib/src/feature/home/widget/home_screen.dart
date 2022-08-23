@@ -31,65 +31,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: mediaQueryData.size.height,
-            snap: false,
-            floating: false,
-            backgroundColor: Theme.of(context).backgroundColor,
-            flexibleSpace: FlexibleSpaceBar(
-              expandedTitleScale: 50,
-              centerTitle: true,
-              collapseMode: CollapseMode.parallax,
-              titlePadding: EdgeInsets.only(bottom: mediaQueryData.size.height / 2.2),
-              title: RichText(
-                textWidthBasis: TextWidthBasis.longestLine,
-                textAlign: TextAlign.center,
-                text: const TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'WATERFALLS PARK ' '\n',
-                      style: TextStyle(
-                        fontFamily: 'TrajanPro',
-                        fontSize: 0.4,
-                        color: Colors.white,
-                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.05), blurRadius: 2.0, color: Colors.black)],
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Grená' '\n',
-                      style: TextStyle(
-                        fontFamily: 'TrajanPro',
-                        fontSize: 2,
-                        color: Colors.white,
-                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.08), blurRadius: 2.0, color: Colors.black)],
-                      ),
-                    ),
-                    TextSpan(
-                      text: '1832',
-                      style: TextStyle(
-                        fontFamily: 'TrajanPro',
-                        fontSize: 0.6,
-                        color: Colors.white,
-                        shadows: <Shadow>[Shadow(offset: Offset(0, 0.06), blurRadius: 2.0, color: Colors.black)],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              background: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: const AssetImage("assets/images/backgroundMain.jpg"),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.15),
-                      BlendMode.darken,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

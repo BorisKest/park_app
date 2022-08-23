@@ -1,9 +1,9 @@
 import 'package:latlong2/latlong.dart';
 
-var rootLines1 = <LatLng>[LatLng(0, 0)];
-var rootLines2 = <LatLng>[LatLng(0, 0)];
-var rootLines3 = <LatLng>[LatLng(0, 0)];
 final lineNull = <LatLng>[LatLng(0, 0)];
+var rootLines1 = lineNull;
+var rootLines2 = lineNull;
+var rootLines3 = lineNull;
 
 final lines = <LatLng>[
   LatLng(37.76960001477, -25.33817981757),
