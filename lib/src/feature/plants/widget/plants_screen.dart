@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:park_app/src/common/localization/language.dart';
+import 'package:park_app/src/common/model/common_models.dart';
+import 'package:park_app/src/feature/plants/models.dart';
 import 'package:park_app/src/feature/plants/widget/card.dart';
 import 'package:park_app/src/feature/plants/services/promitions.dart';
 import 'package:park_app/src/feature/plants/services/sql_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PlantsScreen extends StatefulWidget {
   const PlantsScreen({
@@ -9,28 +13,34 @@ class PlantsScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<PlantsScreen> createState() => _PlantsScreenState();
+  State<PlantsScreen> createState() => PlantsScreenState();
 }
 
-class _PlantsScreenState extends State<PlantsScreen> {
-  List<Map<String, dynamic>> _plants = [];
-  List<Map<String, dynamic>> _plantsImages = [];
-  bool _isLoading = true;
+class PlantsScreenState extends State<PlantsScreen> {
+  List<Map<String, dynamic>> plantsImages = [];
+  bool isLoading = true;
 
-  void _refreshJournals() async {
+  Future<Language> _getLanguage() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return Language.values[prefs.getInt('lenguage') ?? 0];
+  }
+
+  void refreshJournals() async {
     final data = await DBHelper.getItems();
     final images = await DBHelper.getImages();
     setState(() {
-      _plants = data;
-      _plantsImages = images;
-      _isLoading = false;
+      plants = data;
+      plantsImages = images;
+      isLoading = false;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _refreshJournals(); // Loading the plants when the screen starts
+    refreshJournals(); // Loading the plants when the screen starts
+    plantsisShown = true;
   }
 
   @override
@@ -48,7 +58,7 @@ class _PlantsScreenState extends State<PlantsScreen> {
           ),
         ],
       ),
-      body: _isLoading
+      body: isLoading
           ? const Center(
               child: CircularProgressIndicator(),
             )
@@ -58,11 +68,11 @@ class _PlantsScreenState extends State<PlantsScreen> {
                 crossAxisSpacing: 0,
                 maxCrossAxisExtent: 392,
               ),
-              itemCount: _plants.length,
+              itemCount: plants.length,
               itemBuilder: (context, index) => BuildCard(
-                image: _plantsImages[index]['image'],
-                titleText: _plants[index]['name'],
-                bodyText: _plants[index]['description'],
+                image: plantsImages[index]['image'],
+                titleText: plants[index]['name'],
+                bodyText: plants[index]['description'],
               ),
             ),
     );
