@@ -20,42 +20,41 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).secondaryHeaderColor,
-          title: Row(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
+        title: Row(
+          children: [
+            LargeBoldText(text: name),
+            const Spacer(),
+            Text('$price €'),
+          ],
+        ),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              LargeBoldText(text: name),
-              const Spacer(),
-              Text('$price €'),
+              Image.asset(image),
+              const Divider(),
+              Text(bodyText),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                child: Text(
+                  AppLocalizations.of(context)!.boatRoot,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ),
+              InteractiveViewer(
+                child: Image.asset(
+                  'assets/images/root.jpg',
+                ),
+              ),
             ],
           ),
         ),
-        body: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(20),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Image.asset(image),
-                    const Divider(),
-                    Text(bodyText),
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                      child: Text(
-                        AppLocalizations.of(context)!.boatRoot,
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    InteractiveViewer(
-                      child: Image.asset('assets/images/root.jpg'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ));
+      ),
+    );
   }
 }

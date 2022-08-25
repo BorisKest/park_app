@@ -131,16 +131,23 @@ class RootCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(fontSize: 18),
-                    textAlign: TextAlign.start,
+                  SizedBox(
+                    width: 200,
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                   Text(
                     '\n${AppLocalizations.of(context)!.rootDistance}$distance\n${AppLocalizations.of(context)!.rootElevation}$elevation\n${AppLocalizations.of(context)!.calories}$calories',
                     style: const TextStyle(),
                     textAlign: TextAlign.start,
                   ),
+                  const Spacer(),
+                  Text('tap on me to show the root'),
                 ],
               ),
             ),

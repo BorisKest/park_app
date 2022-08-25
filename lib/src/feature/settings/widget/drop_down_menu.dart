@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/localization/language.dart';
+import 'package:park_app/src/common/model/common_models.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
+import 'package:park_app/src/feature/plants/models.dart';
+import 'package:park_app/src/feature/plants/services/sql_helper.dart';
+import 'package:park_app/src/feature/plants/widget/plants_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,10 +53,15 @@ class _DropDownMenuState extends State<DropDownMenu> {
                 return DropdownMenuItem<Language>(
                     value: language,
                     child: Text(language.name),
-                    onTap: () {
+                    onTap: () async {
                       Provider.of<LocaleProvider>(context, listen: false).setLocale(language);
+                      final data = await DBHelper.getItems();
                       setState(() {
                         _getLanguage();
+                        if (plantsisShown == true) {
+                          plantsisShown == false;
+                          plants = data; //wtf
+                        }
                       });
                     });
               },
