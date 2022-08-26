@@ -62,6 +62,7 @@
     "rootDistance": "curso",
     "rootElevation": "escalada",
     "calories": "calorias",
+    "tapToShow": "Toque para mostrar a raiz.",
 
     "boatRoot":"Comparação do percurso por água e por terra"
 }
