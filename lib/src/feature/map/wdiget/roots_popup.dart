@@ -142,12 +142,15 @@ class RootCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '\n${AppLocalizations.of(context)!.rootDistance}$distance\n${AppLocalizations.of(context)!.rootElevation}$elevation\n${AppLocalizations.of(context)!.calories}$calories',
+                    '\n${AppLocalizations.of(context)!.rootDistance} $distance \n${AppLocalizations.of(context)!.rootElevation}$elevation \n${AppLocalizations.of(context)!.calories} $calories',
                     style: const TextStyle(),
                     textAlign: TextAlign.start,
                   ),
                   const Spacer(),
-                  Text('tap on me to show the root'),
+                  SizedBox(
+                    width: 200,
+                    child: Text(AppLocalizations.of(context)!.tapToShow),
+                  ),
                 ],
               ),
             ),

@@ -66,6 +66,7 @@
     "rootDistance": "distance",
     "rootElevation": "climb",
     "calories": "calories",
+    "tapToShow": "Tap to show the root.",
 
     "boatRoot":"Comparison of the route by water and by land"
 }
