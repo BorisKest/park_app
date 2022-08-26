@@ -29,6 +29,8 @@
     "services": "Szolgáltatások",
     "settings": "nast",
     "theme":"Téma",
+    "plants":"Növények",
+
     "markerTitle1":"Angolkisasszony ugrás vízesés",
     "markerBody1":"Ez az egyik legnagyobb vízesés a San Miguel-szigeten. Nyáron nem sok víz van benne, de az ősz beköszöntével és a csapadék megérkeztével a csatorna megtelik vízzel, és a vízesés erőre kap",
     "markerTitle2":"Északi nézőpont",
@@ -56,6 +58,7 @@
     "markerTitle13":"Egy tó pontyokkal",
     "markerBody13":"Kis tavak, ahol halak élnek, az egyik tó közepén egy pezsgőfürdővel",
 
+    "roots":"Útvonal",
     "rootName1": "Jalan setapak menuju air terjun",
     "rootName2": "Jembatan",
     "rootName3": "Jalan setapak menuju rumah",
