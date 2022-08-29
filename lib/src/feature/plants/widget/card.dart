@@ -55,10 +55,17 @@ class _BuildCardState extends State<BuildCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  height: 140,
-                  width: 170,
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: NetworkImageBuilder(image: widget.image)),
+                height: 140,
+                width: 170,
+                margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                child: Material(
+                  clipBehavior: Clip.hardEdge,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: NetworkImageBuilder(image: widget.image),
+                ),
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 5),
                 child: LargeBoldText(

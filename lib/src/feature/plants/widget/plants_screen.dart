@@ -6,6 +6,7 @@ import 'package:park_app/src/feature/plants/widget/card.dart';
 import 'package:park_app/src/feature/plants/services/promitions.dart';
 import 'package:park_app/src/feature/plants/services/sql_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlantsScreen extends StatefulWidget {
   const PlantsScreen({
@@ -48,7 +49,7 @@ class PlantsScreenState extends State<PlantsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Plants'),
+        title: Text(AppLocalizations.of(context)!.plants),
         actions: <Widget>[
           IconButton(
             onPressed: () {

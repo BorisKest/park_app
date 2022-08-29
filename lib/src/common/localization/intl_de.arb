@@ -29,6 +29,8 @@
     "services": "Dienstleistungen",
     "settings": "Sett",
     "theme":"Thema",
+    "plants":"Pflanzen",
+
     "markerTitle1":"Englishwoman's Sprung Wasserfall",
     "markerBody1":"Er ist einer der größten Wasserfälle der Insel San Miguel. Im Sommer führt er nicht viel Wasser, aber mit Beginn des Herbstes und den einsetzenden Niederschlägen füllt sich der Kanal mit Wasser und der Wasserfall gewinnt an Kraft",
     "markerTitle2":"Aussichtspunkt Nord",
@@ -56,6 +58,7 @@
     "markerTitle13":"Ein See mit Karpfen",
     "markerBody13":"Kleine Seen, in denen Fische leben, mit einem Whirlpool in der Mitte eines der Seen",
 
+    "roots":"Route",
     "rootName1": "Der Weg zum Wasserfall",
     "rootName2": "Brücken",
     "rootName3": "Der Weg zum Haus",

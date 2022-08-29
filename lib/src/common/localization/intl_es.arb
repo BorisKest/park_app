@@ -29,6 +29,8 @@
     "services": "Servicios",
     "settings": "configuros",
     "theme":"Tema",
+    "plants":"Plantas",
+
     "markerTitle1":"Cascada del Salto de la Inglesa",
     "markerBody1":"Es una de las mayores cascadas de la isla de San Miguel. En verano no hay mucha agua en ella, pero con la entrada del otoño y la llegada de las precipitaciones, el canal se llena de agua y la cascada gana potencia",
     "markerTitle2":"Mirador Norte",
@@ -56,6 +58,7 @@
     "markerTitle13":"Un lago con carpas",
     "markerBody13":"Pequeños lagos donde viven los peces, con un jacuzzi en el centro de uno de los lagos",
 
+    "roots":"Ruta",
     "rootName1": "El camino a la cascada",
     "rootName2": "Puentes",
     "rootName3": "Camino a la casa",

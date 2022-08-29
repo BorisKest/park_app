@@ -29,6 +29,8 @@
     "services": "Serviços",
     "settings": "Configuracoes",
     "theme":"Tema",
+    "plants":"Plantas",
+
     "markerTitle1":"Cascata do Salto da Inglesa",
     "markerBody1":"É uma das maiores quedas de água da ilha de San Miguel. No Verão não há muita água, mas com o início do Outono e a chegada da precipitação, o canal enche-se de água e a cascata ganha potência",
     "markerTitle2":"Miradouro Norte",
@@ -56,6 +58,7 @@
     "markerTitle13":"Um lago com carpas",
     "markerBody13":"Pequenos lagos onde vivem os peixes, com uma banheira de água quente no centro de um dos lagos",
 
+    "roots":"Rota",
     "rootName1": "O trilho para a cascata",
     "rootName2": "Pontes",
     "rootName3": "Trilha para a casa",

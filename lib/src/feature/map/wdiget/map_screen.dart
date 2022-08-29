@@ -64,7 +64,6 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
             animatedHeading.addListener(() {
               setState(() {
                 x = animatedHeading.value;
-                print(x);
               });
             });
             mapController.rotate(animatedHeading.value);
@@ -102,8 +101,12 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        actions: const [
-          RootPopUp(),
+        actions: [
+          Column(
+            children: const [
+              RootPopUp(),
+            ],
+          ),
         ],
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Text(AppLocalizations.of(context)!.map),
@@ -189,6 +192,7 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
               left: 15,
               bottom: 15,
               child: FloatingActionButton(
+                backgroundColor: Theme.of(context).primaryColor,
                 heroTag: "btn1",
                 onPressed: () {
                   setState(() {

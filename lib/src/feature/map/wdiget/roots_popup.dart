@@ -89,9 +89,14 @@ class RootPopUp extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
             ),
             color: Theme.of(context).secondaryHeaderColor,
-            child: const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Icon(Icons.route_outlined),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5.0, right: 10.0, bottom: 5.0),
+              child: Column(
+                children: [
+                  const Icon(Icons.route_outlined),
+                  Text(AppLocalizations.of(context)!.roots, style: TextStyle(fontSize: 10)),
+                ],
+              ),
             ),
           ),
         ),
@@ -122,10 +127,14 @@ class RootCard extends StatelessWidget {
       height: 160,
       child: Card(
         color: Theme.of(context).backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Row(
           children: [
-            Image.asset(image),
+            Material(
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              child: Image.asset(image),
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
