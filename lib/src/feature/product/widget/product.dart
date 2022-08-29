@@ -24,7 +24,10 @@ class Product extends StatelessWidget {
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         title: Row(
           children: [
-            LargeBoldText(text: name),
+            LargeBoldText(
+              text: name,
+              size: 25,
+            ),
             const Spacer(),
             Text('$price €'),
           ],

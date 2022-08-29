@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:park_app/src/common/widget/utils.dart';
 import 'package:park_app/src/feature/home/widget/row_history.dart';
@@ -29,6 +30,10 @@ class HomeScreen extends StatelessWidget {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final ScrollController firstController = ScrollController();
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
+        title: Text(AppLocalizations.of(context)!.aboutPark),
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(
@@ -41,22 +46,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Container(
-                        width: max(300, 500),
-                        margin: const EdgeInsets.fromLTRB(10, 20, 20, 5),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).secondaryHeaderColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                            top: 5,
-                            bottom: 5,
-                          ),
-                          child: LargeBoldText(text: AppLocalizations.of(context)!.aboutPark),
-                        ),
-                      ),
                       Card(
                         margin: const EdgeInsets.only(left: 10, right: 20),
                         child: InteractiveViewer(
@@ -145,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                                 IconButton(
                                   tooltip: ('Google maps'),
                                   onPressed: () => Utils.openLink(url: _urlAdress),
-                                  icon: const Icon(Icons.location_on),
+                                  icon: const FaIcon(FontAwesomeIcons.mapLocation),
                                   color: Theme.of(context).iconTheme.color,
                                   iconSize: 30,
                                 ),
@@ -161,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                                 IconButton(
                                   tooltip: ('Instagram'),
                                   onPressed: () => Utils.openLink(url: _urlInstagram),
-                                  icon: const Icon(Icons.image),
+                                  icon: const FaIcon(FontAwesomeIcons.instagram),
                                   color: Theme.of(context).iconTheme.color,
                                   iconSize: 30,
                                 ),
@@ -169,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                                 IconButton(
                                   tooltip: ('Web site'),
                                   onPressed: () => Utils.openLink(url: _urlWebSite),
-                                  icon: const Icon(Icons.web),
+                                  icon: const FaIcon(FontAwesomeIcons.pager),
                                   color: Theme.of(context).iconTheme.color,
                                   iconSize: 30,
                                 ),
