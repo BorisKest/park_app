@@ -58,10 +58,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
                       final data = await DBHelper.getItems();
                       setState(() {
                         _getLanguage();
-                        if (plantsisShown == true) {
-                          plantsisShown == false;
-                          plants = data; //wtf
-                        }
+                        plants = data; //wtf
                       });
                     });
               },
