@@ -64,10 +64,10 @@ class PlantsScreenState extends State<PlantsScreen> {
               child: CircularProgressIndicator(),
             )
           : GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 mainAxisSpacing: 0,
                 crossAxisSpacing: 0,
-                maxCrossAxisExtent: 392,
+                maxCrossAxisExtent: MediaQuery.of(context).size.width * 0.6,
               ),
               itemCount: plants.length,
               itemBuilder: (context, index) => BuildCard(
