@@ -94,7 +94,7 @@ class RootPopUp extends StatelessWidget {
               child: Column(
                 children: [
                   const Icon(Icons.route_outlined),
-                  Text(AppLocalizations.of(context)!.roots, style: TextStyle(fontSize: 10)),
+                  Text(AppLocalizations.of(context)!.roots, style: const TextStyle(fontSize: 10)),
                 ],
               ),
             ),

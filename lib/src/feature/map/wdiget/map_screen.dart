@@ -59,14 +59,15 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
         (data) {
           if (autoRotation == true) {
             double x = 0.0;
-            var animatedHeading = Tween<double>(begin: previousHading, end: data.heading)
-                .animate(CurvedAnimation(parent: controller, curve: Curves.linear)); //something wrong ...
-            animatedHeading.addListener(() {
-              setState(() {
-                x = animatedHeading.value;
-              });
-            });
-            mapController.rotate(animatedHeading.value);
+            var animatedHeading = Tween<double>(begin: previousHading, end: data.heading);
+            //something wrong ...
+            // animatedHeading.addListener(() {
+            //   setState(() {
+            //     x = animatedHeading.value;
+            //   });
+            mapController
+                .rotate(animatedHeading.animate(CurvedAnimation(parent: controller, curve: Curves.ease)).value);
+            // });
 
             previousHading = data.heading!;
           } else {
@@ -179,7 +180,7 @@ class _MapScreenState extends State<MapScreen> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(50),
                             ),
                             color: Theme.of(context).secondaryHeaderColor,
-                            child: Center(child: const Text('Entry / Exit')))),
+                            child: const Center(child: Text('Entry / Exit')))),
                       ),
                     ],
                   ),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:park_app/src/common/localization/language.dart';
-import 'package:park_app/src/common/model/common_models.dart';
 import 'package:park_app/src/common/widget/locale_provider.dart';
 import 'package:park_app/src/feature/plants/models.dart';
 import 'package:park_app/src/feature/plants/services/sql_helper.dart';
-import 'package:park_app/src/feature/plants/widget/plants_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
