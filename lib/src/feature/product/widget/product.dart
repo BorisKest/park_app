@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:park_app/src/common/widget/large_bold_text.dart';
 import 'package:park_app/src/common/widget/large_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

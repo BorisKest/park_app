@@ -27,7 +27,6 @@ class HomeScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final ScrollController firstController = ScrollController();
     return Scaffold(
       appBar: AppBar(
